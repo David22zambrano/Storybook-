@@ -1,0 +1,81 @@
+import Intro from "../../assets/Intro.png";
+import { Meta, Canvas } from "@storybook/blocks";
+
+<style>
+  {`
+  .img-desing{
+    width: 596px;
+height: 208.681px;
+  }
+  .container{
+    display:flex;
+    justify-content:flex-start;
+  }
+  .center-column{
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-start;
+  }
+  .robotoFont{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+  }
+`}
+</style>
+
+<Meta title="Design System/Introducción" />
+
+<div className="container">
+  <img className="img-desing" src={Intro} />
+</div>
+<br />
+## MUI para Sincosoft
+
+MUI es la librería de componentes de interfaz de usuario de React que usamos para implementar diseños en Sincosoft.
+Originalmene esta librería la implementa Material Design de Google.
+
+[Documentacion MUI](https://mui.com/material-ui/getting-started/installation/#icons)
+
+[NPM](https://www.npmjs.com/package/@sinco/react)
+
+#### Instalación
+
+Comandos de instalacion:
+
+     - Material-UI:
+      **npm install @mui/material @mui/styled-engine-sc styled-components.**
+     - Styled-components:
+      **npm install @mui/material @mui/styled-engine-sc styled-components.**
+     - Mui iconos SVG:
+         **npm install @mui/icons-material.**
+
+**Fuentes de tipografia:**
+
+Vía Fontsource: **npm install @fontsource/roboto** y luego en su archivo de entrada
+
+```
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+```
+
+Vía CDN agrege a su etiqueta `<head /> ` de su proyecto:
+
+```
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+```
+
+#### MUI X
+
+MUI X es una colección de componentes avanzados que en incluye: Data Grid, Date and Time pickers , Charts, etc
+Actualmente Sincosoft cuenta con licencia **Pro** activa par el uso de estos componentes con caracteristicas mas avanzadas.
+
+**Instrucciones de instalacion:**
+
+- [Data Grid](https://mui.com/x/react-data-grid/getting-started/#installation)
+- [Date and Time pickers](https://mui.com/x/react-date-pickers/getting-started/#installation)
+- [Charts](https://mui.com/x/react-date-pickers/getting-started/#installation)
+- [TreeView](https://mui.com/x/react-tree-view/)

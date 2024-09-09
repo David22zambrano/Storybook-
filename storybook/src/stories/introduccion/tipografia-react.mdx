@@ -1,0 +1,102 @@
+import { Meta, Typeset, Canvas } from "@storybook/blocks";
+
+export const typographyERP = [
+  "10px",
+  "12px",
+  "14px",
+  "16px",
+  "18px",
+  "20px",
+  "28px",
+  "32px",
+  "40px",
+];
+
+export const SampleText = "Lorem ipsum dolor";
+
+<style>
+  {`
+  .container-gap{
+    gap:10px
+  }
+ .color-primary{
+    color:#1e62a1;
+  }
+ .color-accent{
+    color:#0CBBE2;
+  }
+ .color-error{
+    color:#D14343;
+  }
+`}
+</style>
+
+<Meta title="Design System/Tipografia" />
+
+# Tipogrfia
+
+<div class="mt-3"> 
+Se añadieron 10 nuevas variantes de tipográfia global para estilizar etiquetas de tipo `<Typography>` y una clase de capitalización de texto en elementos: 
+ > -  ```h3``` 
+ > -  ```h4``` 
+ > -  ```h5```      
+ > -  ```h6```
+ > -  ```body1```
+ > -  ```body2```
+ > -  ```body3```
+ > -  ```subtitle1```
+ > -  ```subtitle2```
+ > -  ```caption```
+ > -  ```overline```
+
+**Font family:** Roboto y Nunito
+
+**Weights:** 200, 300, 400, 500, 600, 700, 800, 900, 1000
+
+<br/>
+Cada módulo tiene su propia configuración de unidades de medida y clases de estilo para ajustar el color del texto, las cuales utilizan variables propias. Todo esto se explica en la sección de `clases de texto`.
+</div>
+
+<br />
+## ERP
+<br />
+El **valor de 1 rem** en este tema equivale a `10px`
+<Typeset fontSizes={typographyERP} />
+
+### clases de texto
+
+- #### color-primary
+
+  > ```tsx
+  > <Tipography color="primary">
+  >   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate?
+  > </Tipography>
+  > ```
+  >
+  > <Canvas>
+  >   <h5 class="color-primary">ERP theme class</h5>
+  > </Canvas>
+
+- #### color-secondary
+
+  > ```tsx
+  > <Tipography color="secondary">
+  >   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate?
+  > </Tipography>
+  > ```
+  >
+  > <Canvas>
+  >   <h5 class="color-accent">ERP theme class</h5>
+  > </Canvas>
+
+- #### color-error
+
+  > ```tsx
+  > <Tipography color="error">
+  >   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate?
+  > </Tipography>
+  > ```
+  >
+  > <Canvas>
+  >   <h5 class="color-error">ERP theme class</h5>
+  > </Canvas>

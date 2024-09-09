@@ -1,0 +1,54 @@
+import { Meta, Canvas } from "@storybook/blocks";
+import Dynamic from "../../assets/pruebaDynamic.png";
+
+<style>
+  {`
+  .img-desing{
+    width: 600px;
+    height: 400px;
+  }
+  .container{
+    display:flex;
+    justify-content:flex-start;
+  }
+  .center-column{
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-start;
+  }
+  .robotoFont{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+  }
+`}
+</style>
+
+<Meta title="Design System/DynamicColor" />
+
+# Dynamic Color
+
+##
+
+"Hook personalizado que recibe como argumento la ruta absoluta de una imagen (en formato SVG) en la raíz
+de la aplicación, actualizando las paletas `Primary`, `Secondary` y `Background` en los componentes de la
+aplicación, basándose en la imagen proporcionada."
+
+### Dependencias
+
+- npm i @material/material-color-utilities
+
+### Implementación
+
+```tsx
+import { useDynamicColor } from "@sinco/react";
+
+const App = () => {
+  const { loading } = useDynamicColor(" **/imagen.svg** ");
+
+  return <>{loading && <> **Codigo de su aplicación** </>}</>;
+};
+```
+
+<div className="container">
+  <img className="img-desing" src={Dynamic} />
+</div>
