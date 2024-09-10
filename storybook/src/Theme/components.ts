@@ -7,7 +7,7 @@ import {
   WarningRounded,
   ErrorRounded,
 } from "@mui/icons-material";
-import { transform } from "typescript";
+// import { transform } from "typescript";
 
 export const components: Components<Theme> = {
   MuiSelect: {
@@ -357,16 +357,50 @@ export const components: Components<Theme> = {
         info: React.createElement(InfoRounded),
       },
     },
+
+    variants: [
+      {
+        props: { variant: "filled" },
+        style: {
+          color: "#fff",
+        },
+      },
+      {
+        props: { variant: "outlined" },
+        style: {
+          padding: "7px 12px 7px 12px",
+        },
+      },
+    ],
     styleOverrides: {
-      filled: {
-        color: "#fff",
-      },
       message: {
-        padding: "4px 0",
+        padding: "1px",
       },
+      icon: {
+        padding: "4px",
+        marginRight: 0,
+        display: "flex",
+        alignItems: "center",
+      },
+      action: {
+        display: "flex",
+        gap: 1.5,
+        padding: "1px",
+      },
+
       root: {
-        padding: "6px 16px",
+        padding: "8px 12px 8px 12px",
+        borderRadius: "8px",
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5,
+        width: "296px",
       },
+    },
+  },
+  MuiAlertTitle: {
+    defaultProps: {
+      variant: "body2",
     },
   },
   MuiButton: {

@@ -1,8 +1,14 @@
-import React, { useState } from "react";
 import type { Meta, Story } from "@storybook/react";
-import { ThemeProvider, ToggleButtonGroup, ToggleButton, Stack } from "@mui/material";
+import { ToggleButtonGroup, ToggleButton, Stack } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
 import { SincoTheme } from "../Theme";
-import "./Generales";
+import "@fontsource/nunito/300.css";
+import "@fontsource/nunito/400.css";
+import "@fontsource/nunito/500.css";
+import "@fontsource/nunito/600.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import React from "react";
 import {
   FormatAlignCenter,
   FormatAlignJustify,
@@ -24,10 +30,25 @@ export default {
   parameters: {
     layout: "centered",
   },
+  argTypes: {
+    size: {
+      description: "Tamaños disponibles",
+      control: "radio",
+      options: ["small", "medium", "large"],
+    },
+    color: {
+      description: "Colores disponibles",
+      control: "select",
+      options: ["primary", "secondary", "error", "warning", "info", "success", "inherit"],
+    },
+    disabled: {
+      description: "Deshabilitar botones",
+      control: "boolean",
+    },
+  },
 } as Meta;
 
-const Template: Story<typeof ToggleButton> = () => {
-  // Cambiar a typeof ToggleButton
+const Template: Story<{ size: "small" | "medium" | "large", color: "primary" | "secondary" | "error" | "warning" | "info" | "success" | "inherit", disabled: boolean }> = (args) => {
   const [alignment, setAlignment] = React.useState("left");
 
   const handleChange = (
@@ -38,16 +59,16 @@ const Template: Story<typeof ToggleButton> = () => {
   };
 
   const children = [
-    <ToggleButton value="left" key="left">
+    <ToggleButton value="left" key="left" color={args.color} disabled={args.disabled}>
       <FormatAlignLeft />
     </ToggleButton>,
-    <ToggleButton value="center" key="center">
+    <ToggleButton value="center" key="center" color={args.color} disabled={args.disabled}>
       <FormatAlignCenter />
     </ToggleButton>,
-    <ToggleButton value="right" key="right">
+    <ToggleButton value="right" key="right" color={args.color} disabled={args.disabled}>
       <FormatAlignRight />
     </ToggleButton>,
-    <ToggleButton value="justify" key="justify">
+    <ToggleButton value="justify" key="justify" color={args.color} disabled={args.disabled}>
       <FormatAlignJustify />
     </ToggleButton>,
   ];
@@ -57,20 +78,19 @@ const Template: Story<typeof ToggleButton> = () => {
     onChange: handleChange,
     exclusive: true,
   };
+
   return (
-    <>
-      <Stack spacing={2} alignItems="center">
-        <ToggleButtonGroup size="small" {...control} aria-label="Small sizes">
-          {children}
-        </ToggleButtonGroup>
-        <ToggleButtonGroup {...control} aria-label="Medium sizes">
-          {children}
-        </ToggleButtonGroup>
-        <ToggleButtonGroup size="large" {...control} aria-label="Large sizes">
-          {children}
-        </ToggleButtonGroup>
-      </Stack>
-    </>
+    <Stack spacing={2} alignItems="center">
+      <ToggleButtonGroup size={args.size} {...control} aria-label={`${args.size} size`}>
+        {children}
+      </ToggleButtonGroup>
+    </Stack>
   );
 };
-export const ratign = Template.bind({});
+
+export const Default = Template.bind({});
+Default.args = {
+  size: "medium",
+  color: "primary", // Default color value
+  disabled: false, // Default disabled state
+};

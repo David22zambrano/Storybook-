@@ -1,7 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, Alert, AlertTitle } from "@mui/material";
+
+import { ThemeProvider } from "@mui/material/styles";
+import "@fontsource/nunito/300.css";
+import "@fontsource/nunito/400.css";
+import "@fontsource/nunito/500.css";
+import "@fontsource/nunito/600.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+// import { SincoTheme } from "@sinco/react";
+import { Alert, AlertTitle, IconButton } from "@mui/material";
 import { SincoTheme } from "../Theme";
-import "./Generales";
+import { Close } from "@mui/icons-material";
+// import { button } from './tooltip.stories';
 
 const meta: Meta<typeof Alert> = {
   title: "Components/Alert",
@@ -19,13 +29,16 @@ const meta: Meta<typeof Alert> = {
   },
   argTypes: {
     variant: {
+      description:"Selecciona el tipo de variante del componente.",
       options: ["outlined", "filled", "standard"],
       control: { type: "radio" },
     },
     children: {
+      description:"Introduce el texto o contenido que deseas mostrar aquí.",
       control: "text",
     },
     color: {
+      description:"Selecciona entre los colores disponibles",
       control: "select",
       options: [
         "primary",
@@ -38,12 +51,19 @@ const meta: Meta<typeof Alert> = {
       ],
     },
     severity: {
+      description:"Elige el ícono según las opciones disponibles",
       control: "select",
       options: ["error", "info", "success", "warning"],
     },
     title: {
+      description:"Introduce el título del componente.",
       control: "text",
     },
+    action:{
+      description:"Permite activar o desactivar la acción.",
+      control:"boolean"
+    }
+    
   },
 };
 export default meta;
@@ -57,9 +77,22 @@ export const AlertStory: Story = {
     variant: "filled",
     severity: "info",
     color: "info",
+    action:false,
+    
   },
-  render: ({ children, variant, title, severity, color }) => (
-    <Alert variant={variant} color={color} severity={severity}>
+  render: ({ children, variant, title, severity, color, action}) => (
+    <Alert variant={variant} color={color} severity={severity} action={
+      action ? (
+        <IconButton
+          aria-label="close"
+          color="inherit"
+          size="small"
+          onClick={() => console.log("Icon button clicked")}
+        >
+          <Close fontSize="inherit" />
+        </IconButton>
+      ) : ""
+    } >
       <AlertTitle>{title}</AlertTitle>
       {children}
     </Alert>

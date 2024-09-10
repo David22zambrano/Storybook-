@@ -1,8 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
-import { ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+
+import "@fontsource/nunito/300.css";
+import "@fontsource/nunito/400.css";
+import "@fontsource/nunito/500.css";
+import "@fontsource/nunito/600.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
 import { SincoTheme } from "../Theme";
-import "./Generales";
 
 const meta: Meta<typeof Checkbox> = {
   title: "Components/Checkbox",
@@ -20,12 +26,18 @@ const meta: Meta<typeof Checkbox> = {
   },
   argTypes: {
     size: {
+      description: "Tamaños disponibles",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     color: {
+      description: "Colores disponibles",
       control: "select",
       options: ["primary", "secondary", "error", "warning", "info", "success"],
+    },
+    disabled: {
+      description: "Deshabilitar checkbox",
+      control: "boolean",
     },
   },
 };
@@ -38,6 +50,7 @@ export const CheckboxStories: Story = {
   args: {
     size: "medium",
     color: "primary",
+    disabled: false, // Default value for disabled state
   },
   render: (args) => <Checkbox {...args} />,
 };
@@ -47,6 +60,7 @@ export const CheckboxStoriesFormControl: Story = {
   args: {
     size: "medium",
     color: "primary",
+    disabled: false, // Default value for disabled state
   },
   render: (args) => (
     <FormGroup>
@@ -57,8 +71,7 @@ export const CheckboxStoriesFormControl: Story = {
         label="Required"
       />
       <FormControlLabel
-        disabled
-        control={<Checkbox {...args} />}
+        control={<Checkbox {...args} disabled />}
         label="Disabled"
       />
     </FormGroup>
