@@ -1,11 +1,11 @@
-import "./Generales";
 import type { Meta } from "@storybook/react";
 import { ThemeProvider, Button } from "@mui/material";
-import { ToastNotification } from "@sinco/react";
-import { SincoTheme } from "../Theme";
+import { ToastNotification } from "./ToastNotification";
+import { SincoTheme } from "../../Theme";
+import "../Generales";
 
 const meta: Meta<typeof ToastNotification> = {
-  title: "Sinco React/ToastNotification",
+  title: "Components/ToastNotification",
   component: ToastNotification,
   tags: ["autodocs"],
   decorators: [
@@ -30,16 +30,16 @@ const meta: Meta<typeof ToastNotification> = {
       table: {
         type: { summary: "number" },
 
-        defaultValue: { summary: 8000 },
+        defaultValue: { summary: "8" },
       },
       description:
-        "En su progressBar por defecto time tienen 8segundos e igualmente puede ser modificado segun los segundos necesarios",
+        "En el tiempo del toast se maneja sobre segundos(`1`) y no por milisegundos(`100`), el tiempo por defecto es de 8 segundos.",
     },
     seeMore: {
       table: {
         type: { summary: "boolean" },
 
-        defaultValue: { summary: false },
+        defaultValue: { summary: "false" },
       },
       description:
         "seeMore nos poermite ver las observaciones especificas de cada toast",

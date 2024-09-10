@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import {ThemeProvider,  Button, IconButton } from "@mui/material";
+import { ThemeProvider, Button, IconButton } from "@mui/material";
 import { Delete, Person } from "@mui/icons-material";
 import { SincoTheme } from "../Theme";
 import "./Generales";
@@ -75,24 +75,24 @@ export const ButtonStorie: Story = {
   ),
 };
 export const ButtonWhitIcon: Story = {
-  name: "button-icons",
-  render: (args) => (
+  name: "Button witdh icons",
+  render: () => (
     <>
       <Button size="small" variant="contained" startIcon={<Delete />}>
-        Button
+        Button with Icon
       </Button>
       <Button size="medium" variant="contained" startIcon={<Delete />}>
-        Button
+        Button with Icon
       </Button>
       <Button size="large" variant="contained" startIcon={<Delete />}>
-        Button
+        Button with Icon
       </Button>
     </>
   ),
 };
 export const Icon_Button: Story = {
-  name: "icon-button",
-  render: (args) => (
+  name: "Icon button",
+  render: () => (
     <>
       <IconButton size="small">
         <Delete fontSize="small" />

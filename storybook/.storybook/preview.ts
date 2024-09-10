@@ -16,6 +16,7 @@ const preview: Preview = {
           ],
           locales: "en-US",
         },
+        
       },
       matchers: {
         color: /(background|color)$/i,

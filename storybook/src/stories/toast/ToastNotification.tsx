@@ -7,6 +7,7 @@ import {
   Typography,
   IconButton,
   Button,
+  useTheme,
 } from "@mui/material";
 import {
   Close,
@@ -18,7 +19,6 @@ import {
   KeyboardArrowUp,
 } from "@mui/icons-material";
 import { useProgress } from "./useProgress";
-import { SincoTheme } from "@sinco/react";
 import { blue, green, orange, red } from "@mui/material/colors";
 
 export type ToastType = "success" | "error" | "warning" | "info";
@@ -32,7 +32,10 @@ export interface ToastBaseProperties {
   seeMore?: boolean;
 }
 
+
+
 export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
+  const theme = useTheme();
   const [stateOptions, setStateOptions] = useState(true);
   const [stateToast, setStateToast] = useState(true);
   const timeProgress = toast.time || 10;
@@ -106,10 +109,10 @@ export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
               <Stack
                 sx={{
                   color: {
-                    success: SincoTheme.palette.success.main,
-                    error: SincoTheme.palette.error.main,
-                    warning: SincoTheme.palette.warning.main,
-                    info: SincoTheme.palette.info.main,
+                    success: theme.palette.success.main,
+                    error: theme.palette.error.main,
+                    warning: theme.palette.warning.main,
+                    info: theme.palette.info.main,
                   }[toast.type || "info"],
                 }}
                 className={`icon-color color-${toast.type || "info"}`}

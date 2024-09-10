@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import { SincoTheme } from "@sinco/react";
-import { ThemeProvider } from "@mui/material/styles";
+import { Add } from "@mui/icons-material";
+import { ThemeProvider, Button } from "@mui/material";
 import { EmptyState } from "./EmptyState";
+import { SincoTheme } from "../../Theme";
+import '../Generales';
+
 const meta: Meta<typeof EmptyState> = {
   title: "Components/EmptyState",
   component: EmptyState,
@@ -70,7 +71,7 @@ export const Empty: Story = {
         <Button
           variant="outlined"
           size="small"
-          startIcon={<AddIcon fontSize="small" />}
+          startIcon={<Add fontSize="small" />}
         >
           Opcion 2
         </Button>

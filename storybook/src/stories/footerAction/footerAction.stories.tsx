@@ -1,17 +1,9 @@
 import type { Meta } from "@storybook/react";
-import { SincoTheme } from "@sinco/react";
 import { Button, ThemeProvider, Typography } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import {ArrowForward} from "@mui/icons-material";
 import { FooterAction } from "./footerAction";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import "@fontsource/nunito/300.css";
-import "@fontsource/nunito/400.css";
-import "@fontsource/nunito/500.css";
-import "@fontsource/nunito/700.css";
-
+import { SincoTheme } from "../../Theme";
+import '../Generales';
 
 const meta: Meta<typeof FooterAction> = {
   title: "Components/footerAction",
@@ -61,7 +53,7 @@ export const FooterActionStory = {
         <Button
           variant="contained"
           size="small"
-          endIcon={<ArrowForwardIcon fontSize="small" />}
+          endIcon={<ArrowForward fontSize="small" />}
         >
           Action
         </Button>

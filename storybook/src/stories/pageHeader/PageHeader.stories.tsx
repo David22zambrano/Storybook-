@@ -1,11 +1,10 @@
 import type { Meta } from "@storybook/react";
-import { Button, IconButton } from "@mui/material";
+import { Button, IconButton, ThemeProvider } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
+import { SincoTheme } from "../../Theme";
+import { PageHeader } from "./PageHeader";
+import "../Generales";
 
-import { SincoTheme } from "@sinco/react";
-import { ThemeProvider } from "@mui/material/styles";
-import "./Generales";
-import { PageHeader } from "@sinco/react";
 
 const meta: Meta<typeof PageHeader> = {
   title: "Components/PageHeader",

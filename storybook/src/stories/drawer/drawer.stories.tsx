@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 import { DrawerComponent } from "./drawer";
-import { SincoTheme } from "../Theme";
+import { SincoTheme } from "../../Theme";
 
 const meta: Meta<typeof DrawerComponent> = {
   title: "Components/Drawer",
@@ -21,6 +21,9 @@ const meta: Meta<typeof DrawerComponent> = {
       </ThemeProvider>
     ),
   ],
+  argTypes: {
+
+  }
 };
 export default meta;
 export const Drawer = {
