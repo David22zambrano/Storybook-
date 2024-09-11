@@ -9,6 +9,10 @@ const config: StorybookConfig = {
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
   ],
+  docs: {
+    //👇 See the table below for the list of supported options
+    defaultName: 'Documentation',
+  },
   framework: {
     name: "@storybook/react-vite",
     options: {},

@@ -1,6 +1,6 @@
 import React from "react";
 import type { } from "@mui/x-data-grid/themeAugmentation";
-import { Components, Theme } from "@mui/material";
+import { Components, Theme, alpha } from "@mui/material";
 import {
   InfoRounded,
   CheckCircleRounded,
@@ -265,60 +265,18 @@ export const components: Components<Theme> = {
     styleOverrides: {
       sizeSmall: {
         height: 32,
-        width: 32,
       },
       sizeMedium: {
         height: 38,
-        width: 38,
       },
       sizeLarge: {
         height: 48,
-        width: 48,
       },
     },
   },
   MuiChip: {
     styleOverrides: {
-      colorPrimary: ({ theme }) => ({
-        backgroundColor: theme.palette.chipPrimary.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipPrimary.dark
-        }
-      }),
-      colorSecondary: ({ theme }) => ({
-        backgroundColor: theme.palette.chipSecondary.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipSecondary.dark
-        }
-      }),
-      colorInfo: ({ theme }) => ({
-        backgroundColor: theme.palette.chipInfo.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipInfo.dark
-        }
-      }),
-      colorWarning: ({ theme }) => ({
-        backgroundColor: theme.palette.chipWarning.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipWarning.dark
-        }
-      }),
-      colorSuccess: ({ theme }) => ({
-        backgroundColor: theme.palette.chipSuccess.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipSuccess.dark
-        }
-      }),
-      colorError: ({ theme }) => ({
-        backgroundColor: theme.palette.chipError.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipError.dark
-        }
-      }),
-      filled: ({ theme }) => ({
-        color: theme.palette.chipPrimary.contrastText,
-      }),
-      icon:{
+      icon: {
         opacity: "70%",
       },
       deleteIcon: {
@@ -337,15 +295,122 @@ export const components: Components<Theme> = {
         height: 16,
       },
       sizeMedium: {
-        height: 20,
+        height: 22,
       },
+      avatarMedium: {
+        height: 18,
+        width: 18
+      },
+      avatar: ({ theme }) => ({
+        lineHeight: 1.8,
+        variants: [
+          {
+            props: { variant: "filled" },
+            style: {
+              backgroundColor: `${alpha("#ffffff", 0.7)}`,
+              color: theme.palette.default.contrastText,
+            }
+          },
+        ]
+      }),
       label: ({ theme }) => ({
         ...theme.typography.caption,
       }),
-      root: {
+      filled: ({ theme }) => ({
+        color: theme.palette.background.paper,
+      }),
+      root: ({ theme }) => ({
         height: "inherit",
         borderRadius: 4,
-      },
+        variants: [
+          {
+            props: { variant: "standard" },
+            style: {
+              backgroundColor: theme.palette.default.contrastText,
+              color: theme.palette.default.contrastText
+            }
+          },
+          {
+            props: { variant: "standard", avatar: true },
+            style: {
+              backgroundColor: theme.palette.default.contrastText,
+              color: theme.palette.default.contrastText
+            }
+          },
+          {
+            props: { variant: "standard", color: "primary" },
+            style: {
+              backgroundColor: theme.palette.chipPrimary.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipPrimary.dark
+              },
+            }
+          },
+          {
+            props: { variant: "standard", color: "secondary" },
+            style: {
+              backgroundColor: theme.palette.chipSecondary.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipSecondary.dark
+              },
+            }
+          },
+          {
+            props: { variant: "standard", color: "info" },
+            style: {
+              backgroundColor: theme.palette.chipInfo.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipInfo.dark
+              },
+            }
+          },
+          {
+            props: { variant: "standard", color: "error" },
+            style: {
+              backgroundColor: theme.palette.chipError.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipError.dark
+              },
+            }
+          },
+          {
+            props: { variant: "standard", color: "success" },
+            style: {
+              backgroundColor: theme.palette.chipSuccess.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipSuccess.dark
+              },
+            }
+          },
+          {
+            props: { variant: "standard", color: "warning" },
+            style: {
+              backgroundColor: theme.palette.chipWarning.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipWarning.dark
+              },
+            }
+          },
+          {
+            props: { variant: "standard", color: "default" },
+            style: {
+              backgroundColor: theme.palette.default.main,
+              ":hover": {
+                backgroundColor: theme.palette.default.dark
+              },
+            }
+          },
+          {
+            props: { variant: "standard", color: "default" },
+            style: {
+              backgroundColor: theme.palette.default.main,
+              ":hover": {
+                backgroundColor: theme.palette.default.dark
+              },
+            }
+          },
+        ],
+      }),
     },
   },
   MuiAlert: {

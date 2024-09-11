@@ -18,6 +18,24 @@ const meta: Meta<typeof Accordion> = {
   parameters: {
     layout: "centered",
   },
+  argTypes:{
+    expanded:{
+      description: "Expande el accordion",
+      control: "boolean"
+    },
+    title: {
+      description: "Titulo de el expansion",
+      control: "text"
+    },
+    defaultExpanded:{
+      description: "Se muestra expandidos todos los AccordionSummary por defecto",
+      control: "boolean"
+    },
+    square:{
+      description: "Si ",
+      control: "boolean"
+    }
+  }
 };
 
 export default meta;
@@ -25,7 +43,12 @@ type Story = StoryObj<typeof Accordion>;
 
 export const button: Story = {
   name: "Accordion",
-  render: (args) => (
+  args:{
+    expanded: false,
+    defaultExpanded: false
+
+  },
+  render: () => (
     <>
       <Accordion>
         <AccordionSummary

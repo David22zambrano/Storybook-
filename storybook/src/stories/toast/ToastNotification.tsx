@@ -1,25 +1,8 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import {
-  Stack,
-  LinearProgress,
-  Divider,
-  Box,
-  Typography,
-  IconButton,
-  Button,
-  useTheme,
-} from "@mui/material";
-import {
-  Close,
-  InfoRounded,
-  CheckCircleRounded,
-  WarningRounded,
-  ErrorRounded,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-} from "@mui/icons-material";
-import { useProgress } from "./useProgress";
+import React, { ReactElement, useCallback, useEffect, useState } from "react";
+import { Stack, LinearProgress, Divider, Box, Typography, IconButton, Button, useTheme } from "@mui/material";
+import { Close, InfoRounded, CheckCircleRounded, WarningRounded, ErrorRounded, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { blue, green, orange, red } from "@mui/material/colors";
+import { useProgress } from "./useProgress";
 
 export type ToastType = "success" | "error" | "warning" | "info";
 export interface ToastBaseProperties {
@@ -31,8 +14,6 @@ export interface ToastBaseProperties {
   actions?: React.ReactNode;
   seeMore?: boolean;
 }
-
-
 
 export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
   const theme = useTheme();
@@ -52,13 +33,13 @@ export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
 
   const ToastIconConfig = toastIconOption[toast.type || "info"];
 
-  const closeToast = () => {
+  const closeToast = useCallback(() => {
     setStateToast(false);
-  };
+  }, []);
 
-  const toggleToastOptions = () => {
+  const toggleToastOptions = useCallback(() => {
     setStateOptions((prevShowOptions) => !prevShowOptions);
-  };
+  }, [setStateOptions])
 
   useEffect(() => {
     progressToast <= 0 && setStateToast(false);

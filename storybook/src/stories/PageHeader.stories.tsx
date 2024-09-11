@@ -1,13 +1,13 @@
 import type { Meta } from "@storybook/react";
 import { Button, IconButton, ThemeProvider } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
-import { SincoTheme } from "../../Theme";
-import { PageHeader } from "./PageHeader";
-import "../Generales";
+import { SincoTheme } from "../Theme";
+import { PageHeader } from "./pageHeader/PageHeader";
+import "./Generales";
 
 
 const meta: Meta<typeof PageHeader> = {
-  title: "Components/PageHeader",
+  title: "Sinco React/PageHeader",
   component: PageHeader,
   tags: ["autodocs"],
   decorators: [

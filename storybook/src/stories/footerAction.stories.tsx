@@ -1,9 +1,9 @@
-import "../Generales/tipografia.ts"
-import type { Meta } from "@storybook/react";
-import { FooterAction } from "@sinco/react";
-import { Button, ThemeProvider, Typography } from "@mui/material";
-import { ArrowForward } from "@mui/icons-material";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Story } from "@storybook/blocks";
+import { Button, ThemeProvider } from "@mui/material";
+import { FooterAction } from "./footerAction/footerAction";
 import { SincoTheme } from "../Theme";
+import './Generales';
 
 const meta: Meta<typeof FooterAction> = {
   title: "Sinco React/footerAction",
@@ -20,77 +20,41 @@ const meta: Meta<typeof FooterAction> = {
   decorators: [
     (Story) => (
       <ThemeProvider theme={SincoTheme}>
-        <Story />
+          <Story />
       </ThemeProvider>
     ),
   ],
+  argTypes: {
+    labelChangeCounter: {
+      description: "Label:  string | reactNode",
+      control: "text"
+    },
+  }
 };
 export default meta;
-export const FooterActionStory = {
-  name: "FooterAction..",
+type Story = StoryObj<typeof FooterAction>;
+
+export const FooterActionStory: Story = {
+  name: "FooterAction",
   args: {
-    labelChangeCounter: (
-      <>
-        <Typography color="text.secondary" variant="body2" display="flex">
-          Cambiaste
-          <Typography
-            color="text.secondary"
-            variant="body2"
-            sx={{ fontWeight: "bold", px: "2px" }}
-          >
-            X
-          </Typography>
-          Campos de información
-        </Typography>
-      </>
-    ),
-    leftContent: <Button size="small">Action</Button>,
-    rightContent: (
-      <>
-        <Button variant="text" size="small">
-          Action
-        </Button>
-        <Button
-          variant="contained"
-          size="small"
-          endIcon={<ArrowForward fontSize="small" />}
-        >
-          Action
-        </Button>
-      </>
-    ),
+    labelChangeCounter: "Cambiaste X campos de informacion",
+    leftContent: "Action",
+    rightContent: "Action"
   },
-  parameters: {
-    docs: {
-      source: {
-        type: "code",
-        code: ` <FooterAction
-       labelChangeCounter={
-         <Typography color="text.secondary" variant="body2" display="flex">
-           Cambiaste
-           <Typography
-             color="text.secondary"
-             variant="body2"
-             sx={{ fontWeight: "bold", px: "2px" }}
-           >
-             X
-           </Typography>
-           Campos de información
-         </Typography>
-       }
-       LeftContent={
-         <>
-           <Button size="small">Open drawer</Button>
-         </>
-       }
-       RightContent={
-         <>
-           <Button size="small">Open drawer</Button>
-           <Button size="small">Open drawer</Button>
-         </>
-       }
-     ></FooterAction>`,
-      },
-    },
-  },
+
+  render: ({ labelChangeCounter, leftContent, rightContent }) => (
+    <FooterAction
+      labelChangeCounter={labelChangeCounter}
+      leftContent={
+        <Button size="small">{leftContent}
+        </Button>
+      }
+      rightContent={
+        <>
+          <Button size="small">{rightContent}</Button>
+          <Button size="small">{rightContent}</Button>
+        </>
+      }
+    ></FooterAction>
+  )
 };
