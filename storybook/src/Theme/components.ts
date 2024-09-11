@@ -1,6 +1,6 @@
 import React from "react";
 import type { } from "@mui/x-data-grid/themeAugmentation";
-import { Components, Theme } from "@mui/material";
+import { Components, Theme, alpha } from "@mui/material";
 import {
   InfoRounded,
   CheckCircleRounded,
@@ -265,24 +265,17 @@ export const components: Components<Theme> = {
     styleOverrides: {
       sizeSmall: {
         height: 32,
-        width: 32,
       },
       sizeMedium: {
         height: 38,
-        width: 38,
       },
       sizeLarge: {
         height: 48,
-        width: 48,
       },
     },
   },
   MuiChip: {
-
     styleOverrides: {
-      filled: ({ theme }) => ({
-        // color: theme.palette.chipPrimary.contrastText,
-      }),
       icon: {
         opacity: "70%",
       },
@@ -308,19 +301,44 @@ export const components: Components<Theme> = {
         height: 18,
         width: 18
       },
-      avatar:({ theme }) => ({
-        backgroundColor: theme.palette.default.contrastText,
-        lineHeight: 1.8
+      avatar: ({ theme }) => ({
+        lineHeight: 1.8,
+        variants: [
+          {
+            props: { variant: "filled" },
+            style: {
+              backgroundColor: `${alpha("#ffffff", 0.7)}`,
+              color: theme.palette.default.contrastText,
+            }
+          },
+        ]
       }),
       label: ({ theme }) => ({
         ...theme.typography.caption,
+      }),
+      filled: ({ theme }) => ({
+        color: theme.palette.background.paper,
       }),
       root: ({ theme }) => ({
         height: "inherit",
         borderRadius: 4,
         variants: [
           {
-            props: { variant: "light", color: "primary" },
+            props: { variant: "standard" },
+            style: {
+              backgroundColor: theme.palette.default.contrastText,
+              color: theme.palette.default.contrastText
+            }
+          },
+          {
+            props: { variant: "standard", avatar: true },
+            style: {
+              backgroundColor: theme.palette.default.contrastText,
+              color: theme.palette.default.contrastText
+            }
+          },
+          {
+            props: { variant: "standard", color: "primary" },
             style: {
               backgroundColor: theme.palette.chipPrimary.main,
               ":hover": {
@@ -329,7 +347,7 @@ export const components: Components<Theme> = {
             }
           },
           {
-            props: { variant: "light", color: "secondary" },
+            props: { variant: "standard", color: "secondary" },
             style: {
               backgroundColor: theme.palette.chipSecondary.main,
               ":hover": {
@@ -338,7 +356,7 @@ export const components: Components<Theme> = {
             }
           },
           {
-            props: { variant: "light", color: "info" },
+            props: { variant: "standard", color: "info" },
             style: {
               backgroundColor: theme.palette.chipInfo.main,
               ":hover": {
@@ -347,7 +365,7 @@ export const components: Components<Theme> = {
             }
           },
           {
-            props: { variant: "light", color: "error" },
+            props: { variant: "standard", color: "error" },
             style: {
               backgroundColor: theme.palette.chipError.main,
               ":hover": {
@@ -356,7 +374,7 @@ export const components: Components<Theme> = {
             }
           },
           {
-            props: { variant: "light", color: "success" },
+            props: { variant: "standard", color: "success" },
             style: {
               backgroundColor: theme.palette.chipSuccess.main,
               ":hover": {
@@ -365,7 +383,7 @@ export const components: Components<Theme> = {
             }
           },
           {
-            props: { variant: "light", color: "warning" },
+            props: { variant: "standard", color: "warning" },
             style: {
               backgroundColor: theme.palette.chipWarning.main,
               ":hover": {
@@ -374,7 +392,7 @@ export const components: Components<Theme> = {
             }
           },
           {
-            props: { variant: "light", color: "default" },
+            props: { variant: "standard", color: "default" },
             style: {
               backgroundColor: theme.palette.default.main,
               ":hover": {
@@ -383,7 +401,7 @@ export const components: Components<Theme> = {
             }
           },
           {
-            props: { variant: "light", color: "default" },
+            props: { variant: "standard", color: "default" },
             style: {
               backgroundColor: theme.palette.default.main,
               ":hover": {

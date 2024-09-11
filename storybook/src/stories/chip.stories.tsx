@@ -26,7 +26,7 @@ const meta: Meta<typeof Chip> = {
     },
     variant: {
       description: "Elige entre las variantes disponibles",
-      options: ["outlined", "filled", "light"],
+      options: ["outlined", "filled", "standard"],
       control: "radio",
     },
     color: {
@@ -63,10 +63,10 @@ export const ChipStory: Story = {
   name: "chip",
   args: {
     color: "primary",
-    size: "small",
+    size: "medium",
     icon: <></>,
     label: "chip",
-    variant: "filled",
+    variant: "standard",
     avatar: <></>,
     disabled: false,
   },

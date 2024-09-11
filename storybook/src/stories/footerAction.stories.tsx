@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, ThemeProvider, Typography } from "@mui/material";
+import { Stories, Story, Subtitle, Title } from "@storybook/blocks";
+import { Button, ThemeProvider } from "@mui/material";
 import { FooterAction } from "./footerAction/footerAction";
 import { SincoTheme } from "../Theme";
 import './Generales';
@@ -11,6 +12,7 @@ const meta: Meta<typeof FooterAction> = {
   parameters: {
     docs: {
       story: {
+        
         inline: false,
         iframeHeight: 200,
       },
@@ -19,7 +21,7 @@ const meta: Meta<typeof FooterAction> = {
   decorators: [
     (Story) => (
       <ThemeProvider theme={SincoTheme}>
-        <Story />
+          <Story />
       </ThemeProvider>
     ),
   ],
@@ -28,19 +30,19 @@ const meta: Meta<typeof FooterAction> = {
       description: "Label:  string | reactNode",
       control: "text"
     },
-    leftContent: {
-      description: "No es necesario agregar estilos de espaciado, ya lo trae implementado para hacer su uso mas facíl "
-    }
   }
 };
 export default meta;
 type Story = StoryObj<typeof FooterAction>;
 
 export const FooterActionStory: Story = {
-  name: "FooterAction..",
+  name: "FooterAction",
   args: {
     labelChangeCounter: "Cambiaste X campos de informacion",
+    leftContent: "Action",
+    rightContent: "Action"
   },
+
   render: ({ labelChangeCounter, leftContent, rightContent }) => (
     <FooterAction
       labelChangeCounter={labelChangeCounter}

@@ -57,7 +57,7 @@ declare module '@mui/material/styles' {
 // extiende la paleta de los chips agregando las nuevas variantes
 declare module '@mui/material/Chip' {
     interface ChipPropsVariantOverrides {
-        light: true;
+        standard: true;
     }
     interface ChipPropsColorOverrides {
         default: true,
