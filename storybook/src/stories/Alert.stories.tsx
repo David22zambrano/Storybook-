@@ -65,7 +65,8 @@ type Story = StoryObj<typeof Alert>;
 export const AlertStory: Story = {
   name: "Alert",
   args: {
-    children: "Alert",
+    title:"titulo del alert",
+    children: "Contenido del alert",
     variant: "filled",
     severity: "info",
     color: "info",
