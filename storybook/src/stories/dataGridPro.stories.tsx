@@ -1,13 +1,13 @@
 import type { Meta } from "@storybook/react";
 import { ThemeProvider } from "@mui/material";
 
-import DataGridProExample from "./dataGridPro";
-import DataGridProDemo from "./dataGridTwo";
-import { SincoTheme } from "../../Theme";
-import "../Generales";
+import DataGridProExample from "./dataGridPro/dataGridPro";
+import DataGridProDemo from "./dataGridPro/dataGridTwo";
+import { SincoTheme } from "../Theme";
+import "./Generales";
 
 const meta: Meta<typeof DataGridProDemo> = {
-  title: "Components/DataGrid",
+  title: "Sinco React/DataGrid",
   component: DataGridProDemo,
   decorators: [
     (Story) => (

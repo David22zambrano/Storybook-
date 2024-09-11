@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { EmptyState } from "@sinco/react";
-import { ThemeProvider, Button } from "@mui/material";
 import { Add } from "@mui/icons-material";
+import { ThemeProvider, Button } from "@mui/material";
+import { EmptyState } from "./emptyState/EmptyState";
 import { SincoTheme } from "../Theme";
+import './Generales';
 
 const meta: Meta<typeof EmptyState> = {
   title: "Sinco React/EmptyState",

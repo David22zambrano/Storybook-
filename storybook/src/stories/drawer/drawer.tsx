@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useCallback, useState } from "react";
 import { IconButton, Stack, Typography, Drawer, SxProps } from "@mui/material";
 import { Close } from "@mui/icons-material";
 
@@ -27,7 +27,9 @@ export interface DrawerComponentProperties {
   backgroundColor?: string;
   color?: string;
   headerColor?: string;
+  closeIcon?: string,
 }
+
 
 export const DrawerComponent = ({
   title,
@@ -36,8 +38,9 @@ export const DrawerComponent = ({
   headerColor,
   children,
   actions,
-  showActions,
+  showActions = false,
   sxActions,
+  closeIcon,
   anchor = "left",
   anchorActions = "flex-end",
   width,
@@ -45,11 +48,12 @@ export const DrawerComponent = ({
   onClose,
   sx,
 }: DrawerComponentProperties) => {
+
   const [stateActions, setActionsState] = useState(showActions);
 
-  const handleDrawerActions = () => {
-    setActionsState(true);
-  };
+  const handleDrawerActions = useCallback(() => {
+      setActionsState(true);
+    }, []);
 
   const paperSx: SxProps = borderStyles[anchor];
 
@@ -78,14 +82,15 @@ export const DrawerComponent = ({
           direction="row"
           py={1.5}
           px={1}
-          bgcolor={headerColor}
+          bgcolor={"primary.main" || headerColor}
         >
-          <Typography color={color} variant="h6">
+          <Typography color={"background.paper" || color} variant="h6">
             {title}
           </Typography>
 
           <IconButton onClick={onClose} size="small">
-            <Close fontSize="inherit"  />
+            <Close sx={{ color: "background.paper" || closeIcon }}
+              fontSize="inherit" />
           </IconButton>
         </Stack>
 

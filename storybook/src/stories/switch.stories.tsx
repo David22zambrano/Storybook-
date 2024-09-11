@@ -1,7 +1,7 @@
 import "./Generales";
 import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProvider, Switch } from "@mui/material";
-import { SincoTheme } from "@sinco/react";
+import { SincoTheme } from "../Theme";
 
 const meta: Meta<typeof Switch> = {
   title: "Components/Switch",

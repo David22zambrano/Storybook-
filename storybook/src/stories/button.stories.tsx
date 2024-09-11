@@ -38,6 +38,9 @@ const meta: Meta<typeof Button> = {
       control: "radio",
       options: ["small", "medium", "large"],
     },
+    disabled: {
+      control: "boolean",
+    },
     children: {
       control: "text",
     },
@@ -62,13 +65,15 @@ export const ButtonStorie: Story = {
     children: "Button",
     startIcon: false,
     endIcon: false,
+    disabled: false,
   },
-  render: ({ size, variant, startIcon, endIcon, children }) => (
+  render: ({ size, variant, startIcon, endIcon, children, disabled }) => (
     <Button
       variant={variant}
       size={size}
       startIcon={startIcon === true ? <Person /> : ""}
       endIcon={endIcon === true ? <Person /> : ""}
+      disabled={disabled}
     >
       {children}
     </Button>

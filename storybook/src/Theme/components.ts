@@ -278,47 +278,12 @@ export const components: Components<Theme> = {
     },
   },
   MuiChip: {
+
     styleOverrides: {
-      colorPrimary: ({ theme }) => ({
-        backgroundColor: theme.palette.chipPrimary.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipPrimary.dark
-        }
-      }),
-      colorSecondary: ({ theme }) => ({
-        backgroundColor: theme.palette.chipSecondary.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipSecondary.dark
-        }
-      }),
-      colorInfo: ({ theme }) => ({
-        backgroundColor: theme.palette.chipInfo.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipInfo.dark
-        }
-      }),
-      colorWarning: ({ theme }) => ({
-        backgroundColor: theme.palette.chipWarning.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipWarning.dark
-        }
-      }),
-      colorSuccess: ({ theme }) => ({
-        backgroundColor: theme.palette.chipSuccess.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipSuccess.dark
-        }
-      }),
-      colorError: ({ theme }) => ({
-        backgroundColor: theme.palette.chipError.main,
-        ":hover": {
-          backgroundColor: theme.palette.chipError.dark
-        }
-      }),
       filled: ({ theme }) => ({
-        color: theme.palette.chipPrimary.contrastText,
+        // color: theme.palette.chipPrimary.contrastText,
       }),
-      icon:{
+      icon: {
         opacity: "70%",
       },
       deleteIcon: {
@@ -337,15 +302,97 @@ export const components: Components<Theme> = {
         height: 16,
       },
       sizeMedium: {
-        height: 20,
+        height: 22,
       },
+      avatarMedium: {
+        height: 18,
+        width: 18
+      },
+      avatar:({ theme }) => ({
+        backgroundColor: theme.palette.default.contrastText,
+        lineHeight: 1.8
+      }),
       label: ({ theme }) => ({
         ...theme.typography.caption,
       }),
-      root: {
+      root: ({ theme }) => ({
         height: "inherit",
         borderRadius: 4,
-      },
+        variants: [
+          {
+            props: { variant: "light", color: "primary" },
+            style: {
+              backgroundColor: theme.palette.chipPrimary.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipPrimary.dark
+              },
+            }
+          },
+          {
+            props: { variant: "light", color: "secondary" },
+            style: {
+              backgroundColor: theme.palette.chipSecondary.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipSecondary.dark
+              },
+            }
+          },
+          {
+            props: { variant: "light", color: "info" },
+            style: {
+              backgroundColor: theme.palette.chipInfo.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipInfo.dark
+              },
+            }
+          },
+          {
+            props: { variant: "light", color: "error" },
+            style: {
+              backgroundColor: theme.palette.chipError.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipError.dark
+              },
+            }
+          },
+          {
+            props: { variant: "light", color: "success" },
+            style: {
+              backgroundColor: theme.palette.chipSuccess.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipSuccess.dark
+              },
+            }
+          },
+          {
+            props: { variant: "light", color: "warning" },
+            style: {
+              backgroundColor: theme.palette.chipWarning.main,
+              ":hover": {
+                backgroundColor: theme.palette.chipWarning.dark
+              },
+            }
+          },
+          {
+            props: { variant: "light", color: "default" },
+            style: {
+              backgroundColor: theme.palette.default.main,
+              ":hover": {
+                backgroundColor: theme.palette.default.dark
+              },
+            }
+          },
+          {
+            props: { variant: "light", color: "default" },
+            style: {
+              backgroundColor: theme.palette.default.main,
+              ":hover": {
+                backgroundColor: theme.palette.default.dark
+              },
+            }
+          },
+        ],
+      }),
     },
   },
   MuiAlert: {

@@ -1,19 +1,20 @@
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import "@fontsource/nunito/300.css";
-import "@fontsource/nunito/400.css";
-import "@fontsource/nunito/500.css";
-import "@fontsource/nunito/700.css";
-import type { Meta } from "@storybook/react";
-import { DrawerComponent } from "@sinco/react";
-import { Button, ThemeProvider, Typography, Box, TextField } from "@mui/material";
-import { SincoTheme } from "../Theme";
+import type { Meta, StoryObj } from "@storybook/react";
+import {
+  Button,
+  ThemeProvider,
+  Typography,
+  Box,
+  TextField,
+  Stack,
+} from "@mui/material";
 
-const meta: Meta<typeof DrawerComponent> = {
+import { SincoTheme } from "../Theme";
+import { Drawer } from "./drawer";
+import { useCallback, useState } from "react";
+
+const meta: Meta<typeof Drawer> = {
   title: "Sinco React/Drawer",
-  component: DrawerComponent,
+  component: Drawer,
   tags: ["autodocs"],
   decorators: [
     (Story) => (
@@ -22,51 +23,124 @@ const meta: Meta<typeof DrawerComponent> = {
       </ThemeProvider>
     ),
   ],
+  parameters: {
+    layout: "centered",
+  },
+  argTypes: {
+    title: {
+      description: "Titulo del drawer",
+      control: "text",
+    },
+    onClose: {
+      description: "((event: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element> | TouchEvent<Element>) => void)"
+    },
+    actions: {
+      description: "ReactNode",
+    },
+    anchorActions:{
+      options:[true, false],
+      defaultValue: true,
+      description: "Determina la posicion de las acciones en eje horizontal",
+      control: "text"
+    },
+    showActions: {
+      description: "Fijar las acciones ",
+      control: "boolean",
+    },
+    color:{
+      description: "Color de fuente del titulo",
+      control:"select",
+      options:[
+        "text.primary", "text.secondary",
+      ]
+    },
+    headerColor:{
+      description: "Background-color del header",
+      control: "text"
+    }
+  },
 };
 export default meta;
-export const Drawer = {
-  name: "Drawer",
+
+type Story = StoryObj<typeof Drawer>;
+
+export const DrawerStory: Story = {
+  name: "Sinco Drawer",
   args: {
-    anchorActions: "flex-start",
-    open: false,
+    color: "text.primary",
     width: "500px",
-    title: "Nombre empresa",
-    anchor: "left",
-    children: (
+    title: "Titulo drawer",
+    anchor: "right",
+    anchorActions: "flex-end",
+    headerColor: "text.primary",
+    showActions: false,
+    onClose: () => {
+      const [state, setState] = useState(false);
+      const handleDrawerState = useCallback(() => {
+        setState((prevOpen) => !prevOpen);
+      }, [setState]);
+    }
+  },
+  render: ({ showActions, anchorActions, title, width, anchor, backgroundColor, color, headerColor }) => {
+
+    const [state, setState] = useState(false);
+    const handleDrawerState = useCallback(() => {
+      setState((prevOpen) => !prevOpen);
+    }, []);
+
+    return (
       <>
-        <Box
-          display="flex"
-          flexDirection="row"
-          flexWrap="wrap"
-          textAlign="center"
-          gap={1}
-          pb={2}
+        <Button variant="contained" size="medium" color="primary" onClick={handleDrawerState}>
+          Click para mostrar / Ocultar
+        </Button>
+        <Drawer
+          onClose={handleDrawerState}
+          open={state}
+          showActions={showActions}
+          color={color}
+          width={width}
+          title={title}
+          anchor={anchor}
+          backgroundColor={backgroundColor}
+          anchorActions={anchorActions}
+          headerColor={headerColor}
+          actions={
+            <Stack gap={1} flexDirection="row">
+              <Button color="primary" variant="text" size="small" onClick={handleDrawerState}>
+                Cerrar
+              </Button>
+              <Button color="primary" variant="contained" size="small" onClick={handleDrawerState}>
+                Guardar
+              </Button>
+            </Stack>}
         >
-          <TextField label="Nombre" variant="outlined" size="small" />
-          <TextField label="Apellido" variant="outlined" size="small" />
-          <TextField
-            label="Edad"
-            variant="outlined"
-            size="small"
-            type="number"
-          />
-          <TextField label="Cargo" variant="outlined" size="small" />
-        </Box>
-        <Typography variant="body2" color="text.primary">
-          Al hacer click en algun elemento del contenido del drawer se muestran
-          las acciones
-        </Typography>
+          <>
+            <Box
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              textAlign="center"
+              justifyContent="space-evenly"
+              gap={1}
+              pb={2}
+            >
+              <TextField label="Nombre" variant="outlined" size="small" />
+              <TextField label="Apellido" variant="outlined" size="small" />
+              <TextField
+                label="Edad"
+                variant="outlined"
+                size="small"
+                type="number"
+              />
+              <TextField label="Cargo" variant="outlined" size="small" />
+            </Box>
+            <Typography textAlign="center" variant="body2" color="text.primary">
+              Al hacer click en algún elemento del contenido del drawer se
+              muestran las acciones
+            </Typography>
+          </>
+        </Drawer>
       </>
-    ),
-    actions: (
-      <Box alignItems="flex-end">
-        <Button color="primary" variant="text" size="small">
-          Cerrar
-        </Button>
-        <Button color="primary" variant="contained" size="small">
-          Guardar
-        </Button>
-      </Box>
-    ),
+    );
   },
 };
