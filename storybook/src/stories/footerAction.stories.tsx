@@ -1,11 +1,4 @@
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import "@fontsource/nunito/300.css";
-import "@fontsource/nunito/400.css";
-import "@fontsource/nunito/500.css";
-import "@fontsource/nunito/700.css";
+import "../Generales/tipografia.ts"
 import type { Meta } from "@storybook/react";
 import { FooterAction } from "@sinco/react";
 import { Button, ThemeProvider, Typography } from "@mui/material";

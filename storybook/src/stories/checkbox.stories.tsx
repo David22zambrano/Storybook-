@@ -1,13 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-
-import "@fontsource/nunito/300.css";
-import "@fontsource/nunito/400.css";
-import "@fontsource/nunito/500.css";
-import "@fontsource/nunito/600.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
+import "./Generales/tipografia.ts";
 import { SincoTheme } from "../Theme";
 
 const meta: Meta<typeof Checkbox> = {
@@ -50,7 +44,7 @@ export const CheckboxStories: Story = {
   args: {
     size: "medium",
     color: "primary",
-    disabled: false, // Default value for disabled state
+    disabled: false, 
   },
   render: (args) => <Checkbox {...args} />,
 };
@@ -60,7 +54,7 @@ export const CheckboxStoriesFormControl: Story = {
   args: {
     size: "medium",
     color: "primary",
-    disabled: false, // Default value for disabled state
+    disabled: false, 
   },
   render: (args) => (
     <FormGroup>

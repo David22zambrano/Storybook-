@@ -1,17 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
+import "./Generales/tipografia.ts";
 import { ThemeProvider } from "@mui/material/styles";
-import "@fontsource/nunito/300.css";
-import "@fontsource/nunito/400.css";
-import "@fontsource/nunito/500.css";
-import "@fontsource/nunito/600.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-// import { SincoTheme } from "@sinco/react";
 import { Alert, AlertTitle, IconButton } from "@mui/material";
 import { SincoTheme } from "../Theme";
 import { Close } from "@mui/icons-material";
-// import { button } from './tooltip.stories';
 
 const meta: Meta<typeof Alert> = {
   title: "Components/Alert",
