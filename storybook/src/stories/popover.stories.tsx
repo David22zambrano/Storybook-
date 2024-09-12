@@ -18,13 +18,24 @@ export default {
   parameters: {
     layout: "centered",
   },
+  argTypes:{
+    open: {
+      description: "Si es `true` muestra el componente"
+    }
+  },
 } as Meta;
 type Story = StoryObj<typeof Popover>;
 
 
 export const PopoverExample: Story = {
   name: "Popover",
-  argTypes:{
+  parameters: {
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 100,
+      },
+    },
   },
   render: () => {
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
@@ -42,18 +53,18 @@ export const PopoverExample: Story = {
   
     return (
       <div>
-        <Button aria-describedby={id} variant="text" onClick={handleClick}>
-          Ver Popover
-        </Button>
         <Popover
           id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
+          open={true}
           anchorOrigin={{
-            vertical: 'bottom',
+            vertical: 'top',
             horizontal: 'left',
           }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          onClose={handleClose}
         >
           <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
         </Popover>

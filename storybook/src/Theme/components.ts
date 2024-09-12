@@ -72,6 +72,7 @@ export const components: Components<Theme> = {
         paddingBlock: 10,
       },
       root: {
+        textTransform: "none",
         minHeight: 40,
       },
     },
@@ -83,6 +84,7 @@ export const components: Components<Theme> = {
       density: "compact",
     },
     styleOverrides: {
+
       columnHeader: {
         minHeight: 22,
         maxHeight: 22,
@@ -99,6 +101,7 @@ export const components: Components<Theme> = {
         lineHeight: 1.5,
         letterSpacing: 0.17,
       },
+      
       cell: {
         fontFamily: "Roboto",
         fontWeight: 300,
@@ -116,6 +119,9 @@ export const components: Components<Theme> = {
             outline: "transparent",
             borderWidth: 0,
           },
+        },
+        ".MuiDataGrid-cell--editable":{
+          backgroundColor: "red"
         },
       },
       // BOTOM MENU EN LAS CABECERA DE CADA COLUMNA
