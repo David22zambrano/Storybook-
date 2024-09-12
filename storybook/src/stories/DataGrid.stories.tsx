@@ -1,6 +1,7 @@
-import "../Generales/tipografia.ts"
+import './Generales'
 import { Meta } from "@storybook/react";
 import { ThemeProvider } from "@mui/material";
+
 import { DataGridPro, LicenseInfo } from "@mui/x-data-grid-pro";
 import { SincoTheme } from "../Theme";
 import "../index.css";
