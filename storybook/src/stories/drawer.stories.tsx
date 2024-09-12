@@ -37,26 +37,26 @@ const meta: Meta<typeof Drawer> = {
     actions: {
       description: "ReactNode",
     },
-    anchorActions:{
-      options:[true, false],
-      defaultValue: true,
+    anchorActions: {
       description: "Determina la posicion de las acciones en eje horizontal",
       control: "text"
     },
     showActions: {
-      description: "Fijar las acciones ",
-      control: "boolean",
+      description: "Si es `true` las actiones se muestran siempre fijas las acciones  "
     },
-    color:{
+    color: {
       description: "Color de fuente del titulo",
-      control:"select",
-      options:[
+      control: "select",
+      options: [
         "text.primary", "text.secondary",
       ]
     },
-    headerColor:{
+    headerColor: {
       description: "Background-color del header",
       control: "text"
+    },
+    open: {
+      description: "si es `true` se despliega el Drawer"
     }
   },
 };
@@ -73,16 +73,10 @@ export const DrawerStory: Story = {
     anchor: "right",
     anchorActions: "flex-end",
     headerColor: "text.primary",
-    showActions: false,
-    onClose: () => {
-      const [state, setState] = useState(false);
-      const handleDrawerState = useCallback(() => {
-        setState((prevOpen) => !prevOpen);
-      }, [setState]);
-    }
+    children: "Contenido del drawer",
+    onClose: () => { }
   },
-  render: ({ showActions, anchorActions, title, width, anchor, backgroundColor, color, headerColor }) => {
-
+  render: ({ children, anchorActions, title, width, anchor, backgroundColor, color, headerColor }) => {
     const [state, setState] = useState(false);
     const handleDrawerState = useCallback(() => {
       setState((prevOpen) => !prevOpen);
@@ -96,7 +90,6 @@ export const DrawerStory: Story = {
         <Drawer
           onClose={handleDrawerState}
           open={state}
-          showActions={showActions}
           color={color}
           width={width}
           title={title}
@@ -115,6 +108,10 @@ export const DrawerStory: Story = {
             </Stack>}
         >
           <>
+            <Typography textAlign="center" variant="body2" color="text.primary">
+              {children}
+            </Typography>
+
             <Box
               display="flex"
               flexDirection="row"
@@ -123,6 +120,7 @@ export const DrawerStory: Story = {
               justifyContent="space-evenly"
               gap={1}
               pb={2}
+              pt={1}
             >
               <TextField label="Nombre" variant="outlined" size="small" />
               <TextField label="Apellido" variant="outlined" size="small" />
@@ -132,12 +130,23 @@ export const DrawerStory: Story = {
                 size="small"
                 type="number"
               />
+              <TextField label="Profesion" variant="outlined" size="small" />
               <TextField label="Cargo" variant="outlined" size="small" />
+              <TextField label="Especialidad" variant="outlined" size="small" />
+              <TextField
+                label="Edad"
+                variant="outlined"
+                size="small"
+                type="number"
+              />
+              <TextField label="Experiencia" variant="outlined" size="small" />
             </Box>
-            <Typography textAlign="center" variant="body2" color="text.primary">
-              Al hacer click en algún elemento del contenido del drawer se
-              muestran las acciones
+
+
+            <Typography pt={1} textAlign="center" variant="body2" color="text.primary">
+              Al hacer click se muestran las acciones
             </Typography>
+
           </>
         </Drawer>
       </>

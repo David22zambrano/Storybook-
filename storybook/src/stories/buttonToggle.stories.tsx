@@ -40,8 +40,8 @@ export default {
       description: "",
       control: "boolean",
     },
-    Children:{
-      description:"",
+    children:{
+      description: "Contenido dentro del toggle button",
       control: "boolean"
     }
   },

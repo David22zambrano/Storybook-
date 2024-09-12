@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Accordion, AccordionDetails, AccordionSummary, Typography, ThemeProvider} from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Typography, ThemeProvider } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
 import { SincoTheme } from "../Theme";
 import "./Generales";
@@ -18,21 +18,21 @@ const meta: Meta<typeof Accordion> = {
   parameters: {
     layout: "centered",
   },
-  argTypes:{
-    expanded:{
+  argTypes: {
+    expanded: {
       description: "Expande el accordion",
       control: "boolean"
     },
-    title: {
-      description: "Titulo de el expansion",
-      control: "text"
-    },
-    defaultExpanded:{
-      description: "Se muestra expandidos todos los AccordionSummary por defecto",
+    square: {
+      description: "Elimina el ",
       control: "boolean"
     },
-    square:{
-      description: "Si ",
+    children: {
+      description: "Contenido dentro del AccordionSummary y AccordionDetails",
+      control: "text"
+    },
+    disabled: {
+      description: "Estado disabled",
       control: "boolean"
     }
   }
@@ -41,53 +41,57 @@ const meta: Meta<typeof Accordion> = {
 export default meta;
 type Story = StoryObj<typeof Accordion>;
 
-export const button: Story = {
+export const AccordionBasic: Story = {
   name: "Accordion",
-  args:{
+  args: {
     expanded: false,
-    defaultExpanded: false
-
+    square: false,
+    disabled: true,
+    children: "Contenido del Accordion",
   },
-  render: () => (
+  render: ({ children, disabled, square, expanded }) => (
     <>
-      <Accordion>
+      <Accordion square={square} expanded={expanded} >
         <AccordionSummary
           expandIcon={<ExpandMore />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Accordion 1</Typography>
+          <Typography>Accordion simple</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          {children ? children : "AccordionDetails"}
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMore />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography>Accordion 2</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion disabled>
+      <Accordion defaultExpanded>
         <AccordionSummary
           expandIcon={<ExpandMore />}
           aria-controls="panel3a-content"
           id="panel3a-header"
         >
-          <Typography>Disabled Accordion</Typography>
+          <Typography> DefaultExpanded </Typography>
         </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            {children ? children : "AccordionDetails"}
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion disabled={disabled} >
+        <AccordionSummary
+          expandIcon={<ExpandMore />}
+          aria-controls="panel3a-content"
+          id="panel3a-header"
+        >
+          <Typography>Disabled example </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          {children ? children : "AccordionDetails"}
+          </Typography>
+        </AccordionDetails>
       </Accordion>
     </>
   ),

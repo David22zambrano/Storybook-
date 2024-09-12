@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
-import { ThemeProvider } from "@mui/material";
+import { ThemeProvider, Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import { SincoTheme } from "../Theme";
 import "./Generales";
 

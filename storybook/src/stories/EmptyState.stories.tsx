@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Add } from "@mui/icons-material";
+import { Add, Title } from "@mui/icons-material";
 import { ThemeProvider, Button } from "@mui/material";
 import { EmptyState } from "./emptyState/EmptyState";
 import { SincoTheme } from "../Theme";
@@ -36,6 +36,7 @@ const meta: Meta<typeof EmptyState> = {
     actions: {
       description:
         "Actions están diseñadas para recibir elementos del tipo HTMLButtonElement. Estos botones se visualizan utilizando un ReactNode dentro de la etiqueta del componente, donde se utiliza la propiedad 'actions={}' para insertarlos y mostrarlos.",
+      control: "boolean"
     },
     iconStyle: {
       description:
@@ -44,6 +45,7 @@ const meta: Meta<typeof EmptyState> = {
     icon: {
       description:
         "Proporciona una imagen o elemento ReactNode que se muestra en el centro del componente. Por defecto, se utiliza un icono predefinido relacionado con el estado.",
+      control: "boolean"
     },
     containerHeight: {
       description:
@@ -63,19 +65,29 @@ export const Empty: Story = {
     subtitle: "Contenido del empty state",
     iconStyle: { width: "210px", height: "185px" },
     containerHeight: "100%",
-    actions: (
-      <>
-        <Button variant="text" size="small">
-          Opcion 1
-        </Button>
-        <Button
-          variant="outlined"
-          size="small"
-          startIcon={<Add fontSize="small" />}
-        >
-          Opcion 2
-        </Button>
-      </>
-    ),
+    actions: "Acciones",
   },
+  render: ({ title, actions, containerHeight, iconStyle, state, subtitle }) => (
+    <EmptyState
+      title={title}
+      state={state}
+      subtitle={subtitle}
+      iconStyle={iconStyle}
+      containerHeight={containerHeight}
+      actions={actions ? (
+        <>
+          <Button variant="text" size="small">
+            Opcion 1
+          </Button>
+          <Button
+            variant="outlined"
+            size="small"
+            startIcon={<Add fontSize="small" />}
+          >
+            Opcion 2
+          </Button>
+        </>
+      ) : (null)}
+    />
+  )
 };

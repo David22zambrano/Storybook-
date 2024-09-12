@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Stories, Story, Subtitle, Title } from "@storybook/blocks";
 import { Button, ThemeProvider } from "@mui/material";
 import { FooterAction } from "./footerAction/footerAction";
 import { SincoTheme } from "../Theme";
@@ -12,7 +11,6 @@ const meta: Meta<typeof FooterAction> = {
   parameters: {
     docs: {
       story: {
-        
         inline: false,
         iframeHeight: 200,
       },
@@ -21,7 +19,7 @@ const meta: Meta<typeof FooterAction> = {
   decorators: [
     (Story) => (
       <ThemeProvider theme={SincoTheme}>
-          <Story />
+        <Story />
       </ThemeProvider>
     ),
   ],

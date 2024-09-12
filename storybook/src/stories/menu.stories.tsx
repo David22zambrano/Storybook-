@@ -18,6 +18,8 @@ const meta: Meta<typeof Menu> = {
   parameters: {
     layout: "centered",
   },
+  argTypes:{
+  }
 };
 
 export default meta;
@@ -25,7 +27,7 @@ type Story = StoryObj<typeof Menu>;
 
 export const MenuStory: Story = {
   name: "menu",
-  render: (args) => (
+  render: () => (
     <Paper sx={{ width: 320 }}>
       <MenuList dense={false}>
         <MenuItem>
@@ -61,7 +63,7 @@ export const MenuStory: Story = {
 
 export const dense: Story = {
   name: "menu-dense",
-  render: (args) => (
+  render: () => (
     <Paper sx={{ width: 320 }}>
       <MenuList>
         <MenuItem>

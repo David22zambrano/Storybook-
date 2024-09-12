@@ -27,7 +27,6 @@ export function PageHeaderWraps({
   }
   return <>{item}</>;
 }
-
 export const PageHeaderComponent = ({
   title,
   subtitle,
@@ -42,17 +41,16 @@ export const PageHeaderComponent = ({
       bgcolor="background.paper"
       sx={{
         boxShadow: (theme) => theme.shadows[1],
-        zIndex: 100,
+        zIndex: 10,
       }}
     >
       <Stack
-        px={3}
-        py={1}
+        padding="5px 24px 5px 6px"
         justifyContent="space-between"
         flexDirection="row"
         alignItems="center"
       >
-        <Stack gap={1.5} flexDirection="row" alignItems="center">
+        <Stack gap={1} flexDirection="row" alignItems="center">
           {buttonBack}
           <Stack>
             <Stack>

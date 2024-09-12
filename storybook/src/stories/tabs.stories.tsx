@@ -23,9 +23,9 @@ const meta: Meta<typeof Tab> = {
 export default meta;
 type Story = StoryObj<typeof Tab>;
 
-export const primary: Story = {
+export const TabSimple: Story = {
   name: "Tab",
-  render: (args) => (
+  render: () => (
     <>
       <Tabs value={1} centered>
         <Tab icon={<Phone />} label="RECENTS" />
@@ -40,8 +40,8 @@ export const primary: Story = {
     </>
   ),
 };
-export const Secondary: Story = {
-  name: "Tab-vertical",
+export const TabVertical: Story = {
+  name: "Tab vertical",
   render: (args) => (
     <>
       <Tabs value={1} orientation="vertical" centered>

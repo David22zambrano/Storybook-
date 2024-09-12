@@ -74,7 +74,7 @@ export default meta;
 type Story = StoryObj<typeof Typography>;
 
 export const TypographyStorie: Story = {
-  name: "svgIcon",
+  name: "Typography",
   args: {
     color: "text.primary",
     variant: "body1",
