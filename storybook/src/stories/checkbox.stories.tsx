@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-import "./Generales/tipografia.ts";
+import "./Generales";
 import { SincoTheme } from "../Theme";
 
 const meta: Meta<typeof Checkbox> = {

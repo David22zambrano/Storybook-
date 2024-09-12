@@ -15,25 +15,46 @@ const meta: Meta<typeof SpeedDial> = {
     ),
   ],
   tags: ["autodocs"],
+  argTypes: {
+    open: {
+      control: "boolean",
+    },
+    icon: {
+      description: "Mostrar u ocultar el icono",
+      control: "boolean",
+    },
+    direction: {
+      description: "Define la orientación, eligiendo entre down, up, left, right.",
+      control: "radio",
+      options: ["down", "up", "left", "right"],
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof SpeedDial>;
+
 const actions = [
   { icon: <FileCopy />, name: "Copy" },
   { icon: <Save />, name: "Save" },
   { icon: <Print />, name: "Print" },
   { icon: <Share />, name: "Share" },
 ];
+
 export const SpeedDialStory: Story = {
   name: "SpeedDial",
+  args: {
+    open: true,
+    icon: true,
+    direction: "up",
+  },
   render: (args) => (
     <Box sx={{ height: 320, transform: "translateZ(0px)", flexGrow: 1 }}>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
-        sx={{ position: "absolute", bottom: 16, right: 16 }}
-        icon={<SpeedDialIcon />}
-        open={true}
+        icon={args.icon ? <SpeedDialIcon /> : <></>}
+        open={args.open}
+        direction={args.direction}
       >
         {actions.map((action) => (
           <SpeedDialAction

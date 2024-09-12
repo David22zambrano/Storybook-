@@ -56,7 +56,7 @@ export const FabStories: Story = {
     variant: "circular",
     color: "primary",
     children: "Fab",
-    disabled: false, // Default value for disabled state
+    disabled: false, 
   },
   render: ({ size, color, children, variant, disabled, ...args }) => (
     <>
@@ -76,7 +76,7 @@ export const FabStories: Story = {
 
 export const FabStorieCircular: Story = {
   name: "Fab-circular",
-  render: (args) => (
+  render: () => (
     <>
       <Fab color="primary" disabled>
         <Add />
@@ -93,7 +93,7 @@ export const FabStorieCircular: Story = {
 
 export const FabStorieExtended: Story = {
   name: "Fab-extended",
-  render: (args) => (
+  render: () => (
     <>
       <Fab color="primary" variant="extended" disabled>
         <Add />

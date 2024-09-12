@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import "./Generales/tipografia.ts";
 import { ThemeProvider } from "@mui/material/styles";
-import { Alert, AlertTitle, IconButton } from "@mui/material";
+import { Alert, AlertTitle, Button, IconButton, Typography } from "@mui/material";
 import { SincoTheme } from "../Theme";
 import { Close } from "@mui/icons-material";
 
@@ -52,7 +52,11 @@ const meta: Meta<typeof Alert> = {
       control: "text",
     },
     action:{
-      description:"Permite activar o desactivar la acción.",
+      description:"Permite activar o desactivar el boton.",
+      control:"boolean"
+    },
+    icon:{
+      description:"Permite activar o desactivar el icono.",
       control:"boolean"
     }
     
@@ -71,23 +75,39 @@ export const AlertStory: Story = {
     severity: "info",
     color: "info",
     action:false,
+    icon:<></>
     
   },
-  render: ({ children, variant, title, severity, color, action}) => (
-    <Alert variant={variant} color={color} severity={severity} action={
-      action ? (
-        <IconButton
-          aria-label="close"
-          color="inherit"
-          size="small"
-          onClick={() => console.log("Icon button clicked")}
-        >
-          <Close fontSize="inherit" />
-        </IconButton>
-      ) : ""
-    } >
-      <AlertTitle>{title}</AlertTitle>
-      {children}
-    </Alert>
+  render: ({ children, variant, title, severity, color, action,icon}) => (
+    <Alert
+    variant={variant}
+    color={color}
+    severity={severity}
+    action={
+      <>
+        {action && (
+          <Button
+            color="inherit"
+            size="small"
+            onClick={() => console.log("Button clicked")}
+          >
+            Text
+          </Button>
+        )}
+        {icon && (
+          <IconButton
+            color="inherit"
+            size="small"
+            onClick={() => console.log("Icon clicked")}
+          >
+            <Close />
+          </IconButton>
+        )}
+      </>
+    }
+  >
+    <AlertTitle><Typography variant="body2">{title}</Typography></AlertTitle>
+    <Typography variant="body3"> {children}</Typography>
+  </Alert>
   ),
 };
