@@ -4,7 +4,7 @@ import { CircularProgress, ThemeProvider } from "@mui/material";
 import { SincoTheme } from "../Theme";
 
 const meta: Meta<typeof CircularProgress> = {
-    title: "Components/CircularProgress",
+    title: "Sinco React/CircularProgress",
     component: CircularProgress,
     decorators: [
         (Story) => (

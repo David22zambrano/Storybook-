@@ -458,11 +458,10 @@ export const components: Components<Theme> = {
         display: "flex",
         alignItems: "center",
         gap: 1.5,
-        width: "296px",
+        minWidth: "296px",
       },
     },
   },
-
   MuiButton: {
     styleOverrides: {
       root: {
@@ -537,27 +536,26 @@ export const components: Components<Theme> = {
       circular: {
         boxShadow:
           "0px 1px 18px 0px rgba(24, 39, 75, 0.12), 0px 6px 10px 0px rgba(24, 39, 75, 0.14), 0px 3px 5px -1px rgba(24, 39, 75, 0.20)",
-        "&.MuiFab-sizeSmall:not(.MuiSpeedDial-fab, .MuiSpeedDialAction-fab)": {
+        sizeSmall: {
           height: 36,
           width: 36,
-          ".MuiSvgIcon-fontSizeSmall": {
+          svg: {
             height: 20,
             width: 20,
           },
         },
-        "&.MuiFab-sizeMedium": {
+        sizeMedium: {
           height: 48,
           width: 48,
-
-          "& .MuiSvgIcon-fontSizeMedium": {
+          svg: {
             height: 22,
             width: 22,
           },
         },
-        "&.MuiFab-sizeLarge": {
+        sizeLarge: {
           height: 56,
           width: 56,
-          "& .MuiSvgIcon-fontSizeLarge": {
+          svg: {
             height: 24,
             width: 24,
           },
@@ -567,33 +565,37 @@ export const components: Components<Theme> = {
         gap: 1,
         boxShadow:
           " 0px 1px 18px 0px rgba(24, 39, 75, 0.12), 0px 6px 10px 0px rgba(24, 39, 75, 0.14), 0px 3px 5px -1px rgba(24, 39, 75, 0.20)",
-        "&.MuiFab-sizeSmall": {
+        sizeSmall: {
           height: 32,
-          ".MuiSvgIcon-fontSizeSmall": {
+          svg: {
             height: 20,
             width: 20,
             marginRight: 4,
           },
         },
-        "&.MuiFab-sizeMedium": {
+        sizeMedium: {
           height: 38,
-          "& .MuiSvgIcon-fontSizeMedium": {
+          svg: {
             height: 22,
             width: 22,
             marginRight: 4,
           },
         },
-        "&.MuiFab-sizeLarge": {
+        sizeLarge: {
           height: 48,
-          "& .MuiSvgIcon-fontSizeLarge": {
+          svg: {
             height: 24,
             width: 24,
             marginRight: 4,
           },
         },
       },
+      root:{
+        textTransform: "capitalize"
+      }
     },
   },
+
   MuiFormControl: {
     defaultProps: {
       size: "small",

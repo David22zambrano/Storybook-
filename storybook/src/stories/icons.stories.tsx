@@ -18,18 +18,54 @@ const meta: Meta<typeof SvgIcon> = {
   parameters: {
     layout: "centered",
   },
+  argTypes: {
+    fontSize: {
+      description: "Modifica el tamaño del icono, si su valor es 'inherit' adapta el size del componente padre ",
+      control: "radio",
+      options: ["small", "medium", "large", "inherit"]
+    }
+  }
 };
 
 export default meta;
 type Story = StoryObj<typeof SvgIcon>;
 
-export const button: Story = {
+export const Icon: Story = {
   name: "svgIcon",
-  render: (args) => (
-    <>
-      <Delete fontSize="small" />
-      <Delete fontSize="medium" />
-      <Delete fontSize="large" />
-    </>
+  args: {
+    fontSize: "small",
+  },
+  render: ({ fontSize }) => (
+    <Delete fontSize={fontSize} />
+  ),
+};
+
+export const IconSmall: Story = {
+  name: "Icon small",
+  args: {
+    fontSize: "small",
+  },
+  render: () => (
+    <Delete />
+  ),
+};
+
+export const IconMedium: Story = {
+  name: "Icon medium",
+  args: {
+    fontSize: "medium",
+  },
+  render: () => (
+    <Delete />
+  ),
+};
+
+export const IconLarge: Story = {
+  name: "Icon large",
+  args: {
+    fontSize: "large",
+  },
+  render: () => (
+    <Delete />
   ),
 };

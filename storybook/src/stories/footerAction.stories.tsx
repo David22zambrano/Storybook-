@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Story } from "@storybook/blocks";
 import { Button, ThemeProvider } from "@mui/material";
 import { FooterAction } from "./footerAction/footerAction";
 import { SincoTheme } from "../Theme";
@@ -20,7 +19,7 @@ const meta: Meta<typeof FooterAction> = {
   decorators: [
     (Story) => (
       <ThemeProvider theme={SincoTheme}>
-          <Story />
+        <Story />
       </ThemeProvider>
     ),
   ],

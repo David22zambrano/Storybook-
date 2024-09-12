@@ -26,6 +26,9 @@ const meta: Meta<typeof ToastNotification> = {
       description:
         "la propiedad type del toast notification nos permite poder usar la variante: `info`,`error`,`success`,`warning`",
     },
+    title:{
+      description: "Modifica el titulo de la ToastNotification y/o tipo de error que se presenta"
+    },
     time: {
       table: {
         type: { summary: "number" },
