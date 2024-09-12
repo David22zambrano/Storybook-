@@ -21,19 +21,27 @@ const meta: Meta<typeof Fab> = {
   },
   argTypes: {
     size: {
+      description: "Selecciona entre los tamaños disponibles",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     color: {
+      description: "Selecciona entre los colores disponibles",
       control: "select",
       options: ["primary", "secondary", "error", "warning", "info", "success"],
     },
     children: {
+      description: "Texto dentro del fab",
       control: "text",
     },
     variant: {
+      description: "Selecciona entre las variantes disponibles",
       control: "select",
       options: ["extended", "circular"],
+    },
+    disabled: {
+      description: "Deshabilitar fab",
+      control: "boolean",
     },
   },
 };
@@ -48,15 +56,16 @@ export const FabStories: Story = {
     variant: "circular",
     color: "primary",
     children: "Fab",
+    disabled: false, 
   },
-  render: ({ size, color, children, variant, ...args }) => (
+  render: ({ size, color, children, variant, disabled, ...args }) => (
     <>
       {variant === "circular" ? (
-        <Fab {...args} variant={variant} color={color} size={size}>
+        <Fab {...args} variant={variant} color={color} size={size} disabled={disabled}>
           <Edit />
         </Fab>
       ) : (
-        <Fab {...args} variant={variant} color={color} size={size}>
+        <Fab {...args} variant={variant} color={color} size={size} disabled={disabled}>
           <Edit />
           {children}
         </Fab>
@@ -64,35 +73,37 @@ export const FabStories: Story = {
     </>
   ),
 };
+
 export const FabStorieCircular: Story = {
   name: "Fab-circular",
-  render: (args) => (
+  render: () => (
     <>
-      <Fab color="primary">
+      <Fab color="primary" disabled>
         <Add />
       </Fab>
-      <Fab color="primary" size="medium">
+      <Fab color="primary" size="medium" disabled>
         <Add />
       </Fab>
-      <Fab color="primary" size="large">
+      <Fab color="primary" size="large" disabled>
         <Add />
       </Fab>
     </>
   ),
 };
+
 export const FabStorieExtended: Story = {
-  name: "Fab-circular",
-  render: (args) => (
+  name: "Fab-extended",
+  render: () => (
     <>
-      <Fab color="primary" variant="extended">
+      <Fab color="primary" variant="extended" disabled>
         <Add />
         Fab
       </Fab>
-      <Fab color="primary" size="medium" variant="extended">
+      <Fab color="primary" size="medium" variant="extended" disabled>
         <Add />
         Fab
       </Fab>
-      <Fab color="primary" size="large" variant="extended">
+      <Fab color="primary" size="large" variant="extended" disabled>
         <Add />
         Fab
       </Fab>

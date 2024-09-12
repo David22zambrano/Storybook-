@@ -1,5 +1,5 @@
 import React from "react";
-import type { } from "@mui/x-data-grid/themeAugmentation";
+import type {} from "@mui/x-data-grid/themeAugmentation";
 import { Components, Theme, alpha } from "@mui/material";
 import {
   InfoRounded,
@@ -7,7 +7,6 @@ import {
   WarningRounded,
   ErrorRounded,
 } from "@mui/icons-material";
-import { transform } from "typescript";
 
 export const components: Components<Theme> = {
   MuiSelect: {
@@ -299,7 +298,7 @@ export const components: Components<Theme> = {
       },
       avatarMedium: {
         height: 18,
-        width: 18
+        width: 18,
       },
       avatar: ({ theme }) => ({
         lineHeight: 1.8,
@@ -309,9 +308,9 @@ export const components: Components<Theme> = {
             style: {
               backgroundColor: `${alpha("#ffffff", 0.7)}`,
               color: theme.palette.default.contrastText,
-            }
+            },
           },
-        ]
+        ],
       }),
       label: ({ theme }) => ({
         ...theme.typography.caption,
@@ -327,87 +326,87 @@ export const components: Components<Theme> = {
             props: { variant: "standard" },
             style: {
               backgroundColor: theme.palette.default.contrastText,
-              color: theme.palette.default.contrastText
-            }
+              color: theme.palette.default.contrastText,
+            },
           },
           {
             props: { variant: "standard", avatar: true },
             style: {
               backgroundColor: theme.palette.default.contrastText,
-              color: theme.palette.default.contrastText
-            }
+              color: theme.palette.default.contrastText,
+            },
           },
           {
             props: { variant: "standard", color: "primary" },
             style: {
               backgroundColor: theme.palette.chipPrimary.main,
               ":hover": {
-                backgroundColor: theme.palette.chipPrimary.dark
+                backgroundColor: theme.palette.chipPrimary.dark,
               },
-            }
+            },
           },
           {
             props: { variant: "standard", color: "secondary" },
             style: {
               backgroundColor: theme.palette.chipSecondary.main,
               ":hover": {
-                backgroundColor: theme.palette.chipSecondary.dark
+                backgroundColor: theme.palette.chipSecondary.dark,
               },
-            }
+            },
           },
           {
             props: { variant: "standard", color: "info" },
             style: {
               backgroundColor: theme.palette.chipInfo.main,
               ":hover": {
-                backgroundColor: theme.palette.chipInfo.dark
+                backgroundColor: theme.palette.chipInfo.dark,
               },
-            }
+            },
           },
           {
             props: { variant: "standard", color: "error" },
             style: {
               backgroundColor: theme.palette.chipError.main,
               ":hover": {
-                backgroundColor: theme.palette.chipError.dark
+                backgroundColor: theme.palette.chipError.dark,
               },
-            }
+            },
           },
           {
             props: { variant: "standard", color: "success" },
             style: {
               backgroundColor: theme.palette.chipSuccess.main,
               ":hover": {
-                backgroundColor: theme.palette.chipSuccess.dark
+                backgroundColor: theme.palette.chipSuccess.dark,
               },
-            }
+            },
           },
           {
             props: { variant: "standard", color: "warning" },
             style: {
               backgroundColor: theme.palette.chipWarning.main,
               ":hover": {
-                backgroundColor: theme.palette.chipWarning.dark
+                backgroundColor: theme.palette.chipWarning.dark,
               },
-            }
+            },
           },
           {
             props: { variant: "standard", color: "default" },
             style: {
               backgroundColor: theme.palette.default.main,
               ":hover": {
-                backgroundColor: theme.palette.default.dark
+                backgroundColor: theme.palette.default.dark,
               },
-            }
+            },
           },
           {
             props: { variant: "standard", color: "default" },
             style: {
               backgroundColor: theme.palette.default.main,
               ":hover": {
-                backgroundColor: theme.palette.default.dark
+                backgroundColor: theme.palette.default.dark,
               },
-            }
+            },
           },
         ],
       }),
@@ -461,11 +460,6 @@ export const components: Components<Theme> = {
         gap: 1.5,
         minWidth: "296px",
       },
-    },
-  },
-  MuiAlertTitle: {
-    defaultProps: {
-      variant: "body2",
     },
   },
   MuiButton: {
@@ -702,13 +696,13 @@ export const components: Components<Theme> = {
           transform: "none",
         },
         "&.MuiAutocomplete-root .MuiOutlinedInput-root.MuiInputBase-sizeSmall":
-        {
-          paddingBlock: 3.5,
-          paddingRight: 14,
-          ".MuiIconButton-sizeSmall .MuiAutocomplete-popupIndicator": {
-            padding: 5,
+          {
+            paddingBlock: 3.5,
+            paddingRight: 14,
+            ".MuiIconButton-sizeSmall .MuiAutocomplete-popupIndicator": {
+              padding: 5,
+            },
           },
-        },
       },
     },
   },
@@ -728,15 +722,15 @@ export const components: Components<Theme> = {
       },
       filled: {
         "&.MuiInputLabel-filled.MuiInputLabel-sizeSmall:not(.MuiInputLabel-shrink)":
-        {
-          transform: "translate(12px,9px) scale(1)",
-        },
+          {
+            transform: "translate(12px,9px) scale(1)",
+          },
       },
       standard: {
         "&.MuiInputLabel-standard.MuiInputLabel-sizeSmall:not(.MuiInputLabel-shrink)":
-        {
-          transform: "translate(0, 15px) scale(1)",
-        },
+          {
+            transform: "translate(0, 15px) scale(1)",
+          },
       },
       outlined: {
         "&.MuiInputLabel-outlined.MuiInputLabel-sizeSmall ": {
@@ -849,34 +843,53 @@ export const components: Components<Theme> = {
   },
   MuiList: {
     defaultProps: {
-      dense: true,
+      dense: false,
     },
     styleOverrides: {
-      padding: {
-        ".MuiListItem-padding": {
-          paddingBlock: 1,
-        },
+      root: {},
+      dense: {},
+    },
+  },
+
+  MuiListItemText: {
+    styleOverrides: {
+      multiline: {},
+      root: {
+        marginBlock: " 4.4px ",
+        lineHeight: "20px",
+          letterSpacing: 0.17,
+      },
+      dense:{
+        lineHeight: "14.3px",
+        letterSpacing: 0.15,
+      }
+    },
+  },
+
+  MuiListItem: {
+    styleOverrides: {
+      root: {
+        padding: "8px 16px 8px 16px",
       },
       dense: {
-        ".MuiListItem-dense": {
-          padding: "0.25px 12px 0.25px 16px",
-        },
+        padding: "4px 16px 4px 16px",
       },
     },
   },
+
   MuiListItemButton: {
     styleOverrides: {
       dense: {
-        padding: "4px 16px 4px 16px ",
+        marginBlock: 0,
+        padding: 0,
       },
       root: {
-        padding: "8.5px 16px",
-        ".MuiListItemText-multiline": {
-          marginBlock: "4px",
-        },
+        marginBlock: 0,
+        padding: 0,
       },
     },
   },
+
   MuiMenuItem: {
     styleOverrides: {
       dense: {
@@ -922,6 +935,11 @@ export const components: Components<Theme> = {
   MuiTable: {
     defaultProps: {
       size: "small",
+    },
+    styleOverrides: {
+      root: {
+        minWidth: 630,
+      },
     },
   },
 };

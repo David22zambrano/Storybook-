@@ -11,7 +11,7 @@ import {
 import { SincoTheme } from "../Theme";
 
 const meta: Meta<typeof Radio> = {
-  title: "Components/Radio",
+  title: "Components/RadioGroup",
   component: Radio,
   decorators: [
     (Story) => (
@@ -26,12 +26,12 @@ const meta: Meta<typeof Radio> = {
   },
   argTypes: {
     size: {
-      description:"Selecciona entre los tamaños disponibles",
+      description: "Selecciona entre los tamaños disponibles",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     color: {
-      description:"Selecciona entre los colores disponibles",
+      description: "Selecciona entre los colores disponibles",
       control: "select",
       options: ["primary", "secondary", "error", "warning", "info", "success"],
     },
@@ -40,63 +40,68 @@ const meta: Meta<typeof Radio> = {
       control: "boolean",
     },
     checked: {
-      description:"Activa o inactiva el componente",
-      control: "boolean",
+      description:
+        "Modifica el estado del radio a `checked` en la opcion seleccionada",
     },
 
     title: {
-      description:"Controla la visibilidad del título, permitiendo activarlo o desactivarlo.",
-      control: "boolean",
+      description:
+        "Controla la visibilidad del título, permitiendo activarlo o desactivarlo.",
+      control: "text",
     },
   },
 };
-
 export default meta;
 type Story = StoryObj<typeof Radio>;
-
-export const RadioStorie: Story = {
-  name: "radio",
+export const RadioButtonsGroup: Story = {
+  name: "Radio-ButtonsGroup",
   args: {
     size: "medium",
     color: "primary",
     disabled: false,
-    checked: false,
-    title: "radio",
+    title: "Label radio",
   },
-  render: ({ size, color, disabled, checked, title }) => (
+  render: ({ size, color, disabled, title }) => (
     <FormControl>
-      <RadioGroup row >
+      <FormLabel></FormLabel>
+      <RadioGroup defaultValue="female">
         <FormControlLabel
+          value="female"
           control={
             <Radio
+              title={title}
               size={size}
               color={color}
               disabled={disabled}
-              checked={checked}
-              title={title}
             />
           }
-          label={title ? "radio" : ""}
+          label={title}
+        />
+        <FormControlLabel
+          value="male"
+          control={
+            <Radio
+              title={title}
+              size={size}
+              color={color}
+              disabled={disabled}
+            />
+          }
+          label={title}
+        />
+        <FormControlLabel
+          value="other"
+          control={
+            <Radio
+              title={title}
+              size={size}
+              color={color}
+              disabled={disabled}
+            />
+          }
+          label={title}
         />
       </RadioGroup>
     </FormControl>
   ),
 };
-export const RadioStorieFormControl: Story = {
-  name: "Radio-formControl",
-  args: {
-    size: "medium",
-    color: "primary",
-  },
-  render: (args) => (
-    <FormControl>
-      <FormLabel>Exmaple</FormLabel>
-      <RadioGroup row>
-        <FormControlLabel control={<Radio {...args} />} label="Female" />
-        <FormControlLabel control={<Radio {...args} />} label="Male" />
-        <FormControlLabel control={<Radio {...args} />} label="Other" />
-      </RadioGroup>
-    </FormControl>
-  ),
-};
-

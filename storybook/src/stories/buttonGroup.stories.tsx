@@ -19,19 +19,28 @@ const meta: Meta<typeof ButtonGroup> = {
   },
   argTypes: {
     size: {
+      description:"Selecciona entre los tamaños disponibles",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     color: {
+      description:"Selecciona entre los colores disponibles",
       control: "select",
       options: ["primary", "secondary", "error", "warning", "info", "success"],
     },
     children: {
+      description:"Introduce el texto o contenido que deseas mostrar aquí.",
       control: "text",
     },
     variant: {
+      description:"Selecciona entre los colores disponibles",
       control: "select",
       options: ["text", "outlined", "contained"],
+    },
+    orientation: {
+      description: "Define la orientación, eligiendo entre horizontal o vertical.",
+      control: "radio",
+      options: ["horizontal", "vertical"],
     },
   },
 };
