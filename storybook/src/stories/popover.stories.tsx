@@ -1,9 +1,8 @@
-import "./Generales";
-
 import React from "react";
-import type { Meta, Story } from "@storybook/react";
-import { ThemeProvider, Popover, Typography } from "@mui/material";
+import type { Meta, StoryObj } from "@storybook/react";
+import { ThemeProvider, Popover, Typography, Button } from "@mui/material";
 import { SincoTheme } from "../Theme";
+import "./Generales";
 
 export default {
   title: "Components/Popover",
@@ -20,52 +19,45 @@ export default {
     layout: "centered",
   },
 } as Meta;
+type Story = StoryObj<typeof Popover>;
 
-const Template: Story<typeof Popover> = () => {
 
-  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+export const PopoverExample: Story = {
+  name: "Popover",
+  argTypes:{
+  },
+  render: () => {
+    const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
-  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-
-  return (
-    <div>
-      <Typography
-        aria-owns={open ? "mouse-over-popover" : undefined}
-        aria-haspopup="true"
-        onMouseEnter={handlePopoverOpen}
-        onMouseLeave={handlePopoverClose}
-      >
-        Hover with a Popover.
-      </Typography>
-      <Popover
-        id="mouse-over-popover"
-        sx={{
-          pointerEvents: "none",
-        }}
-        open={open}
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-        onClose={handlePopoverClose}
-        disableRestoreFocus
-      >
-        <Typography sx={{ p: 1 }}>I use Popover.</Typography>
-      </Popover>
-    </div>
-  );
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+  
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+  
+    return (
+      <div>
+        <Button aria-describedby={id} variant="text" onClick={handleClick}>
+          Ver Popover
+        </Button>
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+        >
+          <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+        </Popover>
+      </div>
+    );
+  }
 };
-export const popover = Template.bind({});

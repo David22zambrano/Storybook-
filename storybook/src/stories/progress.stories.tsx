@@ -24,9 +24,15 @@ type Story = StoryObj<typeof CircularProgress>;
 
 export const button: Story = {
     name: "Circular progress",
-    render: (args) => (
-        <>
-            <CircularProgress />
-        </>
+    args: {
+        variant: "determinate"
+    },
+    argTypes: {
+        variant: {
+            description: "Cambia la variante del componente"
+        }
+    },
+    render: () => (
+        <CircularProgress />
     ),
 };
