@@ -1,5 +1,5 @@
 import React from "react";
-import type {} from "@mui/x-data-grid/themeAugmentation";
+import type { } from "@mui/x-data-grid/themeAugmentation";
 import { Components, Theme, alpha } from "@mui/material";
 import {
   InfoRounded,
@@ -101,7 +101,7 @@ export const components: Components<Theme> = {
         lineHeight: 1.5,
         letterSpacing: 0.17,
       },
-      
+
       cell: {
         fontFamily: "Roboto",
         fontWeight: 300,
@@ -119,9 +119,6 @@ export const components: Components<Theme> = {
             outline: "transparent",
             borderWidth: 0,
           },
-        },
-        ".MuiDataGrid-cell--editable":{
-          backgroundColor: "red"
         },
       },
       // BOTOM MENU EN LAS CABECERA DE CADA COLUMNA
@@ -284,10 +281,40 @@ export const components: Components<Theme> = {
       icon: {
         opacity: "70%",
       },
-      deleteIcon: {
-        color: "#5A5E73",
-        opacity: "30%",
-      },
+      deleteIcon: ({ theme }) => ({
+        // color: "#5A5E73",
+        // opacity: "30%",
+        variants: [
+          {
+            props: { variant: "filled" },
+            style: {
+              color: theme.palette.background.paper,
+              opacity: "50%",
+            }
+          },
+          {
+            props: { variant: "standard" },
+            style: {
+              color: theme.palette.default.contrastText,
+              opacity: "30%",
+              ":hover": {
+                color: theme.palette.default.contrastText,
+                opacity: "30%",
+              }
+            }
+          },
+          {
+            props: { variant: "outlined", color: "primary" },
+            style: {
+              // color: theme.palette.primary.main,
+              // opacity: "0%",
+              ":hover": {
+                // color: theme.palette.primary.main,
+              }
+            }
+          }
+        ]
+      }),
       deleteIconSmall: {
         height: 16,
         width: 16,
@@ -312,8 +339,43 @@ export const components: Components<Theme> = {
           {
             props: { variant: "filled" },
             style: {
-              backgroundColor: `${alpha("#ffffff", 0.7)}`,
+              backgroundColor: theme.palette.background.paper,
               color: theme.palette.default.contrastText,
+            },
+          },
+          {
+            props: { variant: "standard"},
+            style: {
+              backgroundColor: theme.palette.default.contrastText,
+              color: theme.palette.primary.contrastText,
+            },
+          },
+          {
+            props: { variant: "outlined", color: "error" },
+            style: {
+              backgroundColor: theme.palette.error.main,
+              color: theme.palette.background.paper,
+            },
+          },
+          {
+            props: { variant: "outlined", color: "success" },
+            style: {
+              backgroundColor: theme.palette.success.main,
+              color: theme.palette.background.paper,
+            },
+          },
+          {
+            props: { variant: "outlined", color: "info" },
+            style: {
+              backgroundColor: theme.palette.info.main,
+              color: theme.palette.background.paper,
+            },
+          },
+          {
+            props: { variant: "outlined", color: "warning" },
+            style: {
+              backgroundColor: theme.palette.warning.main,
+              color: theme.palette.background.paper,
             },
           },
         ],
@@ -321,6 +383,7 @@ export const components: Components<Theme> = {
       label: ({ theme }) => ({
         ...theme.typography.caption,
       }),
+
       filled: ({ theme }) => ({
         color: theme.palette.background.paper,
       }),
@@ -329,14 +392,14 @@ export const components: Components<Theme> = {
         borderRadius: 4,
         variants: [
           {
-            props: { variant: "standard" },
+            props: { variant: "standard", avatar: true },
             style: {
               backgroundColor: theme.palette.default.contrastText,
               color: theme.palette.default.contrastText,
             },
           },
           {
-            props: { variant: "standard", avatar: true },
+            props: { variant: "standard" },
             style: {
               backgroundColor: theme.palette.default.contrastText,
               color: theme.palette.default.contrastText,
@@ -417,6 +480,14 @@ export const components: Components<Theme> = {
         ],
       }),
     },
+  },
+  MuiAvatar: {
+    styleOverrides: {
+      root: {
+        display: "flex",
+        alignContent: "center",
+      }
+    }
   },
   MuiAlert: {
     defaultProps: {
@@ -596,7 +667,7 @@ export const components: Components<Theme> = {
           },
         },
       },
-      root:{
+      root: {
         textTransform: "capitalize"
       }
     },
@@ -702,13 +773,13 @@ export const components: Components<Theme> = {
           transform: "none",
         },
         "&.MuiAutocomplete-root .MuiOutlinedInput-root.MuiInputBase-sizeSmall":
-          {
-            paddingBlock: 3.5,
-            paddingRight: 14,
-            ".MuiIconButton-sizeSmall .MuiAutocomplete-popupIndicator": {
-              padding: 5,
-            },
+        {
+          paddingBlock: 3.5,
+          paddingRight: 14,
+          ".MuiIconButton-sizeSmall .MuiAutocomplete-popupIndicator": {
+            padding: 5,
           },
+        },
       },
     },
   },
@@ -728,15 +799,15 @@ export const components: Components<Theme> = {
       },
       filled: {
         "&.MuiInputLabel-filled.MuiInputLabel-sizeSmall:not(.MuiInputLabel-shrink)":
-          {
-            transform: "translate(12px,9px) scale(1)",
-          },
+        {
+          transform: "translate(12px,9px) scale(1)",
+        },
       },
       standard: {
         "&.MuiInputLabel-standard.MuiInputLabel-sizeSmall:not(.MuiInputLabel-shrink)":
-          {
-            transform: "translate(0, 15px) scale(1)",
-          },
+        {
+          transform: "translate(0, 15px) scale(1)",
+        },
       },
       outlined: {
         "&.MuiInputLabel-outlined.MuiInputLabel-sizeSmall ": {
@@ -863,9 +934,9 @@ export const components: Components<Theme> = {
       root: {
         marginBlock: " 4.4px ",
         lineHeight: "20px",
-          letterSpacing: 0.17,
+        letterSpacing: 0.17,
       },
-      dense:{
+      dense: {
         lineHeight: "14.3px",
         letterSpacing: 0.15,
       }
