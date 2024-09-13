@@ -1,6 +1,6 @@
 import React from "react";
 import type { } from "@mui/x-data-grid/themeAugmentation";
-import { Components, Theme, alpha } from "@mui/material";
+import { Components, Theme } from "@mui/material";
 import {
   InfoRounded,
   CheckCircleRounded,
@@ -282,8 +282,6 @@ export const components: Components<Theme> = {
         opacity: "70%",
       },
       deleteIcon: ({ theme }) => ({
-        // color: "#5A5E73",
-        // opacity: "30%",
         variants: [
           {
             props: { variant: "filled" },
@@ -306,10 +304,7 @@ export const components: Components<Theme> = {
           {
             props: { variant: "outlined", color: "primary" },
             style: {
-              // color: theme.palette.primary.main,
-              // opacity: "0%",
               ":hover": {
-                // color: theme.palette.primary.main,
               }
             }
           }
