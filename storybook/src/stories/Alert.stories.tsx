@@ -106,7 +106,7 @@ export const AlertStory: Story = {
       </>
     }
   >
-    <AlertTitle><Typography variant="body2">{title}</Typography></AlertTitle>
+    <AlertTitle><Typography variant="subtitle2">{title}</Typography></AlertTitle>
     <Typography variant="body3"> {children}</Typography>
   </Alert>
   ),

@@ -105,3 +105,9 @@ export const ChipAvatar: Story = {
     avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>
   },
 };
+
+<Chip
+label="Clickable Deletable"
+onClick={handleClick}
+onDelete={handleDelete}
+/>

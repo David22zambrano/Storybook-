@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import "./Generales";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, Popper, Box } from "@mui/material";
+import { ThemeProvider, Popper, Box, Button } from "@mui/material";
 import { SincoTheme } from "../Theme";
 import { useState } from "react";
 
@@ -21,6 +21,7 @@ export default {
   },
   argTypes: {
     open: {
+      description:"",
       control: "boolean",
     },
   },
@@ -40,14 +41,15 @@ export const PopperStorie: Story = {
       setAnchorEl(anchorEl ? null : event.currentTarget);
     };
 
-    const id = args.open ? "simple-popper" : undefined;
+    const open = args.open && Boolean(anchorEl);
+    const id = open ? "simple-popper" : undefined;
 
     return (
       <div>
-        <button aria-describedby={id} type="button" onClick={handleClick}>
+        <Button aria-describedby={id} type="button" onClick={handleClick}>
           Toggle Popper
-        </button>
-        <Popper id={id} open={args.open} anchorEl={anchorEl}>
+        </Button>
+        <Popper id={id} open={open} anchorEl={anchorEl}>
           <Box sx={{ border: 1, p: 1, bgcolor: "background.paper" }}>
             The content of the Popper.
           </Box>

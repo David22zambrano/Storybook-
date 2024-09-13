@@ -438,7 +438,8 @@ export const components: Components<Theme> = {
     ],
     styleOverrides: {
       message: {
-        padding: "1px",
+        padding: "1px 0px",
+        minWidth: 0,
       },
       icon: {
         padding: "4px",
@@ -447,20 +448,30 @@ export const components: Components<Theme> = {
         alignItems: "center",
       },
       action: {
-        display: "flex",
-        gap: 1.5,
-        padding: "1px",
+         display: "flex",
+         gap: 1.5,
+         padding: "1px",
       },
 
       root: {
-        padding: "8px 12px 8px 12px",
-        borderRadius: "8px",
-        display: "flex",
-        alignItems: "center",
-        gap: 1.5,
-        minWidth: "296px",
+         padding: "8px 12px 8px 12px",
+         borderRadius: "8px",
+         display: "flex",
+         alignItems: "center",
+         gap: 1.5,
+         minWidth: "296px",
       },
     },
+  },
+  MuiAlertTitle:{
+   defaultProps:{
+     variant: "subtitle2",
+   },
+   styleOverrides:{
+    root:{
+      margin:0
+    }
+   }
   },
   MuiButton: {
     styleOverrides: {
