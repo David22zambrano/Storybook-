@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Add, Title } from "@mui/icons-material";
+import { Add } from "@mui/icons-material";
 import { ThemeProvider, Button } from "@mui/material";
 import { EmptyState } from "./emptyState/EmptyState";
 import { SincoTheme } from "../Theme";
