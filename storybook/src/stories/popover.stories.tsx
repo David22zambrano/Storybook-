@@ -1,6 +1,7 @@
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import type { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, Popover, Typography, Button } from "@mui/material";
+import { ThemeProvider, Popover, Typography } from "@mui/material";
 import { SincoTheme } from "../Theme";
 import "./Generales";
 
