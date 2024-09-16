@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import "./Generales";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, Popper, Box, Button } from "@mui/material";
+import { ThemeProvider, Popper, Box } from "@mui/material";
 import { SincoTheme } from "../Theme";
 import { useState } from "react";
 
@@ -21,7 +21,7 @@ export default {
   },
   argTypes: {
     open: {
-      description:"",
+      description: "Si es `true` muestra el componente",
       control: "boolean",
     },
   },
@@ -31,25 +31,26 @@ type Story = StoryObj<typeof Popper>;
 
 export const PopperStorie: Story = {
   name: "Popper",
+  parameters: {
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 100,
+      },
+    },
+  },
   args: {
-    open: false,
+    open: true, 
   },
   render: (args) => {
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-      setAnchorEl(anchorEl ? null : event.currentTarget);
-    };
+    const [anchorEl] = useState<null | HTMLElement>(null);
 
     const open = args.open && Boolean(anchorEl);
     const id = open ? "simple-popper" : undefined;
 
     return (
       <div>
-        <Button aria-describedby={id} type="button" onClick={handleClick}>
-          Toggle Popper
-        </Button>
-        <Popper id={id} open={open} anchorEl={anchorEl}>
+        <Popper id={id} open={true} anchorEl={anchorEl}>
           <Box sx={{ border: 1, p: 1, bgcolor: "background.paper" }}>
             The content of the Popper.
           </Box>

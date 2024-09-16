@@ -1,6 +1,7 @@
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+import  { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, Popover, Typography, Button } from "@mui/material";
+import { ThemeProvider, Popover, Typography } from "@mui/material";
 import { SincoTheme } from "../Theme";
 import "./Generales";
 
@@ -38,11 +39,8 @@ export const PopoverExample: Story = {
     },
   },
   render: () => {
-    const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-      setAnchorEl(event.currentTarget);
-    };
   
     const handleClose = () => {
       setAnchorEl(null);

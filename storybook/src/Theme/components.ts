@@ -444,7 +444,7 @@ export const components: Components<Theme> = {
     ],
     styleOverrides: {
       message: {
-        padding: "1px 0px",
+        padding: "0px 0px",
         minWidth: 0,
       },
       icon: {
@@ -456,7 +456,7 @@ export const components: Components<Theme> = {
       action: {
          display: "flex",
          gap: 1.5,
-         padding: "1px",
+         padding: "0px",
       },
 
       root: {
@@ -475,7 +475,8 @@ export const components: Components<Theme> = {
    },
    styleOverrides:{
     root:{
-      margin:0
+      marginBottom:0,
+      marginTop:2.5
     }
    }
   },
@@ -910,8 +911,8 @@ export const components: Components<Theme> = {
   MuiMenuItem: {
     styleOverrides: {
       dense: {
-        height: 28,
-        minHeight: 28,
+        height: 30,
+        minHeight: 30,
         ".MuiListItemText-root > .MuiTypography-root": {
           lineHeight: "14.3px",
           letterSpacing: 0.15,
