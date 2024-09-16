@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import "./Generales";
 import { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, Stack, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox, IconButton } from '@mui/material';
-import { Delete} from "@mui/icons-material";
+import { ThemeProvider, Stack, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox, Avatar, Box } from '@mui/material';
+import { Inbox } from "@mui/icons-material";
 import { SincoTheme } from "../Theme";
-import { useState } from "react";
+import { useState } from 'react';
 
 const meta: Meta<typeof List> = {
   title: "Components/List",
@@ -26,19 +26,19 @@ const meta: Meta<typeof List> = {
       control: "boolean",
     },
     subheader: {
-      description: "Define el texto del subtítulo",
-      control: "text",
+      description: "Define el texto del subtitulo",
+      control: "text"
     },
     children: {
-      description: "Activa o inactiva el ícono",
-      control: "boolean",
+      description: "Controla el contenido del icono o avatar",
+      control: 'select',
+      options: ["Avatar", "Icono", "Vacio", "checkbox", "Icono y checkBox", "Avatar y checkBox"] 
     },
     title: {
-      description: "Define el texto del título",
-      control: "text",
+      description: "Define el texto del titulo",
+      control: "text"
     },
-  
-    
+   
   },
 };
 
@@ -49,12 +49,12 @@ export const ListStory: Story = {
   name: "List",
   args: {
     dense: false,
-    children: false,
-    subheader: "List",
-    title: "List",
+    children: "Vacio", 
+    subheader: "list",
+    title: "list"
   },
   render: ({ dense, children, subheader, title }) => {
-    const [checked, setChecked] = useState([0]);
+    const [checked, setChecked] = useState<number[]>([]);
 
     const handleToggle = (value: number) => () => {
       const currentIndex = checked.indexOf(value);
@@ -69,38 +69,58 @@ export const ListStory: Story = {
       setChecked(newChecked);
     };
 
+    const renderIcon = () => {
+      switch (children) {
+        case "Avatar":
+          return <Avatar sx={{ width: 20, height: 20 }} />;
+        case "Icono":
+          return <Inbox fontSize="medium" />;
+        case "Icono y checkBox":
+          return (
+            <Box display="flex" alignItems="center" gap={1}>
+              <Checkbox edge="start" disableRipple />
+              <Inbox fontSize="medium" />
+            </Box>
+          );
+        case "Avatar y checkBox":
+          return (
+            <Box display="flex" alignItems="center" gap={1}>
+              <Checkbox edge="start" disableRipple />
+              <Avatar sx={{ width: 20, height: 20 }} />
+            </Box>
+          );
+        case "checkbox":
+          return <Checkbox edge="start" disableRipple />;
+        default:
+          return null;
+      }
+    };
+
     return (
       <Stack width="100%" bgcolor="background.paper">
         <List dense={dense}>
-          {[0, 1].map((value) => {
-            const labelId = `checkbox-list-label-${value}`;
-            return (
-              <ListItem
-                key={value}
-                secondaryAction={
-                  children && (
-                    <IconButton edge="end" aria-label="delete">
-                      <Delete />
-                    </IconButton>
-                  )
-                }
-                disablePadding
-              >
-                <ListItemButton role={undefined} onClick={handleToggle(value)} dense={dense}>
-                  <ListItemIcon>
-                    <Checkbox
-                      edge="start"
-                      checked={checked.includes(value)}
-                      tabIndex={-1}
-                      disableRipple
-                      inputProps={{ 'aria-labelledby': labelId }}
-                    />
-                  </ListItemIcon>
-                  <ListItemText id={labelId} primary={title} secondary={subheader} />
-                </ListItemButton>
-              </ListItem>
-            );
-          })}
+          {[0, 1].map((value) => (
+            <ListItem key={value}>
+              <ListItemButton onClick={handleToggle(value)}>
+                <ListItemIcon>
+                  {children === "AmboIcono y checkBoxs" ? (
+                    <Box display="flex" alignItems="center" gap={1}>
+                      <Checkbox
+                        edge="start"
+                        checked={checked.indexOf(value) !== -1}
+                        tabIndex={-1}
+                        disableRipple
+                      />
+                      <Inbox fontSize="medium" />
+                    </Box>
+                  ) : (
+                    renderIcon()
+                  )}
+                </ListItemIcon>
+                <ListItemText primary={title} secondary={subheader} />
+              </ListItemButton>
+            </ListItem>
+          ))}
         </List>
       </Stack>
     );
