@@ -1,7 +1,7 @@
 import type { Meta } from "@storybook/react";
 import { ThemeProvider, Button } from "@mui/material";
-import { ToastNotification } from "./toast/ToastNotification";
 import { SincoTheme } from "../Theme";
+import { ToastNotification } from "./toast";
 import "./Generales";
 
 const meta: Meta<typeof ToastNotification> = {

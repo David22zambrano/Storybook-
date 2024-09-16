@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import  { useState } from "react";
+
 import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProvider, Popover, Typography } from "@mui/material";
 import { SincoTheme } from "../Theme";
@@ -39,20 +39,9 @@ export const PopoverExample: Story = {
     },
   },
   render: () => {
-    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-
-  
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-  
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-  
     return (
       <div>
         <Popover
-          id={id}
           open={true}
           anchorOrigin={{
             vertical: 'top',
@@ -62,7 +51,6 @@ export const PopoverExample: Story = {
             vertical: 'top',
             horizontal: 'left',
           }}
-          onClose={handleClose}
         >
           <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
         </Popover>

@@ -31,7 +31,7 @@ const meta: Meta<typeof Chip> = {
     },
     color: {
       description: "Selecciona entre los colores disponibles",
-      options: ["primary", "secondary", "error", "success", "info", "warning", "chipPrimary", "chipSecondary", "chipError", "chipSuccess", "chipInfo" , "chipWarning"],
+      options: ["primary", "secondary", "error", "success", "info", "warning"],
       control: "select",
     },
     label: {
@@ -41,11 +41,13 @@ const meta: Meta<typeof Chip> = {
     icon: {
       description: "Mostrar u ocultar el icono",
       control: "boolean",
+      defaultValue: false,
       options: [true, false]
     },
     avatar: {
       description: "Mostrar u ocultar el avatar",
       control: "boolean",
+      defaultValue: false,
       options: [true, false]
     },
     disabled: {
@@ -70,17 +72,22 @@ export const ChipStory: Story = {
     avatar: <></>,
     disabled: false,
   },
-  render: ({ label, icon, size, color, variant, avatar, disabled }) => (
-    <Chip
-      size={size}
-      label={label}
-      color={color}
-      avatar={avatar ? <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>:  undefined }
-      icon={icon ?  <Delete fontSize="small"  />: undefined }
-      variant={variant}
-      disabled={disabled}
-       />
-  ),
+  render: ({ label, icon, size, color, variant, avatar, disabled, }) => {
+
+    return (
+      <Chip
+        size={size}
+        label={label}
+        color={color}
+        icon={icon ? <Delete fontSize="small" /> : undefined}
+        avatar={avatar ? <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar> : undefined}
+        variant={variant}
+        disabled={disabled}
+        onDelete={() => { }}
+        onClick={() => { }}
+      />
+    )
+  },
 };
 
 export const ChipIcon: Story = {
@@ -100,14 +107,65 @@ export const ChipAvatar: Story = {
     color: "primary",
     size: "medium",
     icon: <Add fontSize="small" />,
-    label: "chip",
+    label: "Chip",
     variant: "filled",
     avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>
   },
 };
 
-<Chip
-label="Clickable Deletable"
-onClick={handleClick}
-onDelete={handleDelete}
-/>
+
+export const ChipDelete: Story = {
+  name: "Chip con avatar",
+  args: {
+    color: "primary",
+    size: "medium",
+    icon: <Add fontSize="small" />,
+    label: "Chip",
+    variant: "filled",
+    avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>,
+    onDelete: () => { },
+  },
+  render: (args) => {
+    return (
+      <Chip {...args} />
+    )
+  }
+};
+
+export const ChipCilckeable: Story = {
+  name: "Chip con avatar",
+  args: {
+    color: "primary",
+    size: "medium",
+    icon: <Add fontSize="small" />,
+    label: "Chip",
+    variant: "filled",
+    avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>,
+    onClick: () => { }
+  },
+  render: (args) => {
+    return (
+      <Chip {...args} />
+    )
+  }
+};
+
+export const ChipClickeableDeletable: Story = {
+  name: "Chip clickeable y deletable",
+  args: {
+    color: "primary",
+    size: "medium",
+    icon: <Add fontSize="small" />,
+    label: "Chip",
+    variant: "standard",
+    avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>,
+    onDelete: () => { },
+    onClick: () => { }
+  },
+  render: (args) => {
+    return (
+      <Chip {...args} />
+    )
+  }
+};
+

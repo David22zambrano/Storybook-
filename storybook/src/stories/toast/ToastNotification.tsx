@@ -2,7 +2,7 @@ import React, { ReactElement, useCallback, useEffect, useState } from "react";
 import { Stack, LinearProgress, Divider, Box, Typography, IconButton, Button, useTheme } from "@mui/material";
 import { Close, InfoRounded, CheckCircleRounded, WarningRounded, ErrorRounded, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { blue, green, orange, red } from "@mui/material/colors";
-import { useProgress } from "./useProgress";
+import { ToastProgress } from "../Hooks";
 
 export type ToastType = "success" | "error" | "warning" | "info";
 export interface ToastBaseProperties {
@@ -20,7 +20,7 @@ export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
   const [stateOptions, setStateOptions] = useState(true);
   const [stateToast, setStateToast] = useState(true);
   const timeProgress = toast.time || 10;
-  const { progressToast } = useProgress(timeProgress);
+  const { progressToast } = ToastProgress(timeProgress);
 
   const toastColorConfig: ToastType = toast.type || "info";
 
