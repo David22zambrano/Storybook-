@@ -2,7 +2,7 @@
 import "./Generales";
 import { Meta, StoryObj } from "@storybook/react";
 import { ThemeProvider, Stack, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Checkbox, IconButton } from '@mui/material';
-import { Comment as CommentIcon } from "@mui/icons-material";
+import { Delete} from "@mui/icons-material";
 import { SincoTheme } from "../Theme";
 import { useState } from "react";
 
@@ -37,6 +37,8 @@ const meta: Meta<typeof List> = {
       description: "Define el texto del título",
       control: "text",
     },
+  
+    
   },
 };
 
@@ -72,14 +74,13 @@ export const ListStory: Story = {
         <List dense={dense}>
           {[0, 1].map((value) => {
             const labelId = `checkbox-list-label-${value}`;
-
             return (
               <ListItem
                 key={value}
                 secondaryAction={
                   children && (
-                    <IconButton edge="end" aria-label="comments">
-                      <CommentIcon />
+                    <IconButton edge="end" aria-label="delete">
+                      <Delete />
                     </IconButton>
                   )
                 }

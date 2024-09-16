@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import "./Generales/tipografia.ts";
+import "./Generales";
 import { ThemeProvider } from "@mui/material/styles";
 import { Alert, AlertTitle, Button, IconButton, Typography } from "@mui/material";
 import { SincoTheme } from "../Theme";
@@ -106,7 +106,7 @@ export const AlertStory: Story = {
       </>
     }
   >
-    <AlertTitle><Typography variant="subtitle2">{title}</Typography></AlertTitle>
+    <AlertTitle>{title}</AlertTitle>
     <Typography variant="body3"> {children}</Typography>
   </Alert>
   ),
