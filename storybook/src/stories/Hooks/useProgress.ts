@@ -26,7 +26,7 @@ export const useProgress = (timeProgress: number, lote?: number) => {
 };
 
 export const ToastProgress = (timeProgress: number) => {
-    const [progress, setProgress] = useState(100);
+    const [progress, setProgress] = useState<number>(100);
     useEffect(() => {
         const interval = setInterval(() => {
             setProgress((prev) => {

@@ -1,8 +1,7 @@
 import './Generales'
 import { Meta } from "@storybook/react";
 import { ThemeProvider } from "@mui/material";
-
-import { DataGridPro, LicenseInfo } from "@mui/x-data-grid-pro";
+import { DataGridPro, LicenseInfo, GridColDef } from "@mui/x-data-grid-pro";
 import { SincoTheme } from "../Theme";
 import "../index.css";
 
@@ -21,10 +20,21 @@ const meta: Meta<typeof DataGridPro> = {
       </ThemeProvider>
     ),
   ],
+  argTypes: {
+   
+  },
 };
 export default meta;
 
-const getColorByHierarchy = (hierarchy: string | any[]) => {
+interface RowData {
+  id: number;
+  jobTitle?: string;
+  recruitmentDate?: Date;
+  hierarchy: string[];
+  color: string;
+}
+
+const getColorByHierarchy = (hierarchy: string[]): string => {
   if (hierarchy.length === 0) {
     return ""; // No color for rows with no hierarchy
   } else if (hierarchy.length === 1) {
@@ -38,28 +48,12 @@ const getColorByHierarchy = (hierarchy: string | any[]) => {
   }
 };
 
-// Definir las jerarquías aquí
-const hierarchies = [
-  {
-    id: 0,
-    hierarchy: ["Thomas"],
-  },
-  {
-    id: 2,
-    hierarchy: ["Thomas", "Robert"],
-  },
-  {
-    id: 3,
-    hierarchy: ["Thomas", "Robert", "Karen"],
-  },
-  {
-    id: 4,
-    hierarchy: ["Thomas", "Robert", "Karen", "Nancy"],
-  },
-  {
-    id: 5,
-    hierarchy: ["Thomas", "Robert", "Karen", "Nancy", "Daniel"],
-  },
+const hierarchies: Omit<RowData, "color">[] = [
+  { id: 0, hierarchy: ["Thomas"] },
+  { id: 2, hierarchy: ["Thomas", "Robert"] },
+  { id: 3, hierarchy: ["Thomas", "Robert", "Karen"] },
+  { id: 4, hierarchy: ["Thomas", "Robert", "Karen", "Nancy"] },
+  { id: 5, hierarchy: ["Thomas", "Robert", "Karen", "Nancy", "Daniel"] },
   {
     id: 6,
     jobTitle: "Head of Sales",
@@ -68,24 +62,23 @@ const hierarchies = [
   },
 ];
 
-const rows = hierarchies.map((item) => ({
+const rows: RowData[] = hierarchies.map((item) => ({
   ...item,
   color: getColorByHierarchy(item.hierarchy),
 }));
 
-const columns = [
+const columns: GridColDef<RowData>[] = [
   { field: "codigo", headerName: "Codigo", width: 200 },
-
   { field: "jobTitle", headerName: "Job Title", width: 200 },
   {
     field: "recruitmentDate",
     headerName: "Recruitment Date",
-    type: "date",
+    type: "date",  // Cambié el tipo a "date"
     width: 150,
   },
 ];
 
-const getTreeDataPath = (row: { hierarchy: any }) => row.hierarchy;
+const getTreeDataPath = (row: { hierarchy: string[] }) => row.hierarchy;
 
 export const Drawer = {
   name: "DataGrid",

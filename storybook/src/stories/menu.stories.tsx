@@ -1,15 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 import "./Generales";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, Divider, ListItemIcon, ListItemText, Menu, MenuItem, MenuList, Paper, Button } from "@mui/material";
+import {
+  ThemeProvider,
+  Divider,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
+  MenuList,
+  Paper,
+ 
+} from "@mui/material";
 import { Check } from "@mui/icons-material";
 import { SincoTheme } from "../Theme";
-import { useState } from "react";
 
-const meta: Meta<typeof Menu> = {
-  title: "Components/Menu",
-  component: Menu,
+const meta: Meta<typeof MenuItem> = {
+  title: "Components/MenuItem",
+  component: MenuItem,
   decorators: [
     (Story) => (
       <ThemeProvider theme={SincoTheme}>
@@ -21,95 +28,28 @@ const meta: Meta<typeof Menu> = {
   parameters: {
     layout: "centered",
   },
-  argTypes:{
-    open:{
+  argTypes: {
+    dense:{
       control:"boolean"
     },
-   
-   
-  }
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof Menu>;
+type Story = StoryObj<typeof MenuItem>;
 
-export const MenuStory: Story = {
-  name: 'menu',
+export const MenuItemStory: Story = {
+  name: "menuItem",
   args: {
-    open: false,
+    dense:false,
    
   },
-  render: (args) => {
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-      setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
+  render: ({dense}) => {
 
     return (
-      <>
-        <Button
-          id="demo-positioned-button"
-          aria-controls={open ? 'demo-positioned-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-        >
-          Open menu
-        </Button>
-        
-        <Menu
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-        >
-          <Paper sx={{ width: 320 }}>
-            <MenuList dense={false}>
-              <MenuItem>
-                <ListItemText inset>Single</ListItemText>
-              </MenuItem>
-              <MenuItem>
-                <ListItemText inset>1.15</ListItemText>
-              </MenuItem>
-              <MenuItem>
-                <ListItemText inset>Double</ListItemText>
-              </MenuItem>
-              <MenuItem>
-                <ListItemIcon>
-                  <Check />
-                </ListItemIcon>
-                Custom: 1.2
-              </MenuItem>
-              <Divider />
-              <MenuItem>
-                <ListItemText>Add space before paragraph</ListItemText>
-              </MenuItem>
-              <MenuItem>
-                <ListItemText>Add space after paragraph</ListItemText>
-              </MenuItem>
-              <Divider />
-              <MenuItem>
-                <ListItemText>Custom spacing...</ListItemText>
-              </MenuItem>
-            </MenuList>
-          </Paper>
-        </Menu>
-      </>
-    );
-  },
-};
-
-export const dense: Story = {
-  name: "menu-dense",
-  render: () => (
-    <Paper sx={{ width: 320 }}>
-      <MenuList>
-        <MenuItem>
+      <Paper sx={{ width: 320 }} >
+      <MenuList dense={dense}  >
+        <MenuItem >
           <ListItemText inset>Single</ListItemText>
         </MenuItem>
         <MenuItem>
@@ -137,5 +77,6 @@ export const dense: Story = {
         </MenuItem>
       </MenuList>
     </Paper>
-  ),
+    );
+  },
 };
