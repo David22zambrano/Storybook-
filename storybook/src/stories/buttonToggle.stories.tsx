@@ -21,6 +21,7 @@ export default {
   },
   argTypes: {
     color: {
+      description:"Selecciona entre los colores disponibles",
       control: "select",
       options: [
         "primary",
@@ -33,12 +34,12 @@ export default {
       ],
     },
     size: {
-      description: "Descripcion del componente",
+      description: "Selecciona el tamaño del componente",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     disabled: {
-      description: "",
+      description: "Deshabilitar el ToggleButton",
       control: "boolean",
     },
     children:{

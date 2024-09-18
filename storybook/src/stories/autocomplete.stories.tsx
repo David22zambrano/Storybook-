@@ -22,13 +22,15 @@ const meta: Meta<typeof Autocomplete> = {
   },
   argTypes: {
     readOnly: {
+      description: "Elimina todos los efectos de desplazamiento y eventos del puntero.",
       control: "boolean",
     },
     disabled: {
+      description: "Deshabilitar el componente",
       control: "boolean",
     },
     clearIcon: {
-      description: "Ícono para limpiar el campo",
+      description: "El icono que se mostrará en lugar del icono transparente predeterminado.",
       control: "select",
       options: ["ClearIcon", "none"], 
       mapping: {
@@ -36,9 +38,8 @@ const meta: Meta<typeof Autocomplete> = {
         none: null, 
       },
     },
-    multiple: {
-      control: "boolean",
-    },
+   
+   
   },
 };
 
@@ -51,9 +52,8 @@ export const AutoCompleteStorie: Story = {
     readOnly: false,
     disabled: false,
     clearIcon: "ClearIcon",
-    multiple: false,
   },
-  render: ({ readOnly, disabled, clearIcon, multiple }) => (
+  render: ({ readOnly, disabled, clearIcon }) => (
     <Autocomplete
       disablePortal
       options={top100Films ?? []} 
@@ -64,7 +64,7 @@ export const AutoCompleteStorie: Story = {
       )}
       readOnly={readOnly}
       disabled={disabled}
-      multiple={multiple}
+      
     />
   ),
 };
@@ -82,3 +82,28 @@ const top100Films = [
     year: 2003,
   },
 ];
+
+export const AutocompleteMultiple:Story={
+  name: "AutocompleteMultiple",
+  args: {
+    readOnly: false,
+    disabled: false,
+    clearIcon: "ClearIcon",
+  },
+  render: ({ readOnly, disabled, clearIcon }) => (
+    <Autocomplete
+      disablePortal
+      options={top100Films ?? []} 
+      sx={{ width: 300 }}
+      clearIcon={clearIcon} 
+      renderInput={(params) => (
+        <TextField {...(params ?? {})} label="Movie" />  
+      )}
+      readOnly={readOnly}
+      disabled={disabled}
+      multiple
+      
+    />
+  ),
+
+}

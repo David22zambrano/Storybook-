@@ -30,6 +30,7 @@ const meta: Meta<typeof MenuItem> = {
   },
   argTypes: {
     dense:{
+      description: "Activa o desactiva el modo dense del componente.",
       control:"boolean"
     },
   },

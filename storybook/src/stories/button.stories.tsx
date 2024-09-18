@@ -21,7 +21,7 @@ const meta: Meta<typeof Button> = {
   },
   argTypes: {
     color: {
-      description: "Colores disponibles",
+      description: "Selecciona entre los colores disponibles",
       control: "select",
       options: [
         "primary",
@@ -34,20 +34,24 @@ const meta: Meta<typeof Button> = {
       ],
     },
     size: {
-      description: "Descripcion del componente",
+      description: "Selecciona el tamaño del componente",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     disabled: {
+      description:"Deshabilitar el button",
       control: "boolean",
     },
     children: {
+      description:"Introduce el texto que deseas mostrar aquí.",
       control: "text",
     },
     endIcon: {
+      description:"Muestra un ícono al final del componente",
       control: "boolean",
     },
     startIcon: {
+      description:"Muestra un ícono al inicio del componente.",
       control: "boolean",
     },
   },
@@ -67,10 +71,11 @@ export const ButtonStorie: Story = {
     endIcon: false,
     disabled: false,
   },
-  render: ({ size, variant, startIcon, endIcon, children, disabled }) => (
+  render: ({ size, variant, startIcon, endIcon, children, disabled,color }) => (
     <Button
       variant={variant}
       size={size}
+      color={color}
       startIcon={startIcon === true ? <Person /> : ""}
       endIcon={endIcon === true ? <Person /> : ""}
       disabled={disabled}

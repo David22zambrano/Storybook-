@@ -18,12 +18,8 @@ const meta: Meta<typeof DataGridPro> = {
     layout: "centered",
   },
   argTypes: {
-    editMode: {
-      control: "radio",
-      options:["cell","row"]
-     
-    },
     density:{
+      description:"Controla el espaciado del componente con las opciones: `standard`,`compact`,`comfortable` ",
         control:"radio",
         options:["standard","compact","comfortable"]
     },
@@ -70,7 +66,7 @@ const rows = [
   { id: 3, lastName: "Lannister", firstName: "Jaime", age: 31 },
   { id: 4, lastName: "Stark", firstName: "Arya", age: 11 },
   { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: "olla expressssss chuchuchu", age: 150 },
+  { id: 6, lastName: "Melisandre", firstName: "May", age: 150 },
   { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
   { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
@@ -78,10 +74,9 @@ const rows = [
 export const DataGridProStory: Story = {
   name: "DataGridPro",
 args:{
-    editMode:"cell",
     density:"standard"
 },
-  render: ({editMode,density}) => (
+  render: ({density}) => (
      <Box
     sx={(theme) => ({
       height: 400,
@@ -96,7 +91,6 @@ args:{
   >
       <DataGridPro
       density={density}
-      editMode={editMode}
         rows={rows}
         columns={columns}
         isCellEditable={(params) => params.row.age % 2 === 0}
