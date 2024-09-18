@@ -5,15 +5,23 @@ import { blue, green, orange, red } from "@mui/material/colors";
 import { ToastProgress } from "../Hooks";
 
 export type ToastType = "success" | "error" | "warning" | "info";
+
 export interface ToastBaseProperties {
   type?: ToastType;
   subtitle?: string;
-  title: string;
+  title?: string; 
   time?: number | any;
   dataOpt?: string[];
   actions?: React.ReactNode;
   seeMore?: boolean;
 }
+
+const mensajesPredeterminado: Record<ToastType, string> = {
+  success: "!aqui va el de success!",
+  error: "!aqui va el de error!",
+  warning: "!aqui va el de warning!",
+  info: "!aqui va el de de info!"
+};
 
 export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
   const theme = useTheme();
@@ -22,7 +30,10 @@ export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
   const timeProgress = toast.time || 10;
   const { progressToast } = ToastProgress(timeProgress);
 
-  const toastColorConfig: ToastType = toast.type || "info";
+  const toastType: ToastType = toast.type || "info";
+  const toastTitle = toast.title || mensajesPredeterminado[toastType]; 
+
+  const toastColorConfig: ToastType = toastType;
 
   const toastIconOption: Record<ToastType, ReactElement> = {
     success: <CheckCircleRounded />,
@@ -31,7 +42,7 @@ export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
     info: <InfoRounded />,
   };
 
-  const ToastIconConfig = toastIconOption[toast.type || "info"];
+  const ToastIconConfig = toastIconOption[toastType];
 
   const closeToast = useCallback(() => {
     setStateToast(false);
@@ -39,7 +50,7 @@ export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
 
   const toggleToastOptions = useCallback(() => {
     setStateOptions((prevShowOptions) => !prevShowOptions);
-  }, [setStateOptions])
+  }, [setStateOptions]);
 
   useEffect(() => {
     progressToast <= 0 && setStateToast(false);
@@ -83,9 +94,9 @@ export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
                   error: "#D143431F",
                   warning: "#FB85001F",
                   info: "#2D9FC51F",
-                }[toast.type || "info"],
+                }[toastType],
               }}
-              className={`ripple-${toast.type || "info"}`}
+              className={`ripple-${toastType}`}
             >
               <Stack
                 sx={{
@@ -94,9 +105,9 @@ export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
                     error: theme.palette.error.main,
                     warning: theme.palette.warning.main,
                     info: theme.palette.info.main,
-                  }[toast.type || "info"],
+                  }[toastType],
                 }}
-                className={`icon-color color-${toast.type || "info"}`}
+                className={`icon-color color-${toastType}`}
               >
                 {ToastIconConfig}
               </Stack>
@@ -109,7 +120,7 @@ export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
                 alignItems="center"
               >
                 <Typography variant="subtitle2" color="text.primary">
-                  {toast.title}
+                  {toastTitle}
                 </Typography>
                 <IconButton size="small" onClick={closeToast}>
                   <Close fontSize="small" />

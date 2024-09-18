@@ -31,7 +31,7 @@ const meta: Meta<typeof Chip> = {
     },
     color: {
       description: "Selecciona entre los colores disponibles",
-      options: ["primary", "secondary", "error", "success", "info", "warning"],
+      options: ["primary", "secondary", "error", "success", "info", "warning", "default"],
       control: "select",
     },
     label: {
@@ -54,7 +54,11 @@ const meta: Meta<typeof Chip> = {
       description: "Activa el modo disabled en el componente",
       control: "boolean",
       options: [true, false]
-    }
+    },
+    onDelete: {
+      description: "Activa el modo disabled en el componente",
+    },
+    
   },
 };
 
@@ -62,7 +66,7 @@ export default meta;
 type Story = StoryObj<typeof Chip>;
 
 export const ChipStory: Story = {
-  name: "chip",
+  name: "Chip ",
   args: {
     color: "primary",
     size: "medium",
@@ -73,7 +77,6 @@ export const ChipStory: Story = {
     disabled: false,
   },
   render: ({ label, icon, size, color, variant, avatar, disabled, }) => {
-
     return (
       <Chip
         size={size}
@@ -88,6 +91,24 @@ export const ChipStory: Story = {
       />
     )
   },
+};
+
+export const ChipDefault: Story = {
+  name: "Chip default",
+  args: {
+  },
+  render: () => {
+    return (
+      <Chip
+        label="Chip simple"
+        size="medium"
+        avatar={<Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>}
+        icon={<Add fontSize="small" />}
+        onClick={() => { }}
+        onDelete={() => { }}
+      />
+    )
+  }
 };
 
 export const ChipIcon: Story = {
@@ -115,7 +136,7 @@ export const ChipAvatar: Story = {
 
 
 export const ChipDelete: Story = {
-  name: "Chip con avatar",
+  name: "Chip deletable",
   args: {
     color: "primary",
     size: "medium",
@@ -168,4 +189,6 @@ export const ChipClickeableDeletable: Story = {
     )
   }
 };
+
+
 
