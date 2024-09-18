@@ -39,9 +39,7 @@ const meta: Meta<typeof Tooltip> = {
         "top",
       ],
     },
-    children:{
-      control:"text"
-    }
+    
   },
 };
 export default meta;
