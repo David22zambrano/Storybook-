@@ -26,7 +26,7 @@ const meta: Meta<typeof Autocomplete> = {
       control: "boolean",
     },
     disabled: {
-      description: "Deshabilitar el autocomplete",
+      description: "Deshabilitar el componente",
       control: "boolean",
     },
     clearIcon: {
