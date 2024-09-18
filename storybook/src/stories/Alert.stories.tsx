@@ -26,7 +26,7 @@ const meta: Meta<typeof Alert> = {
       control: { type: "radio" },
     },
     children: {
-      description:"Introduce el texto o contenido que deseas mostrar aquí.",
+      description:"Introduce el texto que deseas mostrar aquí.",
       control: "text",
     },
     color: {

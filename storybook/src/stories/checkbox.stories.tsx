@@ -19,6 +19,10 @@ const meta: Meta<typeof Checkbox> = {
     layout: "centered",
   },
   argTypes: {
+    checked:{
+      description:"Activa o inactiva el componente",
+      control:"boolean"
+    },
     size: {
       description: "Tamaños disponibles",
       control: "radio",
@@ -45,6 +49,7 @@ export const CheckboxStories: Story = {
     size: "medium",
     color: "primary",
     disabled: false, 
+    checked:false
   },
   render: (args) => <Checkbox {...args} />,
 };

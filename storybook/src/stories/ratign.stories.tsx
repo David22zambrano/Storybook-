@@ -18,16 +18,20 @@ const meta: Meta<typeof Rating> = {
   },
   argTypes:{
     disabled:{
+      description:"Deshabilitar el rating",
       control:"boolean",
     },
     size:{
+      description:"Selecciona el tamaño del componente.",
       control:"radio",
       options:["small","medium","large"]
     },
     readOnly:{
+      description:"Elimina todos los efectos de desplazamiento y eventos del puntero.",
       control:"boolean"
     },
     highlightSelectedOnly:{
+      description:"Si es `true`, solo se resaltará el icono seleccionado.",
       control:"boolean"
     }
 
