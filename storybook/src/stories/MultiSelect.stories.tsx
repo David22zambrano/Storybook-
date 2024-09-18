@@ -10,6 +10,9 @@ const meta: Meta<typeof MultiSelect> = {
     title: "Sinco React/MultiSelect",
     component: MultiSelect,
     tags: ["autodocs"],
+    parameters: {
+        layout: "centered",
+    },
     decorators: [
         (Story) => (
             <ThemeProvider theme={SincoTheme}>
@@ -68,7 +71,7 @@ export const PageHeaderExmaple: Story = {
             <>
 
                 <Button color="primary" size="small" variant="text" onClick={handleOpen}>
-                    ver Multitine
+                    Ver multiSelect
                 </Button>
 
                 <MultiSelect

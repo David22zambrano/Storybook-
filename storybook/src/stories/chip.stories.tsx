@@ -56,7 +56,7 @@ const meta: Meta<typeof Chip> = {
       options: [true, false]
     },
     onDelete: {
-      description: "Activa el modo disabled en el componente",
+      description: "L de eliminar",
     },
     
   },

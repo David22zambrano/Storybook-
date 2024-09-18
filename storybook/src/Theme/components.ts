@@ -286,16 +286,6 @@ export const components: Components<Theme> = {
       icon: {
         opacity: "70%",
       },
-      colorDefault: ({ theme }) => ({
-        variants: [
-          {
-            props: { variant: "standard", avatar: true },
-            style: {
-              
-            }
-          }
-        ],
-      }),
       deleteIcon: ({ theme }) => ({
         variants: [
           {
@@ -354,6 +344,7 @@ export const components: Components<Theme> = {
             props: { variant: "filled" },
             style: {
               backgroundColor: theme.palette.background.paper,
+              opacity: "70%",
               color: theme.palette.default.contrastText,
             },
           },
@@ -537,31 +528,31 @@ export const components: Components<Theme> = {
         alignItems: "center",
       },
       action: {
-         display: "flex",
-         gap: 1.5,
-         padding: "0px",
+        display: "flex",
+        gap: 1.5,
+        padding: "0px",
       },
 
       root: {
-         padding: "8px 12px 8px 12px",
-         borderRadius: "8px",
-         display: "flex",
-         alignItems: "center",
-         gap: 1.5,
-         minWidth: "296px",
+        padding: "8px 12px 8px 12px",
+        borderRadius: "8px",
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5,
+        minWidth: "296px",
       },
     },
   },
-  MuiAlertTitle:{
-   defaultProps:{
-     variant: "subtitle2",
-   },
-   styleOverrides:{
-    root:{
-      marginBottom:0,
-      marginTop:2.5
+  MuiAlertTitle: {
+    defaultProps: {
+      variant: "subtitle2",
+    },
+    styleOverrides: {
+      root: {
+        marginBottom: 0,
+        marginTop: 2.5
+      }
     }
-   }
   },
   MuiButton: {
     styleOverrides: {

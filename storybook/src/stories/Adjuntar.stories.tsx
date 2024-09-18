@@ -9,6 +9,9 @@ const meta: Meta<typeof AdjuntarArchivo> = {
     title: "Sinco React/Adjuntar",
     component: AdjuntarArchivo,
     tags: ["autodocs"],
+    parameters: {
+        layout: "centered",
+    },
     decorators: [
         (Story) => (
             <ThemeProvider theme={SincoTheme}>
@@ -30,13 +33,12 @@ export const AdjuntarArchivos: Story = {
     name: "Adjuntar archivos",
     args: {
         compact: false,
-        fecthDB: ()=>{ console.log}
+        fecthDB: () => { console.log }
     },
     render: (args) => {
-
         return (
             <Stack width={"400px"}>
-                <AdjuntarArchivo {...args}  />
+                <AdjuntarArchivo {...args} />
             </Stack>
 
         )
