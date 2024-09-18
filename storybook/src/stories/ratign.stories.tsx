@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { Story, Meta } from "@storybook/react";
-import { ThemeProvider, Rating, RatingProps } from "@mui/material";
+import { Rating, Stack, ThemeProvider } from "@mui/material";
+import { Meta, StoryObj } from "@storybook/react";
 import { SincoTheme } from "../Theme";
 
-export default {
+const meta: Meta<typeof Rating> = {
   title: "Components/Rating",
-  component: Rating,
+  component:Rating,
   decorators: [
     (Story) => (
       <ThemeProvider theme={SincoTheme}>
@@ -17,17 +16,42 @@ export default {
   parameters: {
     layout: "centered",
   },
-} as Meta;
+  argTypes:{
+    disabled:{
+      control:"boolean",
+    },
+    size:{
+      control:"radio",
+      options:["small","medium","large"]
+    },
+    readOnly:{
+      control:"boolean"
+    },
+    highlightSelectedOnly:{
+      control:"boolean"
+    }
 
-const Template: Story<RatingProps> = (args) => {
-  const [value, setValue] = useState<number | null>(2);
-  return (
-    <>
-      <Rating name="read-only" value={value} readOnly />
-      <Rating name="read-only" size="medium" value={value} readOnly />
-      <Rating name="read-only" size="large" value={value} readOnly />
-    </>
-  );
+  }
 };
-
-export const ratign = Template.bind({});
+export default meta;
+type Story = StoryObj<typeof Rating>;
+export const AlertStory: Story = {
+  name: "Rating",
+  args: {
+    size:"small",
+    disabled:false,
+    readOnly:false,
+    highlightSelectedOnly:false
+  },
+  render:({size,disabled,readOnly,highlightSelectedOnly})=>(
+    <Stack spacing={1}>
+    <Rating
+    size={size}
+    disabled={disabled}
+    readOnly={readOnly}
+    highlightSelectedOnly={highlightSelectedOnly}
+    />
+    
+  </Stack>
+  )
+};

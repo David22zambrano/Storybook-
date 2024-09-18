@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProvider, Autocomplete, Stack, TextField } from "@mui/material";
 import { SincoTheme } from "../Theme";
+import ClearIcon from "@mui/icons-material/Clear"; 
 import "./Generales";
 
 const meta: Meta<typeof Autocomplete> = {
@@ -19,6 +20,26 @@ const meta: Meta<typeof Autocomplete> = {
   parameters: {
     layout: "centered",
   },
+  argTypes: {
+    readOnly: {
+      control: "boolean",
+    },
+    disabled: {
+      control: "boolean",
+    },
+    clearIcon: {
+      description: "Ícono para limpiar el campo",
+      control: "select",
+      options: ["ClearIcon", "none"], 
+      mapping: {
+        ClearIcon: <ClearIcon />,
+        none: null, 
+      },
+    },
+    multiple: {
+      control: "boolean",
+    },
+  },
 };
 
 export default meta;
@@ -26,57 +47,25 @@ type Story = StoryObj<typeof Autocomplete>;
 
 export const AutoCompleteStorie: Story = {
   name: "Autocomplete",
-  render: (args) => (
-    <Stack flexDirection={"row"} gap={1}>
-      <Autocomplete
-        disablePortal
-        options={top100Films}
-        sx={{ width: 300 }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Movie"
-            size="small"
-            // InputProps={{
-            //   endAdornment: (
-            //     <InputAdornment position="end">
-            //       <Search />
-            //     </InputAdornment>
-            //   ),
-            // }}
-          />
-        )}
-      />
-
-      <Autocomplete
-        disablePortal
-        options={top100Films}
-        sx={{ width: 300 }}
-        renderInput={(params) => (
-          <TextField {...params} label="Movie" size="small" variant="filled" />
-        )}
-      />
-      <Autocomplete
-        disablePortal
-        options={top100Films}
-        sx={{ width: 300 }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Movie"
-            size="small"
-            variant="standard"
-            // InputProps={{
-            //   endAdornment: (
-            //     <InputAdornment position="end">
-            //       <Search />
-            //     </InputAdornment>
-            //   ),
-            // }}
-          />
-        )}
-      />
-    </Stack>
+  args: {
+    readOnly: false,
+    disabled: false,
+    clearIcon: "ClearIcon",
+    multiple: false,
+  },
+  render: ({ readOnly, disabled, clearIcon, multiple }) => (
+    <Autocomplete
+      disablePortal
+      options={top100Films ?? []} 
+      sx={{ width: 300 }}
+      clearIcon={clearIcon} 
+      renderInput={(params) => (
+        <TextField {...(params ?? {})} label="Movie" />  
+      )}
+      readOnly={readOnly}
+      disabled={disabled}
+      multiple={multiple}
+    />
   ),
 };
 

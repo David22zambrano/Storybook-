@@ -10,17 +10,17 @@ export interface ToastBaseProperties {
   type?: ToastType;
   subtitle?: string;
   title?: string; 
-  time?: number | any;
+  time?: number ;
   dataOpt?: string[];
   actions?: React.ReactNode;
   seeMore?: boolean;
 }
 
 const mensajesPredeterminado: Record<ToastType, string> = {
-  success: "!aqui va el de success!",
-  error: "!aqui va el de error!",
-  warning: "!aqui va el de warning!",
-  info: "!aqui va el de de info!"
+  success: "!Listo!",
+  error: "!Algo salió mal!",
+  warning: "!Cuidado con esto!",
+  info: "!Aviso importante!"
 };
 
 export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
@@ -53,7 +53,9 @@ export const ToastNotificationComponent = (toast: ToastBaseProperties) => {
   }, [setStateOptions]);
 
   useEffect(() => {
-    progressToast <= 0 && setStateToast(false);
+    if (progressToast<=0){
+      setStateToast(false)
+    }
   }, [progressToast]);
 
   return (
