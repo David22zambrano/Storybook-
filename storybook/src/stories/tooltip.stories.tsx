@@ -1,7 +1,6 @@
-import { IconButton, ThemeProvider, Tooltip } from "@mui/material";
+import {  ThemeProvider, Tooltip, Typography } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
 import { SincoTheme } from "../Theme";
-import { Delete } from "@mui/icons-material";
 
 const meta: Meta<typeof Tooltip> = {
   title: "Components/Tooltip",
@@ -40,9 +39,8 @@ const meta: Meta<typeof Tooltip> = {
         "top",
       ],
     },
-    open:{
-        description:"Si `true`, se muestra el componente.",
-        control:"boolean"
+    children:{
+      control:"text"
     }
   },
 };
@@ -53,18 +51,13 @@ export const button: Story = {
   name: "tooltip",
   args: {
     title: "tooltip",
-    placement:"bottom",
-    open:false
+    placement:"bottom", 
   },
-  render: ({ title,placement,open}) => (
+  render: ({ title,placement}) => (
     <Tooltip 
     title={title}
-    placement={placement}
-    open={open}
-    >
-      <IconButton>
-        <Delete />
-      </IconButton>
+    placement={placement}>
+      <Typography>El tooltip se despliega al hacer hover</Typography>
     </Tooltip>
   ),
 };

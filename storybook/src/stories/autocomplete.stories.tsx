@@ -39,6 +39,7 @@ const meta: Meta<typeof Autocomplete> = {
       },
     },
    
+   
   },
 };
 
@@ -51,7 +52,6 @@ export const AutoCompleteStorie: Story = {
     readOnly: false,
     disabled: false,
     clearIcon: "ClearIcon",
-    
   },
   render: ({ readOnly, disabled, clearIcon }) => (
     <Autocomplete
@@ -64,6 +64,7 @@ export const AutoCompleteStorie: Story = {
       )}
       readOnly={readOnly}
       disabled={disabled}
+      
     />
   ),
 };
@@ -81,3 +82,28 @@ const top100Films = [
     year: 2003,
   },
 ];
+
+export const AutocompleteMultiple:Story={
+  name: "AutocompleteMultiple",
+  args: {
+    readOnly: false,
+    disabled: false,
+    clearIcon: "ClearIcon",
+  },
+  render: ({ readOnly, disabled, clearIcon }) => (
+    <Autocomplete
+      disablePortal
+      options={top100Films ?? []} 
+      sx={{ width: 300 }}
+      clearIcon={clearIcon} 
+      renderInput={(params) => (
+        <TextField {...(params ?? {})} label="Movie" />  
+      )}
+      readOnly={readOnly}
+      disabled={disabled}
+      multiple
+      
+    />
+  ),
+
+}
