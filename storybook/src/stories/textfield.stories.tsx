@@ -76,7 +76,7 @@ export const TextFieldStory: Story = {
     color: "primary",
     disabled: false,
     error: false,
-    helperText: "text",
+    helperText: "Helper text",
     select: false,
   },
   render: ({ size, variant, label, color, disabled, error, helperText, select }) => {

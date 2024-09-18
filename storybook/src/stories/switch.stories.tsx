@@ -46,7 +46,7 @@ const meta: Meta<typeof Switch> = {
       control: "boolean",
     },
     checked: {
-      description: "Activa o inactiva el componente",
+      description: "Si `true`, el componente está marcado.",
       control: "boolean",
     },
     title: {

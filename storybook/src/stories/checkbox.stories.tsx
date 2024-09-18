@@ -20,7 +20,7 @@ const meta: Meta<typeof Checkbox> = {
   },
   argTypes: {
     checked:{
-      description:"Activa o inactiva el componente",
+      description: "Si `true`, el componente está marcado.",
       control:"boolean"
     },
     size: {
