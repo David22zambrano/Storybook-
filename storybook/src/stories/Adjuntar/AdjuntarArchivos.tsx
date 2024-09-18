@@ -164,7 +164,7 @@ export const AdjuntarArchivo = ({ compact, sx, fecthDB }: AdjuntarProps) => {
         {...getRootProps()}
       >
         <input {...getInputProps()} />
-        <img src="src/assets/icons/svgs/logoAdjuntarArchivos.svg" alt="icon" />
+        <img src="src/assets/logoAdjuntarArchivos.svg" alt="icon" />
         <Stack gap={0.5}>
           <Typography variant="body2" color={"text.primary"}>
             Arrastrar o adjuntar archivos

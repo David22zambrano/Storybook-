@@ -5,6 +5,7 @@ export interface MultiSelectProps {
     topPanel?: React.ReactNode;
     acciones?: React.ReactNode;
     anchorEl: HTMLElement | null;
+    dense?: boolean;
     open: boolean;
     items: any[];
     onClose?: () => void;
@@ -12,8 +13,9 @@ export interface MultiSelectProps {
     getItemLabel: (item: any) => string;
 }
 
-export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFunction, getItemLabel, anchorEl }: MultiSelectProps) => {
-    const [filterText, setFilterText] = useState("");
+export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFunction, getItemLabel, anchorEl, dense }: MultiSelectProps) => {
+
+    const [filterText, setFilterText] = useState(" ");
     const [selectedItems, setSelectedItems] = useState<any[]>([]);
 
     const filteredItems = filterFunction(items, filterText);
@@ -56,8 +58,8 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
             open={open}
             onClose={onClose}
         >
-            <Stack height={"auto"} p={2} minWidth={"320px"}>
-                <Stack height={"auto"}>
+            <Stack height="auto" minWidth="320px">
+                <Stack height={"auto"} py={2} px={1}>
                     {topPanel ? (
                         topPanel
                     ) : (
@@ -71,9 +73,10 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
                     )}
                 </Stack>
 
-                <Stack height={"auto"} maxHeight={"300px"} overflow={"auto"} mt={2}>
+                <Stack height={"auto"} maxHeight={"300px"} overflow={"auto"} >
+
                     {sortedFilteredItems.length > 2 && (
-                        <MenuItem onClick={handleAllItemsSelected}>
+                        <MenuItem dense={dense} onClick={handleAllItemsSelected}>
                             <ListItemIcon>
                                 <Checkbox checked={isAllSelected} />
                             </ListItemIcon>
@@ -83,7 +86,7 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
 
                     {sortedFilteredItems.length > 0 ? (
                         sortedFilteredItems.map((item, index) => (
-                            <MenuItem key={index} onClick={() => handleCheckboxChange(item)}>
+                            <MenuItem dense={dense} key={index} onClick={() => handleCheckboxChange(item)}>
                                 <ListItemIcon>
                                     <Checkbox checked={selectedItems.includes(item)} />
                                 </ListItemIcon>
@@ -97,11 +100,11 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
                 {acciones ? (
                     acciones
                 ) : (
-                    <Stack height={"auto"} flexDirection={"row"} justifyContent={"space-between"} p={1} mt={2}>
-                        <Button color="primary" variant="text">
+                    <Stack height={"auto"} flexDirection={"row"} justifyContent={"space-between"} py={2} px={1} >
+                        <Button size="small" color="primary" variant="text">
                             Limpiar
                         </Button>
-                        <Button color="primary" variant="contained">
+                        <Button size="small" color="primary" variant="contained">
                             Aplicar
                         </Button>
                     </Stack>
