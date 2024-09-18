@@ -277,10 +277,25 @@ export const components: Components<Theme> = {
     },
   },
   MuiChip: {
+    defaultProps: {
+      size: "small",
+      variant: "standard",
+      color: "default"
+    },
     styleOverrides: {
       icon: {
         opacity: "70%",
       },
+      colorDefault: ({ theme }) => ({
+        variants: [
+          {
+            props: { variant: "standard", avatar: true },
+            style: {
+              
+            }
+          }
+        ],
+      }),
       deleteIcon: ({ theme }) => ({
         variants: [
           {
@@ -302,9 +317,13 @@ export const components: Components<Theme> = {
             }
           },
           {
-            props: { variant: "outlined", color: "primary" },
+            props: { variant: "outlined" },
             style: {
+              color: theme.palette.action.active,
+              opacity: "54%",
               ":hover": {
+                color: theme.palette.action.active,
+                opacity: "54%",
               }
             }
           }
@@ -339,7 +358,7 @@ export const components: Components<Theme> = {
             },
           },
           {
-            props: { variant: "standard"},
+            props: { variant: "standard" },
             style: {
               backgroundColor: theme.palette.default.contrastText,
               color: theme.palette.primary.contrastText,
@@ -373,12 +392,19 @@ export const components: Components<Theme> = {
               color: theme.palette.background.paper,
             },
           },
+          {
+            props: { variant: "outlined", color: "default" },
+            style: {
+              backgroundColor: theme.palette.action.active,
+              color: theme.palette.background.paper,
+              opacity: "54%",
+            },
+          },
         ],
       }),
       label: ({ theme }) => ({
         ...theme.typography.caption,
       }),
-
       filled: ({ theme }) => ({
         color: theme.palette.background.paper,
       }),
@@ -451,15 +477,6 @@ export const components: Components<Theme> = {
               backgroundColor: theme.palette.chipWarning.main,
               ":hover": {
                 backgroundColor: theme.palette.chipWarning.dark,
-              },
-            },
-          },
-          {
-            props: { variant: "standard", color: "default" },
-            style: {
-              backgroundColor: theme.palette.default.main,
-              ":hover": {
-                backgroundColor: theme.palette.default.dark,
               },
             },
           },
@@ -723,7 +740,6 @@ export const components: Components<Theme> = {
       },
     },
   },
-
   MuiFilledInput: {
     styleOverrides: {
       root: {

@@ -3,20 +3,20 @@ import { useCallback, useState } from "react";
 
 export interface MultiSelectProps {
     topPanel?: React.ReactNode;
-    actions?: React.ReactNode;
+    acciones?: React.ReactNode;
     anchorEl: HTMLElement | null;
     open: boolean;
     items: any[];
     onClose?: () => void;
-    filter: (items: any[], filterText: string) => any[];
+    filterFunction: (items: any[], filterText: string) => any[];
     getItemLabel: (item: any) => string;
 }
 
-export const MultiSelect = ({ topPanel, actions, open, onClose, items, filter, getItemLabel, anchorEl }: MultiSelectProps) => {
+export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFunction, getItemLabel, anchorEl }: MultiSelectProps) => {
     const [filterText, setFilterText] = useState("");
     const [selectedItems, setSelectedItems] = useState<any[]>([]);
 
-    const filteredItems = filter(items, filterText);
+    const filteredItems = filterFunction(items, filterText);
 
     const handleTextFieldChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         setFilterText(e.target.value);
@@ -72,12 +72,14 @@ export const MultiSelect = ({ topPanel, actions, open, onClose, items, filter, g
                 </Stack>
 
                 <Stack height={"auto"} maxHeight={"300px"} overflow={"auto"} mt={2}>
-                    <MenuItem onClick={handleAllItemsSelected}>
-                        <ListItemIcon>
-                            <Checkbox checked={isAllSelected} />
-                        </ListItemIcon>
-                        Todos los items
-                    </MenuItem>
+                    {sortedFilteredItems.length > 2 && (
+                        <MenuItem onClick={handleAllItemsSelected}>
+                            <ListItemIcon>
+                                <Checkbox checked={isAllSelected} />
+                            </ListItemIcon>
+                            Todos los items
+                        </MenuItem>
+                    )}
 
                     {sortedFilteredItems.length > 0 ? (
                         sortedFilteredItems.map((item, index) => (
@@ -92,8 +94,8 @@ export const MultiSelect = ({ topPanel, actions, open, onClose, items, filter, g
                         <MenuItem disabled>No se encontraron resultados</MenuItem>
                     )}
                 </Stack>
-                {actions ? (
-                    actions
+                {acciones ? (
+                    acciones
                 ) : (
                     <Stack height={"auto"} flexDirection={"row"} justifyContent={"space-between"} p={1} mt={2}>
                         <Button color="primary" variant="text">
