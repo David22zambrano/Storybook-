@@ -20,24 +20,24 @@ const meta: Meta<typeof Slider> = {
   },
   argTypes: {
     size: {
-      description: "Modifica el tamaño del Slider",
+      description: "El tamaño del control deslizante.",
       control: "radio",
       options: ["small", "medium", "large"]
     },
     value: {
-      description: "Modifica el valor de llenado del Slider",
+      description: "El valor del control deslizante.",
       control: "range"
     },
     disabled: {
-      description: "Modifica el estado del Slider",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean"
     },
     valueLabelDisplay: {
-      description: "Muestra u oculta el indicador del valor de llenado del Slider",
+      description: "Controla cuándo se muestra la etiqueta de valor",
       control: "boolean"
     },
     color: {
-      description: "Modifica el color del Slider",
+      description: "El color del componente.",
       control: "select",
       options: [
         "primary",

@@ -21,26 +21,26 @@ const meta: Meta<typeof Fab> = {
   },
   argTypes: {
     size: {
-      description: "Selecciona entre los tamaños disponibles",
+      description: "El tamaño del componente `small` es equivalente al estilo del botón denso.",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     color: {
-      description: "Selecciona entre los colores disponibles",
+      description: "El color del componente admite colores de tema predeterminados y personalizados",
       control: "select",
       options: ["primary", "secondary", "error", "warning", "info", "success"],
     },
     children: {
-      description: "Texto dentro del fab",
+      description: "El contenido del componente.",
       control: "text",
     },
     variant: {
-      description: "Selecciona entre las variantes disponibles",
+      description: "La variante a utilizar.",
       control: "select",
       options: ["extended", "circular"],
     },
     disabled: {
-      description: "Deshabilitar fab",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean",
     },
   },

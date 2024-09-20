@@ -19,21 +19,21 @@ const meta: Meta<typeof TextField> = {
   },
   argTypes: {
     size: {
-      description: "Selecciona el tamaño del componente.",
+      description: "El tamaño del componente.",
       options: ["small", "medium"],
       control: { type: "radio" },
     },
     variant: {
-      description: "Selecciona el tipo de variante del componente.",
+      description: "La variante a utilizar.",
       options: ["outlined", "filled", "standard"],
       control: { type: "radio" },
     },
     label: {
-      description: "Texto dentro del select",
+      description: "La etiqueta del input.",
       control: "text",
     },
     color: {
-      description: "Selecciona entre los colores disponibles",
+      description: "El color del componente.",
       control: "select",
       options: [
         "primary",
@@ -46,7 +46,7 @@ const meta: Meta<typeof TextField> = {
       ],
     },
     disabled: {
-      description: "Deshabilitar el textField",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean",
     },
     error: {
@@ -54,7 +54,7 @@ const meta: Meta<typeof TextField> = {
       control: "boolean",
     },
     helperText: {
-      description: "Introduce el texto de ayuda para el componente.",
+      description: "El contenido del texto de ayuda.",
       control: "text",
     },
     select: {
@@ -76,7 +76,7 @@ export const TextFieldStory: Story = {
     color: "primary",
     disabled: false,
     error: false,
-    helperText: "text",
+    helperText: "Helper text",
     select: false,
   },
   render: ({ size, variant, label, color, disabled, error, helperText, select }) => {

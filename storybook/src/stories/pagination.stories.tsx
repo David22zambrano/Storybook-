@@ -19,17 +19,17 @@ const meta: Meta<typeof Pagination> = {
   },
   argTypes: {
     color: {
-      description: "Modifica el color del paginador",
+      description: "El color activo. Admite colores de tema predeterminados y personalizados",
       control: "select",
       options: ["primary", "secondary", "info", "warning", "error", "success"
      ]
     },
     disabled: {
-      description: "Modifica el estado del paginador",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean",
     },
     size: {
-      description: "Modifica el tamaño del paginador",
+      description: "El tamaño del componente.",
       control: "radio",
       options: ["small", "medium", "large"]
     }

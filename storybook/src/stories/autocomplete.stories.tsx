@@ -22,11 +22,11 @@ const meta: Meta<typeof Autocomplete> = {
   },
   argTypes: {
     readOnly: {
-      description: "Elimina todos los efectos de desplazamiento y eventos del puntero.",
+      description: "Si `true`, el componente pasa a ser de solo lectura.",
       control: "boolean",
     },
     disabled: {
-      description: "Deshabilitar el componente",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean",
     },
     clearIcon: {

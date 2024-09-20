@@ -20,7 +20,7 @@ const meta: Meta<typeof SvgIcon> = {
   },
   argTypes: {
     fontSize: {
-      description: "Modifica el tamaño del icono, si su valor es 'inherit' adapta el size del componente padre ",
+      description: "El tamaño de fuente que se aplica al ícono. El valor predeterminado es 24 px, pero se puede configurar para heredar el tamaño de fuente. ",
       control: "radio",
       options: ["small", "medium", "large", "inherit"]
     }

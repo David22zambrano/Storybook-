@@ -24,7 +24,7 @@ const meta: Meta<typeof Switch> = {
   },
   argTypes: {
     color: {
-      description: "Selecciona entre los colores disponibles",
+      description: "El color del componente.",
       control: "select",
       options: [
         "primary",
@@ -42,19 +42,19 @@ const meta: Meta<typeof Switch> = {
       options: ["small", "medium"],
     },
     disabled: {
-      description: "Deshabilitar el switch",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean",
     },
     checked: {
-      description: "Activa o inactiva el componente",
+      description: "Si `true`, el componente está marcado.",
       control: "boolean",
     },
     title: {
-      description:
-        "Controla la visibilidad del título, permitiendo activarlo o desactivarlo.",
+      description:"El contenido del título",
       control: "text",
     },
     edge:{
+      description:"Si se proporciona, utiliza un margen negativo para contrarrestar el relleno de un lado ",
       control: "radio",
       options: ["end", "start"],
     },

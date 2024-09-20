@@ -22,7 +22,7 @@ const meta: Meta<typeof Rating> = {
       control:"boolean",
     },
     size:{
-      description:"Selecciona el tamaño del componente.",
+      description:"	El tamaño del componente.",
       control:"radio",
       options:["small","medium","large"]
     },

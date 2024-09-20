@@ -17,14 +17,15 @@ const meta: Meta<typeof SpeedDial> = {
   tags: ["autodocs"],
   argTypes: {
     open: {
+      description:"Si `true`, se muestra el componente.",
       control: "boolean",
     },
     icon: {
-      description: "Mostrar u ocultar el icono",
+      description: "El ícono que se mostrará en la fábrica SpeedDial. ",
       control: "boolean",
     },
     direction: {
-      description: "Define la orientación, eligiendo entre down, up, left, right.",
+      description: "La dirección en la que se abren las acciones en relación con el botón de acción flotante.",
       control: "radio",
       options: ["down", "up", "left", "right"],
     },

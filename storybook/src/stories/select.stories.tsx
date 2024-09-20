@@ -33,7 +33,7 @@ const meta: Meta<typeof Select> = {
       options: ["filled", "outlined", "standard"],
     },
     size: {
-      description: "Selecciona el tamaño del componente.",
+      description:"El tamaño del componente.",
       control: "radio",
       options: ["small", "medium"],
     },
@@ -46,7 +46,7 @@ const meta: Meta<typeof Select> = {
       control: "boolean",
     },
     color: {
-      description: "Selecciona entre los colores disponibles",
+      description: "El color del componente.",
       control: "select",
       options: [
         "primary",
@@ -59,7 +59,7 @@ const meta: Meta<typeof Select> = {
       ],
     },
     disabled: {
-      description: "Deshabilitar el select",
+      description:"Si `true`, el componente está disabled.",
       control: "boolean",
     },
   },

@@ -21,7 +21,7 @@ const meta: Meta<typeof Button> = {
   },
   argTypes: {
     color: {
-      description: "Selecciona entre los colores disponibles",
+      description: "El color del componente admite colores de tema predeterminados y personalizados",
       control: "select",
       options: [
         "primary",
@@ -34,24 +34,29 @@ const meta: Meta<typeof Button> = {
       ],
     },
     size: {
-      description: "Selecciona el tamaño del componente",
+      description: "El tamaño del componente `small` es equivalente al estilo del botón denso.",
       control: "radio",
       options: ["small", "medium", "large"],
     },
+    variant:{
+      description:"	La variante a utilizar.",
+      control:"radio",
+      options:["text","outlined","contained"]
+    },
     disabled: {
-      description:"Deshabilitar el button",
+      description:"Si `true`, el componente está deshabilitado.",
       control: "boolean",
     },
     children: {
-      description:"Introduce el texto que deseas mostrar aquí.",
+      description:"	El contenido del componente.",
       control: "text",
     },
     endIcon: {
-      description:"Muestra un ícono al final del componente",
+      description:"Elemento colocado después de los `children`.",
       control: "boolean",
     },
     startIcon: {
-      description:"Muestra un ícono al inicio del componente.",
+      description:"Elemento colocado delante de los `children`.",
       control: "boolean",
     },
   },

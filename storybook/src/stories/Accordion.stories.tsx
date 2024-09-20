@@ -20,7 +20,7 @@ const meta: Meta<typeof Accordion> = {
   },
   argTypes: {
     expanded: {
-      description: "Expande el accordion",
+      description: "Si `true`, expande el acordeón, de lo contrario lo contrae.",
       control: "boolean"
     },
     defaultExpanded:{

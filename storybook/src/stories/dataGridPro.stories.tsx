@@ -2,7 +2,7 @@ import { Box, ThemeProvider } from "@mui/material";
 import { DataGridPro, GridColDef } from "@mui/x-data-grid-pro";
 import { Meta, StoryObj } from "@storybook/react";
 import { SincoTheme } from "../Theme";
-import "./Generales";
+import "./Generales"
 
 const meta: Meta<typeof DataGridPro> = {
   title: "Mui x/DataGridPro",
@@ -19,10 +19,10 @@ const meta: Meta<typeof DataGridPro> = {
     layout: "centered",
   },
   argTypes: {
-    density: {
-      description: "Modifica la densisad del componente `standard`,`compact`,`comfortable` ",
-      control: "radio",
-      options: ["standard", "compact", "comfortable"]
+    density:{
+      description:"	Establezca la densidad de la cuadrícula de datos.",
+        control:"radio",
+        options:["standard","compact","comfortable"]
     },
 
   },
@@ -35,7 +35,7 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
     field: "firstName",
     headerName: "First name",
     width: 150,
-
+    
   },
   {
     field: "lastName",
@@ -48,7 +48,7 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
     headerName: "Age",
     type: "number",
     width: 110,
-
+    
   },
   {
     field: "fullName",
@@ -74,26 +74,25 @@ const rows = [
 ];
 export const DataGridProStory: Story = {
   name: "DataGridPro",
-  args: {
-    density: "standard"
-  },
-  render: ({ density }) => (
-    <Box
-      sx={(theme) => ({
-        height: 400,
-        width: '100%',
-        '& .MuiDataGrid-row': {
-          ":hover>.MuiDataGrid-cell--editable": {
-            bgcolor: 'rgb(217 243 190)',
-            ...theme.applyStyles('light', {
-              bgcolor: theme.palette.chipPrimary.main,
-            }),
-          }
-        },
-      })}
-    >
+args:{
+    density:"standard"
+},
+  render: ({density}) => (
+     <Box
+    sx={(theme) => ({
+      height: 400,
+      width: '100%',
+      '& .MuiDataGrid-cell--editable': {
+        bgcolor: 'rgb(217 243 190)',
+        ...theme.applyStyles('dark', {
+          bgcolor: '#376331',
+          
+        }),
+      },
+    })}
+  >
       <DataGridPro
-        density={density}
+      density={density}
         rows={rows}
         columns={columns}
         isCellEditable={(params) => params.row.age % 2 === 0}

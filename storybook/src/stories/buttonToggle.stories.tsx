@@ -34,16 +34,16 @@ export default {
       ],
     },
     size: {
-      description: "Selecciona el tamaño del componente",
+      description: "El tamaño del componente. ",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     disabled: {
-      description: "Deshabilitar el ToggleButton",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean",
     },
     children:{
-      description: "Contenido dentro del toggle button",
+      description: "El contenido del componente.",
       control: "boolean"
     }
   },

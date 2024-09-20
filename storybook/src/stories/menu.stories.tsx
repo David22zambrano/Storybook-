@@ -30,7 +30,7 @@ const meta: Meta<typeof MenuItem> = {
   },
   argTypes: {
     dense:{
-      description: "Activa o desactiva el modo dense del componente.",
+      description: "Si truese utiliza , se utiliza un relleno vertical compacto diseñado para la entrada mediante teclado y mouse. La propiedad tiene como valor predeterminado el valor heredado del componente Menú principal.",
       control:"boolean"
     },
   },
