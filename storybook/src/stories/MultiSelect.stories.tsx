@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, ThemeProvider } from "@mui/material";
+import { Button, Stack, ThemeProvider } from "@mui/material";
 import { useCallback, useState } from "react";
 import { SincoTheme } from "../Theme";
 import { MultiSelect } from "./MultiSelect";
@@ -24,22 +24,44 @@ const meta: Meta<typeof MultiSelect> = {
     ],
     argTypes: {
         dense: {
-            description: "si es `true` Activa modo dense ",
+            description: "si es `true` Activa modo dense.",
             control: "boolean"
-        }
+        },
+        items: {
+            description: "Array[]: any "
+        },
+        acciones: {
+            description: "Contenedor de acciones."
+        },
+        anchorEl: {
+            description: "Se utiliza para establecer la posición del elemento emergente.",
+        },
+        open: {
+            description: "Si es `true`, se muestra el componente"
+        },
+        topPanel: {
+            description: "Contenedor del encabezado del componente en caso que se desee otro contenido"
+        },
+        filterFunction: () => { },
+        getItemLabel: () => { },
+        onClose: () => { },
     },
 };
 export default meta;
 type Story = StoryObj<typeof MultiSelect>;
 
-
-
-export const PageHeaderExmaple: Story = {
-    name: "PageHeader",
+export const MultiSelectExample: Story = {
+    name: "MultiSelect",
     args: {
         dense: false
     },
     render: ({ dense }) => {
+        const itemsArray = [
+            { id: '1', name: 'Manzana', color: 'Rojo' },
+            { id: '2', name: 'Banana', color: 'Amarillo' },
+            { id: '3', name: 'Pera', color: 'Verde' },
+            { id: '4', name: 'Uva', color: 'Morado' },
+        ];
 
         const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
         const [open, setOpen] = useState(false);
@@ -54,14 +76,6 @@ export const PageHeaderExmaple: Story = {
             setAnchorEl(null);
         }, []);
 
-
-        const itemsArray = [
-            { id: '1', name: 'Manzana', color: 'Rojo' },
-            { id: '2', name: 'Banana', color: 'Amarillo' },
-            { id: '3', name: 'Pera', color: 'Verde' },
-            { id: '4', name: 'Uva', color: 'Morado' },
-        ];
-
         const customFilterFunction = (items: any[], filterText: string): any[] => {
             return items.filter((item) =>
                 item.name.toLowerCase().includes(filterText.toLowerCase())
@@ -69,7 +83,6 @@ export const PageHeaderExmaple: Story = {
         };
         return (
             <>
-
                 <Button color="primary" size="small" variant="text" onClick={handleOpen}>
                     Ver multiSelect
                 </Button>
@@ -82,6 +95,16 @@ export const PageHeaderExmaple: Story = {
                     items={itemsArray}
                     getItemLabel={(item) => item.name}
                     filterFunction={customFilterFunction}
+                    acciones={
+                        <Stack height={"auto"} flexDirection={"row"} justifyContent={"space-between"} py={2} px={1} >
+                            <Button size="small" color="primary" variant="text">
+                                Limpiar
+                            </Button>
+                            <Button size="small" color="primary" variant="contained">
+                                Aplicar
+                            </Button>
+                        </Stack>
+                    }
                 />
 
             </>

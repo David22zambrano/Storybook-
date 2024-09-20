@@ -4,12 +4,12 @@ import { Box, Button, IconButton, LinearProgress, Stack, SxProps, Typography } f
 import { useDropzone } from "react-dropzone";
 
 export interface AdjuntarProps {
-  fecthDB: (archivos: File[]) => any;
+  controlArchivo: (archivos: File[]) => any;
   compact?: boolean;
   sx?: SxProps;
 }
 
-export const AdjuntarArchivo = ({ compact, sx, fecthDB }: AdjuntarProps) => {
+export const AdjuntarArchivo = ({ compact, sx, controlArchivo }: AdjuntarProps) => {
 
   const [archivos, setArchivos] = useState<
     { file: File; progress: number; loadingComplete: boolean }[]
@@ -135,7 +135,7 @@ export const AdjuntarArchivo = ({ compact, sx, fecthDB }: AdjuntarProps) => {
 
   const controlEventoAdjuntar = (e: React.MouseEvent) => {
     e.stopPropagation();
-    fecthDB(archivos.map((e) => e.file));
+    controlArchivo(archivos.map((e) => e.file));
     setArchivos([]);
     localStorage.removeItem("archivos");
   };

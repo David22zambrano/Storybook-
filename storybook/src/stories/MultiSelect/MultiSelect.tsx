@@ -1,5 +1,5 @@
 import { Button, Checkbox, ListItemIcon, MenuItem, Popover, Stack, TextField } from "@mui/material";
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 
 export interface MultiSelectProps {
     topPanel?: React.ReactNode;
@@ -9,24 +9,24 @@ export interface MultiSelectProps {
     open: boolean;
     items: any[];
     onClose?: () => void;
-    filterFunction: (items: any[], filterText: string) => any[];
+    filterFunction: (items: any[], filtroTexto: string) => any[];
     getItemLabel: (item: any) => string;
 }
 
 export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFunction, getItemLabel, anchorEl, dense }: MultiSelectProps) => {
 
-    const [filterText, setFilterText] = useState(" ");
-    const [selectedItems, setSelectedItems] = useState<any[]>([]);
+    const [filtroTexto, setFiltroTexto] = useState(" ");
+    const [itemSeleccionado, setItemSeleccionado] = useState<any[]>([]);
 
-    const filteredItems = filterFunction(items, filterText);
+    const filteredItems = filterFunction(items, filtroTexto);
 
-    const handleTextFieldChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        setFilterText(e.target.value);
+    const controlCambioTextfield = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+        setFiltroTexto(e.target.value);
     }, []);
 
-    const handleCheckboxChange = useCallback(
+    const controlItemSeleccionado = useCallback(
         (item: any) => {
-            setSelectedItems((prevSelected) =>
+            setItemSeleccionado((prevSelected) =>
                 prevSelected.includes(item)
                     ? prevSelected.filter((selectedItem) => selectedItem !== item)
                     : [...prevSelected, item]
@@ -35,16 +35,16 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
         []
     );
 
-    const handleAllItemsSelected = useCallback(() => {
-        const allSelected = selectedItems.length === filteredItems.length;
-        setSelectedItems(allSelected ? [] : filteredItems);
-    }, [filteredItems, selectedItems]);
+    const controlSelecionarTodos = useCallback(() => {
+        const allSelected = itemSeleccionado.length === filteredItems.length;
+        setItemSeleccionado(allSelected ? [] : filteredItems);
+    }, [filteredItems, itemSeleccionado]);
 
-    const isAllSelected = filteredItems.length > 0 && selectedItems.length === filteredItems.length;
+    const isAllSelected = filteredItems.length > 0 && itemSeleccionado.length === filteredItems.length;
 
     const sortedFilteredItems = [
-        ...filteredItems.filter((item) => selectedItems.includes(item)),
-        ...filteredItems.filter((item) => !selectedItems.includes(item)),
+        ...filteredItems.filter((item) => itemSeleccionado.includes(item)),
+        ...filteredItems.filter((item) => !itemSeleccionado.includes(item)),
     ];
 
     return (
@@ -67,8 +67,8 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
                             fullWidth
                             size="small"
                             label="Buscar"
-                            value={filterText}
-                            onChange={handleTextFieldChange}
+                            value={filtroTexto}
+                            onChange={controlCambioTextfield}
                         />
                     )}
                 </Stack>
@@ -76,7 +76,7 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
                 <Stack height={"auto"} maxHeight={"300px"} overflow={"auto"} >
 
                     {sortedFilteredItems.length > 2 && (
-                        <MenuItem dense={dense} onClick={handleAllItemsSelected}>
+                        <MenuItem dense={dense} onClick={controlSelecionarTodos}>
                             <ListItemIcon>
                                 <Checkbox checked={isAllSelected} />
                             </ListItemIcon>
@@ -86,9 +86,9 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
 
                     {sortedFilteredItems.length > 0 ? (
                         sortedFilteredItems.map((item, index) => (
-                            <MenuItem dense={dense} key={index} onClick={() => handleCheckboxChange(item)}>
+                            <MenuItem dense={dense} key={index} onClick={() => controlItemSeleccionado(item)}>
                                 <ListItemIcon>
-                                    <Checkbox checked={selectedItems.includes(item)} />
+                                    <Checkbox checked={itemSeleccionado.includes(item)} />
                                 </ListItemIcon>
                                 {getItemLabel(item)}
                             </MenuItem>

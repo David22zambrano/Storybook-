@@ -84,7 +84,6 @@ export const components: Components<Theme> = {
       density: "compact",
     },
     styleOverrides: {
-
       columnHeader: {
         minHeight: 22,
         maxHeight: 22,
@@ -140,6 +139,7 @@ export const components: Components<Theme> = {
         borderTop: "1px solid rgba(228, 236, 244, 1)",
       },
       root: {
+
         // FONT-SIZE DE CELDA EN MODO EDICION
         ".MuiInputBase-root": {
           fontFamily: "Roboto",
@@ -316,6 +316,17 @@ export const components: Components<Theme> = {
                 opacity: "54%",
               }
             }
+          },
+          {
+            props: { variant: "outlined", color: "default" },
+            style: {
+              color: theme.palette.action.active,
+              opacity: "54%",
+              ":hover": {
+                color: theme.palette.action.active,
+                opacity: "54%",
+              }
+            }
           }
         ]
       }),
@@ -468,15 +479,6 @@ export const components: Components<Theme> = {
               backgroundColor: theme.palette.chipWarning.main,
               ":hover": {
                 backgroundColor: theme.palette.chipWarning.dark,
-              },
-            },
-          },
-          {
-            props: { variant: "standard", color: "default" },
-            style: {
-              backgroundColor: theme.palette.default.main,
-              ":hover": {
-                backgroundColor: theme.palette.default.dark,
               },
             },
           },

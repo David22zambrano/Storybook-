@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProvider, Autocomplete, Stack, TextField } from "@mui/material";
-import { SincoTheme } from "../Theme";
 import ClearIcon from "@mui/icons-material/Clear"; 
+import { SincoTheme } from "../Theme";
 import "./Generales";
 
 const meta: Meta<typeof Autocomplete> = {

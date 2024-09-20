@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, Stack } from "@mui/material";
+import { ThemeProvider, Stack, Typography } from "@mui/material";
 import { SincoTheme } from "../Theme";
 import { AdjuntarArchivo } from "./Adjuntar";
 import "./Generales";
@@ -23,6 +23,9 @@ const meta: Meta<typeof AdjuntarArchivo> = {
         compact: {
             description: "Modifica la orientacion del componente",
             control: "boolean"
+        },
+        controlArchivo: {
+            description: "controlArchivo: `(archivos: File[]) => any;`"
         }
     },
 };
@@ -33,11 +36,12 @@ export const AdjuntarArchivos: Story = {
     name: "Adjuntar archivos",
     args: {
         compact: false,
-        fecthDB: () => { console.log }
+        controlArchivo: () => { console.log }
     },
     render: (args) => {
         return (
-            <Stack width={"400px"}>
+            <Stack width={"400px"} gap={1}>
+                <Typography variant="h6" textAlign="center" >El componente adjuntar se adapta al width del parent contenedor</Typography>
                 <AdjuntarArchivo {...args} />
             </Stack>
 

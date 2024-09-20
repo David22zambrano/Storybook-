@@ -56,7 +56,7 @@ const meta: Meta<typeof Chip> = {
       options: [true, false]
     },
     onDelete: {
-      description: "L de eliminar",
+      description: "Se activa la devolución de llamada cuando se hace clic en el ícono de eliminar. Si se configura, se mostrará el ícono de eliminar.",
     },
     
   },
@@ -93,8 +93,8 @@ export const ChipStory: Story = {
   },
 };
 
-export const ChipDefault: Story = {
-  name: "Chip default",
+export const ChipSimple: Story = {
+  name: "Chip simple",
   args: {
   },
   render: () => {
@@ -104,8 +104,6 @@ export const ChipDefault: Story = {
         size="medium"
         avatar={<Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>}
         icon={<Add fontSize="small" />}
-        onClick={() => { }}
-        onDelete={() => { }}
       />
     )
   }
@@ -114,8 +112,8 @@ export const ChipDefault: Story = {
 export const ChipIcon: Story = {
   name: "Chip con icono",
   args: {
-    color: "primary",
     size: "medium",
+    color: "default",
     icon: <Add fontSize="small" />,
     label: "chip",
     variant: "filled",
@@ -125,11 +123,11 @@ export const ChipIcon: Story = {
 export const ChipAvatar: Story = {
   name: "Chip con avatar",
   args: {
-    color: "primary",
+    color: "default",
     size: "medium",
     icon: <Add fontSize="small" />,
     label: "Chip",
-    variant: "filled",
+    variant: "standard",
     avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>
   },
 };
@@ -138,11 +136,11 @@ export const ChipAvatar: Story = {
 export const ChipDelete: Story = {
   name: "Chip deletable",
   args: {
-    color: "primary",
+    color: "default",
     size: "medium",
     icon: <Add fontSize="small" />,
     label: "Chip",
-    variant: "filled",
+    variant: "standard",
     avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>,
     onDelete: () => { },
   },
@@ -156,11 +154,11 @@ export const ChipDelete: Story = {
 export const ChipCilckeable: Story = {
   name: "Chip con avatar",
   args: {
-    color: "primary",
+    color: "default",
     size: "medium",
     icon: <Add fontSize="small" />,
     label: "Chip",
-    variant: "filled",
+    variant: "standard",
     avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>,
     onClick: () => { }
   },
@@ -174,7 +172,7 @@ export const ChipCilckeable: Story = {
 export const ChipClickeableDeletable: Story = {
   name: "Chip clickeable y deletable",
   args: {
-    color: "primary",
+    color: "default",
     size: "medium",
     icon: <Add fontSize="small" />,
     label: "Chip",

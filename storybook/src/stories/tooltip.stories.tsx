@@ -1,4 +1,4 @@
-import {  ThemeProvider, Tooltip, Typography } from "@mui/material";
+import { ThemeProvider, Tooltip, Typography } from "@mui/material";
 import { Meta, StoryObj } from "@storybook/react";
 import { SincoTheme } from "../Theme";
 
@@ -39,7 +39,11 @@ const meta: Meta<typeof Tooltip> = {
         "top",
       ],
     },
-    
+    arrow: {
+      description: "Si es `true`, agrega una flecha a la información sobre herramientas.",
+      control: "boolean"
+    }
+
   },
 };
 export default meta;
@@ -49,13 +53,15 @@ export const button: Story = {
   name: "tooltip",
   args: {
     title: "tooltip",
-    placement:"bottom", 
+    placement: "bottom",
+    arrow: true
   },
-  render: ({ title,placement}) => (
-    <Tooltip 
-    title={title}
-    placement={placement}>
-      <Typography>El tooltip se despliega al hacer hover</Typography>
+  render: ({ title, placement, arrow }) => (
+    <Tooltip
+      arrow={arrow}
+      title={title}
+      placement={placement}>
+      <Typography variant="h6" color="text.primary" >El tooltip se muestra al hacer hover sobre el texto</Typography>
     </Tooltip>
   ),
 };

@@ -29,12 +29,12 @@ const meta: Meta<typeof Checkbox> = {
       options: ["small", "medium", "large"],
     },
     color: {
-      description: "Colores disponibles",
+      description: "Aplica los estilos del tema proporcionado al componente",
       control: "select",
       options: ["primary", "secondary", "error", "warning", "info", "success"],
     },
     disabled: {
-      description: "Deshabilitar checkbox",
+      description: "Si es `true`, el componente es disabled",
       control: "boolean",
     },
   },

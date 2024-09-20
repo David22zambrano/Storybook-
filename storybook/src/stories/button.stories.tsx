@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ThemeProvider, Button, IconButton } from "@mui/material";
+import { ThemeProvider, Button, IconButton, Typography, Stack } from "@mui/material";
 import { Delete, Person } from "@mui/icons-material";
 import { SincoTheme } from "../Theme";
 import "./Generales";
@@ -88,7 +88,9 @@ export const ButtonWhitIcon: Story = {
   name: "Button witdh icons",
   render: () => (
     <>
-      <Button size="small" variant="contained" startIcon={<Delete />}>
+    <Typography >Button size: small | medium | large </Typography>
+    <Stack>
+    <Button size="small" variant="contained" startIcon={<Delete />}>
         Button with Icon
       </Button>
       <Button size="medium" variant="contained" startIcon={<Delete />}>
@@ -97,6 +99,8 @@ export const ButtonWhitIcon: Story = {
       <Button size="large" variant="contained" startIcon={<Delete />}>
         Button with Icon
       </Button>
+    </Stack>
+
     </>
   ),
 };
