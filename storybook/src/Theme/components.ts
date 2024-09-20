@@ -84,9 +84,32 @@ export const components: Components<Theme> = {
     styleOverrides: {
 
       columnHeader: {
-        minHeight: 22,
-        maxHeight: 22,
-        lineHeight: 22,
+        variants: [
+          {
+            props: { density: "compact" },
+            style: {
+              "--height": "24px",
+              minHeight: "24px !important",
+              maxHeight: "24px !important",
+            },
+          },
+          {
+            props: { density: "standard" },
+            style: {
+              "--height": "36px",
+              minHeight: "36px !important",
+              maxHeight: "36px !important",
+            },
+          },
+          {
+            props: { density: "comfortable" },
+            style: {
+              "--height": "52px",
+              minHeight: "52px !important",
+              maxHeight: "52px !important",
+            },
+          },
+        ],
       },
       iconButtonContainer: {
         fontSize: 16,
