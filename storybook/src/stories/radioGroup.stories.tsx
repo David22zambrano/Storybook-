@@ -26,27 +26,26 @@ const meta: Meta<typeof Radio> = {
   },
   argTypes: {
     size: {
-      description: "Selecciona entre los tamaños disponibles",
+      description:
+        "El tamaño del componente `small` es equivalente al estilo de radio denso.",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     color: {
-      description: "Selecciona entre los colores disponibles",
+      description: "	El color del componente.",
       control: "select",
       options: ["primary", "secondary", "error", "warning", "info", "success"],
     },
     disabled: {
-      description: "Deshabilitar el radio",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean",
     },
     checked: {
-      description:
-        "Modifica el estado del radio a `checked` en la opcion seleccionada",
+      description: "Si `true`, el componente está marcado.",
     },
 
     title: {
-      description:
-        "Controla la visibilidad del título, permitiendo activarlo o desactivarlo.",
+      description: "El contenido del título",
       control: "text",
     },
   },

@@ -45,19 +45,12 @@ const meta: Meta<typeof Drawer> = {
     showActions: {
       description: "Si es `true` las actiones se muestran siempre fijas las acciones  "
     },
-    color: {
-      description: "Color de fuente del titulo",
-      control: "select",
-      options: [
-        "text.primary", "text.secondary",
-      ]
-    },
     headerColor: {
       description: "Background-color del header",
       control: "text"
     },
     open: {
-      description: "si es `true` se despliega el Drawer"
+      description: "Si `true`, se muestra el componente."
     }
   },
 };
@@ -68,7 +61,6 @@ type Story = StoryObj<typeof Drawer>;
 export const DrawerStory: Story = {
   name: "Sinco Drawer",
   args: {
-    color: "text.primary",
     width: "500px",
     title: "Titulo drawer",
     anchor: "right",

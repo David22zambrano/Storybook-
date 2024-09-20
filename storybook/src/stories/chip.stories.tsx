@@ -20,43 +20,43 @@ const meta: Meta<typeof Chip> = {
   },
   argTypes: {
     size: {
-      description: "Selecciona entre los tamaños disponibles",
+      description: "El tamaño del componente.",
       options: ["small", "medium"],
       control: "radio",
     },
     variant: {
-      description: "Elige entre las variantes disponibles",
-      options: ["outlined", "filled", "standard"],
+      description: "La variante a utilizar.",
+      options: ["outlined", "standard", "standard"],
       control: "radio",
     },
     color: {
-      description: "Selecciona entre los colores disponibles",
+      description: "El color del componente admite colores de tema predeterminados y personalizados",
       options: ["primary", "secondary", "error", "success", "info", "warning", "default"],
       control: "select",
     },
     label: {
-      description: "Texto dentro del chip",
+      description: "El contenido del componente.",
       control: "text",
     },
     icon: {
-      description: "Mostrar u ocultar el icono",
+      description: "Elemento de icono.",
       control: "boolean",
       defaultValue: false,
       options: [true, false]
     },
     avatar: {
-      description: "Mostrar u ocultar el avatar",
+      description: "El elemento Avatar a mostrar.",
       control: "boolean",
       defaultValue: false,
       options: [true, false]
     },
     disabled: {
-      description: "Activa el modo disabled en el componente",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean",
       options: [true, false]
     },
     onDelete: {
-      description: "Activa el modo disabled en el componente",
+      description: "Se activa la devolución de llamada cuando se hace clic en el ícono de eliminar. Si se configura, se mostrará el ícono de eliminar.",
     },
     
   },
@@ -118,7 +118,7 @@ export const ChipIcon: Story = {
     size: "medium",
     icon: <Add fontSize="small" />,
     label: "chip",
-    variant: "filled",
+    variant: "standard",
   },
 };
 
@@ -129,7 +129,7 @@ export const ChipAvatar: Story = {
     size: "medium",
     icon: <Add fontSize="small" />,
     label: "Chip",
-    variant: "filled",
+    variant: "standard",
     avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>
   },
 };
@@ -142,7 +142,7 @@ export const ChipDelete: Story = {
     size: "medium",
     icon: <Add fontSize="small" />,
     label: "Chip",
-    variant: "filled",
+    variant: "standard",
     avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>,
     onDelete: () => { },
   },
@@ -160,7 +160,7 @@ export const ChipCilckeable: Story = {
     size: "medium",
     icon: <Add fontSize="small" />,
     label: "Chip",
-    variant: "filled",
+    variant: "standard",
     avatar: <Avatar sx={{ width: 18, height: 18 }}>OP</Avatar>,
     onClick: () => { }
   },

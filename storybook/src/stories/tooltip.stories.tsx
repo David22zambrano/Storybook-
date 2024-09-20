@@ -18,7 +18,7 @@ const meta: Meta<typeof Tooltip> = {
   },
   argTypes: {
     title: {
-      description: "Introduce el título del componente.",
+      description: "El contenido del título",
       control: "text",
     },
     placement: {

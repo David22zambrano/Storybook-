@@ -28,12 +28,12 @@ const meta: Meta<typeof Table> = {
   },
   argTypes: {
     size: {
-      description: "Selecciona entre los tamaños disponibles",
+      description: "Permite que TableCells herede el tamaño de la tabla.",
       options: ["small", "medium"],
       control: "radio",
     },
     stickyHeader: {
-      description: "Fija el encabezado al hacer scroll.",
+      description: "Establezca el encabezado como fijo.",
       control: "boolean",
     },
   },

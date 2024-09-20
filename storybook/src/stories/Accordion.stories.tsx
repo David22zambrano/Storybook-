@@ -20,19 +20,19 @@ const meta: Meta<typeof Accordion> = {
   },
   argTypes: {
     expanded: {
-      description: "Expande el accordion",
+      description: "Si `true`, expande el acordeón, de lo contrario lo contrae.",
       control: "boolean"
     },
     square: {
-      description: "Elimina el ",
+      description: "Si `true`, las esquinas redondeadas están deshabilitadas. ",
       control: "boolean"
     },
     children: {
-      description: "Contenido dentro del AccordionSummary y AccordionDetails",
+      description: "El contenido del componente.",
       control: "text"
     },
     disabled: {
-      description: "Estado disabled",
+      description: "Si `true`, el componente está `disabled`.",
       control: "boolean"
     }
   }

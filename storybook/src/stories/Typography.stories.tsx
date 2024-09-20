@@ -1,9 +1,8 @@
 import "./Generales";
 import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeProvider } from "@mui/material/styles";
-import { Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { SincoTheme } from "../Theme";
-
 
 const meta: Meta<typeof Typography> = {
   title: "Components/Typography",
@@ -21,6 +20,7 @@ const meta: Meta<typeof Typography> = {
   },
   argTypes: {
     color: {
+      description:"El color del componente.",
       control: "select",
       options: [
         "text.primary",
@@ -47,6 +47,7 @@ const meta: Meta<typeof Typography> = {
       ],
     },
     variant: {
+      description:"La variante a utilizar.",
       control: "select",
       options: [
         "h1",
@@ -65,6 +66,7 @@ const meta: Meta<typeof Typography> = {
       ],
     },
     children: {
+      description:"	El contenido del componente.",
       control: "text",
     },
   },
@@ -81,4 +83,35 @@ export const TypographyStorie: Story = {
     children: "Typography",
   },
   render: (args) => <Typography {...args} />,
+};
+
+export const Typographys: Story = {
+  name: "Typographys",
+  render: (props) => {
+    const Typographys = [
+      { variant: "h1" },
+      { variant: "h2" },
+      { variant: "h3" },
+      { variant: "h4" },
+      { variant: "h5" },
+      { variant: "h6" },
+      { variant: "body1" },
+      { variant: "body2" },
+      { variant: "body3" },
+      { variant: "subtitle1" },
+      { variant: "subititle2" },
+      { variant: "caption" },
+      { variant: "overline" },
+    ];
+
+    return (
+      <Stack>
+        {Typographys.map((e, index) => (
+          <Typography key={index} color="textPrimary" variant={props.variant}>
+            Ejemplo tipografia {e.variant}
+          </Typography>
+        ))}
+      </Stack>
+    );
+  },
 };

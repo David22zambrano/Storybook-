@@ -24,17 +24,17 @@ const meta: Meta<typeof Checkbox> = {
       control:"boolean"
     },
     size: {
-      description: "Tamaños disponibles",
+      description: "El tamaño del componente `small `es equivalente al estilo de casilla de verificación densa.",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     color: {
-      description: "Colores disponibles",
+      description: "El color del componente admite colores de tema predeterminados y personalizados",
       control: "select",
       options: ["primary", "secondary", "error", "warning", "info", "success"],
     },
     disabled: {
-      description: "Deshabilitar checkbox",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean",
     },
   },

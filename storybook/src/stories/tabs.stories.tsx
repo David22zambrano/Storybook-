@@ -20,20 +20,19 @@ const meta: Meta<typeof Tab> = {
   },
   argTypes: {
     disabled: {
-      description: "Deshabilitar el tab",
+      description: "Si `true`, el componente está deshabilitado.",
       control: "boolean",
     },
     icon: {
-      description: "Mostrar u ocultar el icono",
+      description: "El icono a mostrar.",
       control: "boolean",
     },
     label: {
-      description: "Texto dentro del tab",
+      description: "La etiqueta del input. ",
       control: "text",
     },
     iconPosition: {
-      description:
-        " Modifica la posicion del label del componente `start` ,`top` ,`end` ,`bottom`",
+      description:"La posición del icono con respecto a la etiqueta.",
       control: "radio",
       options: ["start", "top", "end", "bottom"],
     },

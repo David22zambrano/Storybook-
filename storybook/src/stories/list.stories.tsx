@@ -22,20 +22,20 @@ const meta: Meta<typeof List> = {
   },
   argTypes: {
     dense: {
-      description: "Activa o desactiva el modo dense del componente.",
+      description: "Si truese utiliza un relleno vertical compacto diseñado para la entrada del teclado y del mouse para la lista y los elementos de la lista, la propiedad está disponible para los componentes descendientes como densecontexto.",
       control: "boolean",
     },
     subheader: {
-      description: "Define el texto del subtitulo",
+      description: "El contenido del subtítulo",
       control: "text"
     },
     children: {
-      description: "Controla el contenido del icono o avatar",
+      description: "El contenido del componente.",
       control: 'select',
       options: ["Avatar", "Icono", "Vacio", "checkbox", "Icono y checkBox", "Avatar y checkBox"] 
     },
     title: {
-      description: "Define el texto del titulo",
+      description: "El contenido del título",
       control: "text"
     },
    

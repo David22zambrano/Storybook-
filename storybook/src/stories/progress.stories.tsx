@@ -29,7 +29,7 @@ export const button: Story = {
     },
     argTypes: {
         variant: {
-            description: "Cambia la variante del componente"
+            description: "La variante a utilizar."
         }
     },
     render: () => (

@@ -21,16 +21,16 @@ const meta: Meta<typeof Alert> = {
   },
   argTypes: {
     variant: {
-      description:"Selecciona el tipo de variante del componente.",
+      description:"La variante a utilizar.",
       options: ["outlined", "filled", "standard"],
       control: { type: "radio" },
     },
     children: {
-      description:"Introduce el texto que deseas mostrar aquí.",
+      description:"El contenido del componente",
       control: "text",
     },
     color: {
-      description:"Selecciona entre los colores disponibles",
+      description:"	El color del componente.",
       control: "select",
       options: [
         "primary",
@@ -43,20 +43,20 @@ const meta: Meta<typeof Alert> = {
       ],
     },
     severity: {
-      description:"Elige el ícono según las opciones disponibles",
+      description:"El componente asigna la ` severity` propiedad a una variedad de íconos diferentes",
       control: "select",
       options: ["error", "info", "success", "warning"],
     },
     title: {
-      description:"Introduce el título del componente.",
+      description:"El contenido del título",
       control: "text",
     },
     action:{
-      description:"Permite activar o desactivar el boton.",
+      description:"La acción que se va a mostrar. Se muestra después del mensaje, al final de la alerta.",
       control:"boolean"
     },
     icon:{
-      description:"Permite activar o desactivar el icono.",
+      description:"el icono se asigna al valor de la `severity` propiedad. ",
       control:"boolean"
     }
     

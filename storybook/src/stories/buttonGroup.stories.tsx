@@ -19,26 +19,26 @@ const meta: Meta<typeof ButtonGroup> = {
   },
   argTypes: {
     size: {
-      description:"Selecciona entre los tamaños disponibles",
+      description:"El tamaño del componente `small` es equivalente al estilo del botón denso.",
       control: "radio",
       options: ["small", "medium", "large"],
     },
     color: {
-      description:"Selecciona entre los colores disponibles",
+      description:"El color del componente admite colores de tema predeterminados y personalizados",
       control: "select",
       options: ["primary", "secondary", "error", "warning", "info", "success"],
     },
     children: {
-      description:"Introduce el texto o contenido que deseas mostrar aquí.",
+      description:"El contenido del componente.",
       control: "text",
     },
     variant: {
-      description:"Selecciona entre los colores disponibles",
+      description:"La variante a utilizar.",
       control: "select",
       options: ["text", "outlined", "contained"],
     },
     orientation: {
-      description: "Define la orientación, eligiendo entre horizontal o vertical.",
+      description: "La orientación del componente (dirección del flujo de diseño)",
       control: "radio",
       options: ["horizontal", "vertical"],
     },
