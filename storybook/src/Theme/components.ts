@@ -1,5 +1,5 @@
 import React from "react";
-import type { } from "@mui/x-data-grid/themeAugmentation";
+import type {} from "@mui/x-data-grid/themeAugmentation";
 import { Components, Theme } from "@mui/material";
 import {
   InfoRounded,
@@ -79,18 +79,95 @@ export const components: Components<Theme> = {
   },
   MuiDataGrid: {
     defaultProps: {
-      columnHeaderHeight: 35,
-      rowHeight: 32,
       density: "compact",
     },
     styleOverrides: {
       columnHeader: {
-        minHeight: 22,
-        maxHeight: 22,
-        lineHeight: 22,
+        variants: [
+          {
+            props: { density: "compact" },
+            style: {
+              "--height": "24px",
+              minHeight: "24px !important",
+              maxHeight: "24px !important",
+            },
+          },
+          {
+            props: { density: "standard" },
+            style: {
+              "--height": "36px",
+              minHeight: "36px !important",
+              maxHeight: "36px !important",
+            },
+          },
+          {
+            props: { density: "comfortable" },
+            style: {
+              "--height": "52px",
+              minHeight: "52px !important",
+              maxHeight: "52px !important",
+            },
+          },
+        ],
+      },
+      columnSeparator: {
+        variants: [
+          {
+            props: { density: "compact" },
+            style: {
+              "--height": "24px",
+              minHeight: "24px !important",
+              maxHeight: "24px !important",
+            },
+          },
+          {
+            props: { density: "standard" },
+            style: {
+              "--height": "36px",
+              minHeight: "36px !important",
+              maxHeight: "36px !important",
+            },
+          },
+          {
+            props: { density: "comfortable" },
+            style: {
+              "--height": "52px",
+              minHeight: "52px !important",
+              maxHeight: "52px !important",
+            },
+          },
+        ],
       },
       iconButtonContainer: {
         fontSize: 16,
+      },
+      columnHeaderDraggableContainer: {
+        variants: [
+          {
+            props: { density: "compact" },
+            style: {
+              "--height": "24px",
+              minHeight: "24px !important",
+              maxHeight: "24px !important",
+            },
+          },
+          {
+            props: { density: "standard" },
+            style: {
+              "--height": "36px",
+              minHeight: "36px !important",
+              maxHeight: "36px !important",
+            },
+          },
+          {
+            props: { density: "comfortable" },
+            style: {
+              "--height": "52px",
+              minHeight: "52px !important",
+              maxHeight: "52px !important",
+            },
+          },
+        ],
       },
 
       columnHeaderTitle: {
@@ -99,6 +176,36 @@ export const components: Components<Theme> = {
         fontSize: 13,
         lineHeight: 1.5,
         letterSpacing: 0.17,
+        
+      },
+      
+      row: {
+        variants: [
+          {
+            props: { density: "compact" },
+            style: {
+              "--height": "22px",
+              minHeight: "22px !important",
+              maxHeight: "22px !important",
+            },
+          },
+          {
+            props: { density: "standard" },
+            style: {
+              "--height": "28px",
+              minHeight: "28px !important",
+              maxHeight: "28px !important",
+            },
+          },
+          {
+            props: { density: "comfortable" },
+            style: {
+              "--height": "48px",
+              minHeight: "48px !important",
+              maxHeight: "48px !important",
+            },
+          },
+        ],
       },
 
       cell: {
@@ -107,6 +214,34 @@ export const components: Components<Theme> = {
         fontSize: 12,
         lineHeight: 1.5,
         letterSpacing: 0.17,
+        display: "flex",
+        alignItems: "center",
+        variants: [
+          {
+            props: { density: "compact" },
+            style: {
+              "--height": "22px",
+              minHeight: "22px !important",
+              maxHeight: "22px !important",
+            },
+          },
+          {
+            props: { density: "standard" },
+            style: {
+              "--height": "28px",
+              minHeight: "28px !important",
+              maxHeight: "28px !important",
+            },
+          },
+          {
+            props: { density: "comfortable" },
+            style: {
+              "--height": "48px",
+              minHeight: "48px !important",
+              maxHeight: "48px !important",
+            },
+          },
+        ],
         // COMPONENTES DENTRO DE CELDAS
         ".MuiButtonBase-root": {
           lineHeight: 0,
@@ -166,6 +301,7 @@ export const components: Components<Theme> = {
       },
     },
   },
+
   MuiRating: {
     defaultProps: {
       size: "small",
@@ -280,7 +416,7 @@ export const components: Components<Theme> = {
     defaultProps: {
       size: "small",
       variant: "standard",
-      color: "default"
+      color: "default",
     },
     styleOverrides: {
       icon: {
@@ -293,7 +429,7 @@ export const components: Components<Theme> = {
             style: {
               color: theme.palette.background.paper,
               opacity: "50%",
-            }
+            },
           },
           {
             props: { variant: "standard" },
@@ -303,8 +439,8 @@ export const components: Components<Theme> = {
               ":hover": {
                 color: theme.palette.default.contrastText,
                 opacity: "30%",
-              }
-            }
+              },
+            },
           },
           {
             props: { variant: "outlined" },
@@ -491,8 +627,8 @@ export const components: Components<Theme> = {
       root: {
         display: "flex",
         alignContent: "center",
-      }
-    }
+      },
+    },
   },
   MuiAlert: {
     defaultProps: {
@@ -685,8 +821,8 @@ export const components: Components<Theme> = {
         },
       },
       root: {
-        textTransform: "capitalize"
-      }
+        textTransform: "capitalize",
+      },
     },
   },
 
@@ -789,13 +925,13 @@ export const components: Components<Theme> = {
           transform: "none",
         },
         "&.MuiAutocomplete-root .MuiOutlinedInput-root.MuiInputBase-sizeSmall":
-        {
-          paddingBlock: 3.5,
-          paddingRight: 14,
-          ".MuiIconButton-sizeSmall .MuiAutocomplete-popupIndicator": {
-            padding: 5,
+          {
+            paddingBlock: 3.5,
+            paddingRight: 14,
+            ".MuiIconButton-sizeSmall .MuiAutocomplete-popupIndicator": {
+              padding: 5,
+            },
           },
-        },
       },
     },
   },
@@ -815,15 +951,15 @@ export const components: Components<Theme> = {
       },
       filled: {
         "&.MuiInputLabel-filled.MuiInputLabel-sizeSmall:not(.MuiInputLabel-shrink)":
-        {
-          transform: "translate(12px,9px) scale(1)",
-        },
+          {
+            transform: "translate(12px,9px) scale(1)",
+          },
       },
       standard: {
         "&.MuiInputLabel-standard.MuiInputLabel-sizeSmall:not(.MuiInputLabel-shrink)":
-        {
-          transform: "translate(0, 15px) scale(1)",
-        },
+          {
+            transform: "translate(0, 15px) scale(1)",
+          },
       },
       outlined: {
         "&.MuiInputLabel-outlined.MuiInputLabel-sizeSmall ": {
@@ -955,7 +1091,7 @@ export const components: Components<Theme> = {
       dense: {
         lineHeight: "14.3px",
         letterSpacing: 0.15,
-      }
+      },
     },
   },
 
