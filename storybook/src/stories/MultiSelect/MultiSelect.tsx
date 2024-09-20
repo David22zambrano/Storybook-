@@ -16,35 +16,35 @@ export interface MultiSelectProps {
 export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFunction, getItemLabel, anchorEl, dense }: MultiSelectProps) => {
 
     const [filtroTexto, setFiltroTexto] = useState(" ");
-    const [itemSeleccionado, setItemSeleccionado] = useState<any[]>([]);
+    const [itemsSeleccionados, setItemsSeleccionados] = useState<any[]>([]);
 
-    const filteredItems = filterFunction(items, filtroTexto);
+    const itemsFiltrados = filterFunction(items, filtroTexto);
 
-    const controlCambioTextfield = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const manejarCambioTextField = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         setFiltroTexto(e.target.value);
     }, []);
 
-    const controlItemSeleccionado = useCallback(
+    const manejarCambioCheckbox = useCallback(
         (item: any) => {
-            setItemSeleccionado((prevSelected) =>
-                prevSelected.includes(item)
-                    ? prevSelected.filter((selectedItem) => selectedItem !== item)
-                    : [...prevSelected, item]
+            setItemsSeleccionados((prevSeleccionados) =>
+                prevSeleccionados.includes(item)
+                    ? prevSeleccionados.filter((itemSeleccionado) => itemSeleccionado !== item)
+                    : [...prevSeleccionados, item]
             );
         },
         []
     );
 
-    const controlSelecionarTodos = useCallback(() => {
-        const allSelected = itemSeleccionado.length === filteredItems.length;
-        setItemSeleccionado(allSelected ? [] : filteredItems);
-    }, [filteredItems, itemSeleccionado]);
+    const manejarSeleccionarTodos = useCallback(() => {
+        const todosSeleccionados = itemsSeleccionados.length === itemsFiltrados.length;
+        setItemsSeleccionados(todosSeleccionados ? [] : itemsFiltrados);
+    }, [itemsFiltrados, itemsSeleccionados]);
 
-    const isAllSelected = filteredItems.length > 0 && itemSeleccionado.length === filteredItems.length;
+    const todosSeleccionados = itemsFiltrados.length > 0 && itemsSeleccionados.length === itemsFiltrados.length;
 
-    const sortedFilteredItems = [
-        ...filteredItems.filter((item) => itemSeleccionado.includes(item)),
-        ...filteredItems.filter((item) => !itemSeleccionado.includes(item)),
+    const itemsFiltradosOrdenados = [
+        ...itemsFiltrados.filter((item) => itemsSeleccionados.includes(item)),
+        ...itemsFiltrados.filter((item) => !itemsSeleccionados.includes(item)),
     ];
 
     return (
@@ -66,29 +66,30 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
                         <TextField
                             fullWidth
                             size="small"
+                            placeholder="Escribe algo"
                             label="Buscar"
                             value={filtroTexto}
-                            onChange={controlCambioTextfield}
+                            onChange={manejarCambioTextField}
                         />
                     )}
                 </Stack>
 
                 <Stack height={"auto"} maxHeight={"300px"} overflow={"auto"} >
 
-                    {sortedFilteredItems.length > 2 && (
-                        <MenuItem dense={dense} onClick={controlSelecionarTodos}>
+                    {itemsFiltradosOrdenados.length > 2 && (
+                        <MenuItem dense={dense} onClick={manejarSeleccionarTodos}>
                             <ListItemIcon>
-                                <Checkbox checked={isAllSelected} />
+                                <Checkbox checked={todosSeleccionados} />
                             </ListItemIcon>
                             Todos los items
                         </MenuItem>
                     )}
 
-                    {sortedFilteredItems.length > 0 ? (
-                        sortedFilteredItems.map((item, index) => (
-                            <MenuItem dense={dense} key={index} onClick={() => controlItemSeleccionado(item)}>
+                    {itemsFiltradosOrdenados.length > 0 ? (
+                        itemsFiltradosOrdenados.map((item, index) => (
+                            <MenuItem dense={dense} key={index} onClick={() => manejarCambioCheckbox(item)}>
                                 <ListItemIcon>
-                                    <Checkbox checked={itemSeleccionado.includes(item)} />
+                                    <Checkbox checked={itemsSeleccionados.includes(item)} />
                                 </ListItemIcon>
                                 {getItemLabel(item)}
                             </MenuItem>
