@@ -274,6 +274,7 @@ export const components: Components<Theme> = {
         borderTop: "1px solid rgba(228, 236, 244, 1)",
       },
       root: {
+
         // FONT-SIZE DE CELDA EN MODO EDICION
         ".MuiInputBase-root": {
           fontFamily: "Roboto",
@@ -421,7 +422,6 @@ export const components: Components<Theme> = {
       icon: {
         opacity: "70%",
       },
-
       deleteIcon: ({ theme }) => ({
         variants: [
           {
@@ -450,10 +450,21 @@ export const components: Components<Theme> = {
               ":hover": {
                 color: theme.palette.action.active,
                 opacity: "54%",
-              },
-            },
+              }
+            }
           },
-        ],
+          {
+            props: { variant: "outlined", color: "default" },
+            style: {
+              color: theme.palette.action.active,
+              opacity: "54%",
+              ":hover": {
+                color: theme.palette.action.active,
+                opacity: "54%",
+              }
+            }
+          }
+        ]
       }),
       deleteIconSmall: {
         height: 16,
@@ -480,6 +491,7 @@ export const components: Components<Theme> = {
             props: { variant: "filled" },
             style: {
               backgroundColor: theme.palette.background.paper,
+              opacity: "70%",
               color: theme.palette.default.contrastText,
             },
           },
@@ -606,15 +618,6 @@ export const components: Components<Theme> = {
               },
             },
           },
-          {
-            props: { variant: "standard", color: "default" },
-            style: {
-              backgroundColor: theme.palette.default.main,
-              ":hover": {
-                backgroundColor: theme.palette.default.dark,
-              },
-            },
-          },
         ],
       }),
     },
@@ -685,9 +688,9 @@ export const components: Components<Theme> = {
     styleOverrides: {
       root: {
         marginBottom: 0,
-        marginTop: 2.5,
-      },
-    },
+        marginTop: 2.5
+      }
+    }
   },
   MuiButton: {
     styleOverrides: {

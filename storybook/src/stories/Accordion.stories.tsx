@@ -23,16 +23,19 @@ const meta: Meta<typeof Accordion> = {
       description: "Si `true`, expande el acordeón, de lo contrario lo contrae.",
       control: "boolean"
     },
+    defaultExpanded:{
+      description: "Expande todos los el accordion por defecto"
+    },
     square: {
-      description: "Si `true`, las esquinas redondeadas están deshabilitadas. ",
+      description: "si es `true`, se desabilitan las esquinas redondeadas se desabilitara ",
       control: "boolean"
     },
     children: {
-      description: "El contenido del componente.",
+      description: "Contenido del componete",
       control: "text"
     },
     disabled: {
-      description: "Si `true`, el componente está `disabled`.",
+      description: "Si es `true`, el componente es desabilidato",
       control: "boolean"
     }
   }

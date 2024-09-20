@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import "./Generales";
-import { ThemeProvider } from "@mui/material/styles";
-import { Alert, AlertTitle, Button, IconButton, Typography } from "@mui/material";
-import { SincoTheme } from "../Theme";
+import { ThemeProvider, Alert, AlertTitle, Button, IconButton, Typography } from "@mui/material";
 import { Close } from "@mui/icons-material";
+import { SincoTheme } from "../Theme";
+import "./Generales";
 
 const meta: Meta<typeof Alert> = {
   title: "Components/Alert",

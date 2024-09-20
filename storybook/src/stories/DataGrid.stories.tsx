@@ -73,7 +73,7 @@ const columns: GridColDef<RowData>[] = [
   {
     field: "recruitmentDate",
     headerName: "Recruitment Date",
-    type: "date",  // Cambié el tipo a "date"
+    type: "date",  
     width: 150,
   },
 ];
