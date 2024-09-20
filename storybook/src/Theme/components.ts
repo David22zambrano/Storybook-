@@ -79,8 +79,6 @@ export const components: Components<Theme> = {
   },
   MuiDataGrid: {
     defaultProps: {
-      columnHeaderHeight: 35,
-      rowHeight: 32,
       density: "compact",
     },
     styleOverrides: {
@@ -93,6 +91,34 @@ export const components: Components<Theme> = {
       iconButtonContainer: {
         fontSize: 16,
       },
+      columnHeaderDraggableContainer:{
+        variants: [
+          {
+            props: { density: "compact" },
+            style: {
+              "--height": "24px",
+              minHeight: "24px !important",
+              maxHeight: "24px !important",
+            },
+          },
+          {
+            props: { density: "standard" },
+            style: {
+              "--height": "36px",
+              minHeight: "36px !important",
+              maxHeight: "36px !important",
+            },
+          },
+          {
+            props: { density: "comfortable" },
+            style: {
+              "--height": "52px",
+              minHeight: "52px !important",
+              maxHeight: "52px !important",
+            },
+          },
+        ],
+      },
 
       columnHeaderTitle: {
         fontFamily: "Roboto",
@@ -101,6 +127,34 @@ export const components: Components<Theme> = {
         lineHeight: 1.5,
         letterSpacing: 0.17,
       },
+      row: {
+        variants: [
+          {
+            props: { density: "compact" },
+            style: {
+              "--height": "22px",
+              minHeight: "22px !important",
+              maxHeight: "22px !important",
+            },
+          },
+          {
+            props: { density: "standard" },
+            style: {
+              "--height": "28px",
+              minHeight: "28px !important",
+              maxHeight: "28px !important",
+            },
+          },
+          {
+            props: { density: "comfortable" },
+            style: {
+              "--height": "48px",
+              minHeight: "48px !important",
+              maxHeight: "48px !important",
+            },
+          },
+        ],
+      },
 
       cell: {
         fontFamily: "Roboto",
@@ -108,6 +162,34 @@ export const components: Components<Theme> = {
         fontSize: 12,
         lineHeight: 1.5,
         letterSpacing: 0.17,
+        display: "flex",
+        alignItems: "center",
+        variants: [
+          {
+            props: { density: "compact" },
+            style: {
+              "--height": "22px",
+              minHeight: "22px !important",
+              maxHeight: "22px !important",
+            },
+          },
+          {
+            props: { density: "standard" },
+            style: {
+              "--height": "28px",
+              minHeight: "28px !important",
+              maxHeight: "28px !important",
+            },
+          },
+          {
+            props: { density: "comfortable" },
+            style: {
+              "--height": "48px",
+              minHeight: "48px !important",
+              maxHeight: "48px !important",
+            },
+          },
+        ],
         // COMPONENTES DENTRO DE CELDAS
         ".MuiButtonBase-root": {
           lineHeight: 0,
@@ -286,16 +368,7 @@ export const components: Components<Theme> = {
       icon: {
         opacity: "70%",
       },
-      colorDefault: ({ theme }) => ({
-        variants: [
-          {
-            props: { variant: "standard", avatar: true },
-            style: {
-              
-            }
-          }
-        ],
-      }),
+      
       deleteIcon: ({ theme }) => ({
         variants: [
           {
