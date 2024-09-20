@@ -1,5 +1,5 @@
 import React from "react";
-import type { } from "@mui/x-data-grid/themeAugmentation";
+import type {} from "@mui/x-data-grid/themeAugmentation";
 import { Components, Theme } from "@mui/material";
 import {
   InfoRounded,
@@ -82,8 +82,35 @@ export const components: Components<Theme> = {
       density: "compact",
     },
     styleOverrides: {
-
       columnHeader: {
+        variants: [
+          {
+            props: { density: "compact" },
+            style: {
+              "--height": "24px",
+              minHeight: "24px !important",
+              maxHeight: "24px !important",
+            },
+          },
+          {
+            props: { density: "standard" },
+            style: {
+              "--height": "36px",
+              minHeight: "36px !important",
+              maxHeight: "36px !important",
+            },
+          },
+          {
+            props: { density: "comfortable" },
+            style: {
+              "--height": "52px",
+              minHeight: "52px !important",
+              maxHeight: "52px !important",
+            },
+          },
+        ],
+      },
+      columnSeparator: {
         variants: [
           {
             props: { density: "compact" },
@@ -114,7 +141,7 @@ export const components: Components<Theme> = {
       iconButtonContainer: {
         fontSize: 16,
       },
-      columnHeaderDraggableContainer:{
+      columnHeaderDraggableContainer: {
         variants: [
           {
             props: { density: "compact" },
@@ -149,7 +176,9 @@ export const components: Components<Theme> = {
         fontSize: 13,
         lineHeight: 1.5,
         letterSpacing: 0.17,
+        
       },
+      
       row: {
         variants: [
           {
@@ -271,6 +300,7 @@ export const components: Components<Theme> = {
       },
     },
   },
+
   MuiRating: {
     defaultProps: {
       size: "small",
@@ -385,13 +415,13 @@ export const components: Components<Theme> = {
     defaultProps: {
       size: "small",
       variant: "standard",
-      color: "default"
+      color: "default",
     },
     styleOverrides: {
       icon: {
         opacity: "70%",
       },
-      
+
       deleteIcon: ({ theme }) => ({
         variants: [
           {
@@ -399,7 +429,7 @@ export const components: Components<Theme> = {
             style: {
               color: theme.palette.background.paper,
               opacity: "50%",
-            }
+            },
           },
           {
             props: { variant: "standard" },
@@ -409,8 +439,8 @@ export const components: Components<Theme> = {
               ":hover": {
                 color: theme.palette.default.contrastText,
                 opacity: "30%",
-              }
-            }
+              },
+            },
           },
           {
             props: { variant: "outlined" },
@@ -420,10 +450,10 @@ export const components: Components<Theme> = {
               ":hover": {
                 color: theme.palette.action.active,
                 opacity: "54%",
-              }
-            }
-          }
-        ]
+              },
+            },
+          },
+        ],
       }),
       deleteIconSmall: {
         height: 16,
@@ -594,8 +624,8 @@ export const components: Components<Theme> = {
       root: {
         display: "flex",
         alignContent: "center",
-      }
-    }
+      },
+    },
   },
   MuiAlert: {
     defaultProps: {
@@ -633,31 +663,31 @@ export const components: Components<Theme> = {
         alignItems: "center",
       },
       action: {
-         display: "flex",
-         gap: 1.5,
-         padding: "0px",
+        display: "flex",
+        gap: 1.5,
+        padding: "0px",
       },
 
       root: {
-         padding: "8px 12px 8px 12px",
-         borderRadius: "8px",
-         display: "flex",
-         alignItems: "center",
-         gap: 1.5,
-         minWidth: "296px",
+        padding: "8px 12px 8px 12px",
+        borderRadius: "8px",
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5,
+        minWidth: "296px",
       },
     },
   },
-  MuiAlertTitle:{
-   defaultProps:{
-     variant: "subtitle2",
-   },
-   styleOverrides:{
-    root:{
-      marginBottom:0,
-      marginTop:2.5
-    }
-   }
+  MuiAlertTitle: {
+    defaultProps: {
+      variant: "subtitle2",
+    },
+    styleOverrides: {
+      root: {
+        marginBottom: 0,
+        marginTop: 2.5,
+      },
+    },
   },
   MuiButton: {
     styleOverrides: {
@@ -788,8 +818,8 @@ export const components: Components<Theme> = {
         },
       },
       root: {
-        textTransform: "capitalize"
-      }
+        textTransform: "capitalize",
+      },
     },
   },
 
@@ -892,13 +922,13 @@ export const components: Components<Theme> = {
           transform: "none",
         },
         "&.MuiAutocomplete-root .MuiOutlinedInput-root.MuiInputBase-sizeSmall":
-        {
-          paddingBlock: 3.5,
-          paddingRight: 14,
-          ".MuiIconButton-sizeSmall .MuiAutocomplete-popupIndicator": {
-            padding: 5,
+          {
+            paddingBlock: 3.5,
+            paddingRight: 14,
+            ".MuiIconButton-sizeSmall .MuiAutocomplete-popupIndicator": {
+              padding: 5,
+            },
           },
-        },
       },
     },
   },
@@ -918,15 +948,15 @@ export const components: Components<Theme> = {
       },
       filled: {
         "&.MuiInputLabel-filled.MuiInputLabel-sizeSmall:not(.MuiInputLabel-shrink)":
-        {
-          transform: "translate(12px,9px) scale(1)",
-        },
+          {
+            transform: "translate(12px,9px) scale(1)",
+          },
       },
       standard: {
         "&.MuiInputLabel-standard.MuiInputLabel-sizeSmall:not(.MuiInputLabel-shrink)":
-        {
-          transform: "translate(0, 15px) scale(1)",
-        },
+          {
+            transform: "translate(0, 15px) scale(1)",
+          },
       },
       outlined: {
         "&.MuiInputLabel-outlined.MuiInputLabel-sizeSmall ": {
@@ -1058,7 +1088,7 @@ export const components: Components<Theme> = {
       dense: {
         lineHeight: "14.3px",
         letterSpacing: 0.15,
-      }
+      },
     },
   },
 
