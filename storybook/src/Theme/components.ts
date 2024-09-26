@@ -36,16 +36,16 @@ export const components: Components<Theme> = {
   MuiSpeedDialAction: {
     styleOverrides: {
       fab: {
-        height: 40,
-        width: 40,
+        minHeight: 40,
+        minWidth: 40,
       },
     },
   },
   MuiSpeedDial: {
     styleOverrides: {
       fab: {
-        height: 56,
-        width: 56,
+        minHeight: 44,
+        minWidth: 44,
       },
     },
   },
@@ -177,8 +177,7 @@ export const components: Components<Theme> = {
         lineHeight: 1.5,
         letterSpacing: 0.17,
         
-      },
-      
+      },  
       row: {
         variants: [
           {
@@ -274,7 +273,7 @@ export const components: Components<Theme> = {
         borderTop: "1px solid rgba(228, 236, 244, 1)",
       },
       root: {
-
+  
         // FONT-SIZE DE CELDA EN MODO EDICION
         ".MuiInputBase-root": {
           fontFamily: "Roboto",
@@ -768,7 +767,6 @@ export const components: Components<Theme> = {
           "0px 1px 18px 0px rgba(24, 39, 75, 0.12), 0px 6px 10px 0px rgba(24, 39, 75, 0.14), 0px 3px 5px -1px rgba(24, 39, 75, 0.20)",
         sizeSmall: {
           height: 36,
-          width: 36,
           svg: {
             height: 20,
             width: 20,
@@ -776,7 +774,6 @@ export const components: Components<Theme> = {
         },
         sizeMedium: {
           height: 48,
-          width: 48,
           svg: {
             height: 22,
             width: 22,
@@ -784,7 +781,6 @@ export const components: Components<Theme> = {
         },
         sizeLarge: {
           height: 56,
-          width: 56,
           svg: {
             height: 24,
             width: 24,
@@ -804,7 +800,7 @@ export const components: Components<Theme> = {
           },
         },
         sizeMedium: {
-          height: 38,
+          height: 36,
           svg: {
             height: 22,
             width: 22,
@@ -812,7 +808,7 @@ export const components: Components<Theme> = {
           },
         },
         sizeLarge: {
-          height: 48,
+          height: 46,
           svg: {
             height: 24,
             width: 24,
@@ -838,6 +834,7 @@ export const components: Components<Theme> = {
     },
   },
   MuiSvgIcon: {
+ 
     styleOverrides: {
       fontSizeLarge: {
         width: 35,
@@ -854,6 +851,10 @@ export const components: Components<Theme> = {
         height: 16,
         fontSize: 16,
       },
+      root:{
+        fontSize:24
+      }
+   
     },
   },
   MuiIconButton: {
