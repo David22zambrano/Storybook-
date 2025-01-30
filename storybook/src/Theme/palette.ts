@@ -123,6 +123,7 @@ export const BasicPalette: Partial<PaletteOptions> = {
     disabledBackground: "#1018401f",
     focus: "#1018401f",
   },
+  
   background: {
     default: "#f5f5f5",
     paper: "#fff",
@@ -132,7 +133,7 @@ export const BasicPalette: Partial<PaletteOptions> = {
     white: "#fff",
   },
   divider: "#0000001f",
-  default: {
+  chipDefault: {
     main: "#E4E5E7",
     dark: "#D1D3D7",
     light: "#F2F2F3",
@@ -207,7 +208,6 @@ export const paletteADPRO: PaletteOptions = {
     A200: "#65E9FF",
     A400: "#32E1FF",
     A700: "#32E1FF",
-    contrastText: "#ffffff",
   },
   secondary: {
     50: "#E0F7FA",
@@ -257,7 +257,6 @@ export const paletteADC: PaletteOptions = {
     A200: "#65E9FF",
     A400: "#32E1FF",
     A700: "#32E1FF",
-    contrastText: "#ffffff",
   },
   secondary: {
     50: "#E0F7FA",

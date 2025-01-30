@@ -72,6 +72,7 @@ export const TextFieldStory: Story = {
   args: {
     size: "small",
     variant: "outlined",
+    placeholder: "Placerholder",
     label: "TextField",
     color: "primary",
     disabled: false,
@@ -79,7 +80,7 @@ export const TextFieldStory: Story = {
     helperText: "Helper text",
     select: false,
   },
-  render: ({ size, variant, label, color, disabled, error, helperText, select }) => {
+  render: ({ size, variant, label, color, disabled, error, helperText, select, placeholder }) => {
     const currencyOptions = [
       { value: 'USD', label: '$' },
       { value: 'EUR', label: '€' },
@@ -94,7 +95,8 @@ export const TextFieldStory: Story = {
         noValidate
         autoComplete="off"
       >
-        <TextField  
+        <TextField
+          placeholder={placeholder}
           label={label}
           variant={variant}
           size={size}

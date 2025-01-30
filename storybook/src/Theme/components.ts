@@ -353,18 +353,6 @@ export const components: Components<Theme> = {
   MuiDialog: {
     styleOverrides: {
       root: ({ theme }) => ({
-        [theme.breakpoints.only('xs')]: {
-          width: "444px",
-        },
-        [theme.breakpoints.only('sm')]: {
-          width: "600px",
-        },
-        [theme.breakpoints.only('md')]: {
-          width: "900px",
-        },
-        [theme.breakpoints.only('lg')]: {
-          width: "1200px",
-        },
         ".MuiPaper-elevation": {
           boxShadow:
             "0px 1px 5px rgba(24, 39, 75, 0.12), 0px 2px 2px rgba(24, 39, 75, 0.14), 0px 3px 1px -2px rgba(24, 39, 75, 0.2) ",
@@ -473,8 +461,8 @@ export const components: Components<Theme> = {
         width: 18,
       },
       colorDefault: ({ theme }) => ({
-        backgroundColor: theme.palette.default.main,
-        color: theme.palette.default.contrastText,
+        backgroundColor: theme.palette.chipDefault.main,
+        color: theme.palette.chipDefault.contrastText,
       }),
       deleteIcon: ({ theme }) => ({
         variants: [
@@ -488,10 +476,10 @@ export const components: Components<Theme> = {
           {
             props: { variant: "standard" },
             style: {
-              color: theme.palette.default.contrastText,
+              color: theme.palette.chipDefault.contrastText,
               opacity: "30%",
               ":hover": {
-                color: theme.palette.default.contrastText,
+                color: theme.palette.chipDefault.contrastText,
                 opacity: "30%",
               },
             },
@@ -510,7 +498,7 @@ export const components: Components<Theme> = {
           {
             props: { variant: "filled", color: "default" },
             style: {
-              color: theme.palette.default.contrastText,
+              color: theme.palette.chipDefault.contrastText,
               opacity: "30%"
             },
           },
@@ -525,13 +513,13 @@ export const components: Components<Theme> = {
             style: {
               backgroundColor: theme.palette.background.paper,
               opacity: "70%",
-              color: theme.palette.default.contrastText,
+              color: theme.palette.chipDefault.contrastText,
             },
           },
           {
             props: { variant: "standard" },
             style: {
-              backgroundColor: theme.palette.default.contrastText,
+              backgroundColor: theme.palette.chipDefault.contrastText,
               color: theme.palette.primary.contrastText,
             },
           },
@@ -573,7 +561,7 @@ export const components: Components<Theme> = {
           {
             props: { variant: "filled", color: "default" },
             style: {
-              backgroundColor: theme.palette.default.contrastText,
+              backgroundColor: theme.palette.chipDefault.contrastText,
               color: theme.palette.background.paper,
             },
           },
@@ -591,19 +579,19 @@ export const components: Components<Theme> = {
             style: {
               border: `1px solid ${theme.palette.grey[400]}`,
               backgroundColor: "transparent !important",
-              color: theme.palette.default.contrastText,
+              color: theme.palette.chipDefault.contrastText,
               ":hover": {
-                backgroundColor: theme.palette.default.main
+                backgroundColor: theme.palette.chipDefault.main
               }
             },
           },
           {
             props: { variant: "standard", color: "default" },
             style: {
-              backgroundColor: theme.palette.default.main,
-              color: theme.palette.default.contrastText,
+              backgroundColor: theme.palette.chipDefault.main,
+              color: theme.palette.chipDefault.contrastText,
               ":hover": {
-                backgroundColor: theme.palette.default.dark
+                backgroundColor: theme.palette.chipDefault.dark
               }
             },
           },
@@ -611,7 +599,7 @@ export const components: Components<Theme> = {
             props: { variant: "filled", color: "default" },
             style: {
               backgroundColor: theme.palette.grey[50],
-              color: theme.palette.default.contrastText,
+              color: theme.palette.chipDefault.contrastText,
               ":hover": {
                 backgroundColor: theme.palette.grey[100],
               }
@@ -621,7 +609,7 @@ export const components: Components<Theme> = {
             props: { variant: "filled", color: "default" },
             style: {
               backgroundColor: theme.palette.grey[50],
-              color: theme.palette.default.contrastText,
+              color: theme.palette.chipDefault.contrastText,
               ":hover": {
                 backgroundColor: theme.palette.grey[100],
               }
@@ -630,15 +618,15 @@ export const components: Components<Theme> = {
           {
             props: { variant: "standard", avatar: true },
             style: {
-              backgroundColor: theme.palette.default.contrastText,
-              color: theme.palette.default.contrastText,
+              backgroundColor: theme.palette.chipDefault.contrastText,
+              color: theme.palette.chipDefault.contrastText,
             },
           },
           {
             props: { variant: "standard" },
             style: {
-              backgroundColor: theme.palette.default.contrastText,
-              color: theme.palette.default.contrastText,
+              backgroundColor: theme.palette.chipDefault.contrastText,
+              color: theme.palette.chipDefault.contrastText,
             },
           },
           {
@@ -829,9 +817,6 @@ export const components: Components<Theme> = {
   },
   MuiButton: {
     styleOverrides: {
-      icon:{
-
-      },
       root: {
         fontFamily: "Roboto",
         textTransform: "unset",
@@ -977,14 +962,6 @@ export const components: Components<Theme> = {
   },
   MuiSvgIcon: {
     styleOverrides: {
-      root: {
-        // "&.MuiSvgIcon-root:not(.MuiButton-root)": {
-        //   color: "#1018408a !important"
-        // },
-        variants: [
-          { props: { color: "default" }, style: { color: "#1018408a" } }
-        ]
-      },
       fontSizeLarge: {
         width: 35,
         height: 35,
@@ -1003,11 +980,7 @@ export const components: Components<Theme> = {
     },
   },
   MuiIconButton: {
-    defaultProps:{
-      color: "primary"
-    },
     styleOverrides: {
- 
       sizeSmall: {
         padding: 3,
       },
@@ -1092,6 +1065,7 @@ export const components: Components<Theme> = {
       asterisk: ({ theme }) => ({
         color: theme.palette.error.main,
       }),
+      error:({theme})=>({ color: theme.palette.text.secondary}),
       root: {
         display: "flex",
         gap: ".2rem",

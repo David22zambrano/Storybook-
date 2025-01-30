@@ -32,11 +32,11 @@ const meta: Meta<typeof Drawer> = {
       description: "Titulo del drawer",
       control: "text",
     },
-    open: {
-      table: {
-        disable: true,
-      },
-    },
+    // open: {
+    //   table: {
+    //     disable: true,
+    //   },
+    // },
     onClose: {
       table: {
         disable: true,
@@ -68,9 +68,9 @@ const meta: Meta<typeof Drawer> = {
       },
     },
     headerColor: {
-      table: {
-        disable: true,
-      },
+      // table: {
+      //   disable: true,
+      // },
     },
     children: {
       table: {

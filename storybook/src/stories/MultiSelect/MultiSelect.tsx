@@ -1,50 +1,71 @@
-import { Button, Checkbox, ListItemIcon, MenuItem, Popover, Stack, TextField } from "@mui/material";
 import React, { useCallback, useState } from "react";
+import { Button, Checkbox, InputAdornment, ListItemIcon, MenuItem, OutlinedInput, Popover, Stack } from "@mui/material";
+import { SearchOutlined } from "@mui/icons-material";
 
-export interface MultiSelectProps {
+export interface MultiSelectProps<T> {
     topPanel?: React.ReactNode;
-    acciones?: React.ReactNode;
+    actions?: React.ReactNode;
     anchorEl: HTMLElement | null;
     dense?: boolean;
     open: boolean;
-    items: any[];
+    items: T[];
     onClose?: () => void;
-    filterFunction: (items: any[], filtroTexto: string) => any[];
-    getItemLabel: (item: any) => string;
+    handleFilter?: (items: T[], filterValue: string) => T[];
+    getItemLabel: (item: T) => string;
+    filtrarDesdeComponente?: boolean;
+    OnChangeLimpiar?: () => void;
+    OnClickLimpiar?: () => void;
+    OnChangeAplicar?: () => void;
+    OnClickAplicar?: () => void;
 }
 
-export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFunction, getItemLabel, anchorEl, dense }: MultiSelectProps) => {
+export function MultiSelect<T>({
+    items,
+    topPanel,
+    actions,
+    dense = false,
+    anchorEl,
+    open,
+    onClose,
+    handleFilter,
+    getItemLabel,
+    OnChangeLimpiar,
+    OnClickLimpiar,
+    OnChangeAplicar,
+    OnClickAplicar,
+    filtrarDesdeComponente = true,
+}: MultiSelectProps<T>) {
+    const [filterValue, setFilterValue] = useState<string>("");
+    const [selectedItems, setSelectedItems] = useState<T[]>([]);
 
-    const [filtroTexto, setFiltroTexto] = useState("");
-    const [itemsSeleccionados, setItemsSeleccionados] = useState<any[]>([]);
+    const filteredItems = filtrarDesdeComponente
+        ? items.filter((item) => getItemLabel(item).toLowerCase().includes(filterValue.toLowerCase()))
+        : handleFilter?.(items, filterValue) || items;
 
-    const itemsFiltrados = filterFunction(items, filtroTexto);
+    const handleChangeTextField = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            setFilterValue(e.target.value);
+        }, []);
 
-    const manejarCambioTextField = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        setFiltroTexto(e.target.value);
-    }, []);
-
-    const manejarCambioCheckbox = useCallback(
-        (item: any) => {
-            setItemsSeleccionados((prevSeleccionados) =>
-                prevSeleccionados.includes(item)
-                    ? prevSeleccionados.filter((itemSeleccionado) => itemSeleccionado !== item)
-                    : [...prevSeleccionados, item]
+    const handleCheckboxChange = useCallback(
+        (item: T) => {
+            setSelectedItems((prevSelected) =>
+                prevSelected.includes(item)
+                    ? prevSelected.filter((selectedItem) => selectedItem !== item)
+                    : [...prevSelected, item]
             );
-        },
-        []
-    );
+        }, []);
 
-    const manejarSeleccionarTodos = useCallback(() => {
-        const todosSeleccionados = itemsSeleccionados.length === itemsFiltrados.length;
-        setItemsSeleccionados(todosSeleccionados ? [] : itemsFiltrados);
-    }, [itemsFiltrados, itemsSeleccionados]);
+    const handleSelectAll = useCallback(() => {
+        const allSelected = selectedItems.length === filteredItems.length;
+        setSelectedItems(allSelected ? [] : filteredItems);
+    }, [filteredItems, selectedItems]);
 
-    const todosSeleccionados = itemsFiltrados.length > 0 && itemsSeleccionados.length === itemsFiltrados.length;
+    const allSelected = filteredItems.length > 0 && selectedItems.length === filteredItems.length;
 
-    const itemsFiltradosOrdenados = [
-        ...itemsFiltrados.filter((item) => itemsSeleccionados.includes(item)),
-        ...itemsFiltrados.filter((item) => !itemsSeleccionados.includes(item)),
+    const sortedFilteredItems = [
+        ...filteredItems.filter((item) => selectedItems.includes(item)),
+        ...filteredItems.filter((item) => !selectedItems.includes(item)),
     ];
 
     return (
@@ -52,44 +73,49 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
             elevation={8}
             anchorEl={anchorEl}
             anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
             }}
             open={open}
             onClose={onClose}
         >
             <Stack height="auto" minWidth="320px">
-                <Stack height={"auto"} py={2} px={1}>
+                <Stack height="auto" py={1} px={2}>
                     {topPanel ? (
-                        topPanel
+                        React.cloneElement(topPanel as React.ReactElement, {
+                            setFilterValue
+                        })
                     ) : (
-                        <TextField
+                        <OutlinedInput
                             fullWidth
                             size="small"
-                            placeholder="Escribe algo"
-                            label="Buscar"
-                            value={filtroTexto}
-                            onChange={manejarCambioTextField}
+                            placeholder="Buscar"
+                            value={filterValue}
+                            onChange={handleChangeTextField}
+                            endAdornment={
+                                <InputAdornment position="end">
+                                        <SearchOutlined fontSize="small" />
+                                </InputAdornment>
+                            }
                         />
                     )}
                 </Stack>
 
-                <Stack height={"auto"} maxHeight={"300px"} overflow={"auto"} >
-
-                    {itemsFiltradosOrdenados.length > 2 && (
-                        <MenuItem dense={dense} onClick={manejarSeleccionarTodos}>
+                <Stack height="auto" maxHeight="300px" overflow="auto">
+                    {sortedFilteredItems.length > 2 && (
+                        <MenuItem  dense={dense} onClick={handleSelectAll}>
                             <ListItemIcon>
-                                <Checkbox checked={todosSeleccionados} />
+                                <Checkbox checked={allSelected} />
                             </ListItemIcon>
                             Todos los items
                         </MenuItem>
                     )}
 
-                    {itemsFiltradosOrdenados.length > 0 ? (
-                        itemsFiltradosOrdenados.map((item, index) => (
-                            <MenuItem dense={dense} key={index} onClick={() => manejarCambioCheckbox(item)}>
+                    {sortedFilteredItems.length > 0 ? (
+                        sortedFilteredItems.map((item) => (
+                            <MenuItem key={getItemLabel(item)}  dense={dense} onClick={() => handleCheckboxChange(item)}>
                                 <ListItemIcon>
-                                    <Checkbox checked={itemsSeleccionados.includes(item)} />
+                                    <Checkbox checked={selectedItems.includes(item)} />
                                 </ListItemIcon>
                                 {getItemLabel(item)}
                             </MenuItem>
@@ -98,19 +124,13 @@ export const MultiSelect = ({ topPanel, acciones, open, onClose, items, filterFu
                         <MenuItem disabled>No se encontraron resultados</MenuItem>
                     )}
                 </Stack>
-                {acciones ? (
-                    acciones
-                ) : (
-                    <Stack height={"auto"} flexDirection={"row"} justifyContent={"space-between"} py={2} px={1} >
-                        <Button size="small" color="primary" variant="text">
-                            Limpiar
-                        </Button>
-                        <Button size="small" color="primary" variant="contained">
-                            Aplicar
-                        </Button>
+                {actions && (
+                    <Stack px={2} py={1} flexDirection={"row"} justifyContent={"space-between"} >
+                        <Button color="primary" variant="text" onChange={OnChangeLimpiar} onClick={OnClickLimpiar}>Limpiar</Button>
+                        <Button variant="contained" color="primary" onChange={OnChangeAplicar} onClick={OnClickAplicar}>Aplicar</Button>
                     </Stack>
                 )}
             </Stack>
         </Popover>
     );
-};
+}

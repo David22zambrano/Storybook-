@@ -71,7 +71,7 @@ export const TableStory: Story = {
     stickyHeader: false,
   },
   render: ({ size, stickyHeader }) => (
-    <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
+    <TableContainer component={Paper} sx={{ backgroundColor: "palette color" ,maxHeight: 440 }}>
       <Table stickyHeader={stickyHeader} size={size} >
         <TableHead>
           <TableRow>

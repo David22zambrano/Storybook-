@@ -1,6 +1,6 @@
 import { ThemeOptions } from "@mui/material/styles";
 import { components } from "./components";
-import { paletteERP, paletteADPRO } from "./palette";
+import { paletteERP, paletteADPRO, paletteADC } from "./palette";
 import { mixins } from "./mixins";
 import { breakpoints } from "./breakpoints";
 import { typography } from "./typography";
@@ -27,6 +27,13 @@ export const ADPROTheme: ThemeOptions = {
   palette: paletteADPRO,
   ...BasicTheme
 }
+
+export const ADCTheme: ThemeOptions = {
+  palette: paletteADC,
+  ...BasicTheme
+}
+
+
 // END Opcion 2
 
 

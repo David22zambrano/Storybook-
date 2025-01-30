@@ -34,7 +34,7 @@ declare module "@mui/material/Checkbox" {
 // Augment the palette to include the ChipColors
 declare module '@mui/material/styles' {
     interface Palette {
-        default: Palette['primary'];
+        chipDefault: Palette['primary'];
         chipPrimary: Palette['primary'];
         chipSecondary: Palette['secondary'];
         chipInfo: Palette['info'];
@@ -45,7 +45,7 @@ declare module '@mui/material/styles' {
 
 
     interface PaletteOptions {
-        default?: Palette['primary'];
+        chipDefault?: Palette['primary'];
         chipPrimary?: Palette['primary'];
         chipSecondary?: Palette['secondary'];
         chipInfo?: Palette['info'];
